@@ -26,7 +26,7 @@ export default {
       showCodeTip: false,
       time: 60,
       mobile: null,
-      platform: 'XFYLMALL'
+      platform: 'ZBMALL'
     }
   },
   mounted() { 

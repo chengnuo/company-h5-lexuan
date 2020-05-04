@@ -353,8 +353,8 @@ export default {
           //   let sysCnl = commonJs.isWeiXin() ? 'WX-PUBLIC' : 'H5'
           //   const getLoginAuthorization = JSON.parse(window.sessionStorage.getItem('loginAuthorization')) || {}
           //   const userData = JSON.parse(sessionStorage.getItem('userData')) || {}
-          //   // const url = `${commonJs.config.prefixH5Url}pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&openid=${getLoginAuthorization.openid}&source=${commonJs.payConfig.XFyinliPAYSource}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
-          //   const url = `${commonJs.config.prefixH5Url}pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&source=${commonJs.payConfig.XFyinliPAYSource}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
+          //   // const url = `${commonJs.config.prefixH5Url}/pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&openid=${getLoginAuthorization.openid}&source=${commonJs.payConfig.XFyinliPAYSource}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
+          //   const url = `${commonJs.config.prefixH5Url}/pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&source=${commonJs.payConfig.XFyinliPAYSource}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
           //   this.submitLoad = false;
           //   // const url = `http://localhost:8080pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&openid=${getLoginAuthorization.openid}&source=${commonJs.payConfig.XFyinliPAYSource}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
           //   window.location.href=url;

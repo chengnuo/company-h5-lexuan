@@ -307,17 +307,25 @@ export default {
 
       this.apiBaseGoodsList((res) => {
 
-        this.apiGoodsUserInviteLevelCount({
-          ptLevel: 2,
-        }, () => {
-          this.apiGoodsDetail({
-            id: res.data.items.map((item) => {
-              if (item.goodsType == '0') {
-                return item.id
-              }
-            })[0] || '',
-          }) // 获取详情
-        })
+        // this.apiGoodsUserInviteLevelCount({
+        //   ptLevel: 2,
+        // }, () => {
+        //   this.apiGoodsDetail({
+        //     id: res.data.items.map((item) => {
+        //       if (item.goodsType == '0') {
+        //         return item.id
+        //       }
+        //     })[0] || '',
+        //   }) // 获取详情
+        // })
+
+        this.apiGoodsDetail({
+          id: res.data.items.map((item) => {
+            if (item.goodsType == '0') {
+              return item.id
+            }
+          })[0] || '',
+        }) // 获取详情
       })
 
 

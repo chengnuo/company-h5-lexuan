@@ -213,7 +213,7 @@ export default {
       // }
       
       //如果是乐选的屏蔽微信支付宝
-      if(this.urlSource.platform == 'XFYLMALL'){ // 乐选
+      if(this.urlSource.platform == 'ZBMALL'){ // 乐选
         this.hideAppPay = true;
         // this.bankCode = '';
         if(this.$route.query.bankCode == 'WEIXIN'){

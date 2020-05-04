@@ -125,7 +125,7 @@ export default {
     },
     // 跳转逻辑
     goCountyStore() {
-      window.location.href = `${commonJs.config.prefixH5Url}act/countyStore?token=${this.userData.userToken}`
+      window.location.href = `${commonJs.config.prefixH5Url}/act/countyStore?token=${this.userData.userToken}`
     },
 
     // 跳转进邀请好友

@@ -150,7 +150,7 @@ export default {
           // this.loading = false;
           window.sessionStorage.setItem('userData', JSON.stringify(res.data)) // 这个保持跟之前一样。
           this.userData = res.data;
-          QRCode.toDataURL(`${commonJs.config.prefixH5Url}goodDetail?inviteCode=${this.userData.inviteCode}`, (err, url) => {
+          QRCode.toDataURL(`${commonJs.config.prefixH5Url}/goodDetail?inviteCode=${this.userData.inviteCode}`, (err, url) => {
             console.log('err', err)
             console.log('url', url)
             this.vipQRCode = url

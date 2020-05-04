@@ -380,14 +380,14 @@ export default {
     },
     // 查看详情规则
     handleLookDetail() {
-      var path = commonJs.config.prefixH5Url + 'act/countyStore/rule'
+      var path = commonJs.config.prefixH5Url + '/act/countyStore/rule'
       commonJs.openNewWebView(path)
     },
     // 使用记录1
     handleUserHistory() {
       const userData = JSON.parse(sessionStorage.getItem('userData')) || {}
       if(userData && userData.userToken){
-        var path = commonJs.config.prefixH5Url + 'act/countyStore/record?token=' + userData.userToken + '&userId=' + userData.id
+        var path = commonJs.config.prefixH5Url + '/act/countyStore/record?token=' + userData.userToken + '&userId=' + userData.id
         commonJs.openNewWebView(path)
       }
     },

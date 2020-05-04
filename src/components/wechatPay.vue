@@ -125,7 +125,7 @@ export default {
           // &bankCode=WEIXIN
           let resAppId = res.data.appId;
           // let resAppId = 'wx3fb8ccb54d4a1417';
-          const redirect_uri = encodeURIComponent(`${commonJs.config.prefixH5Url}pay${window.location.search}&bankCode=WEIXIN&t=${state}`)
+          const redirect_uri = encodeURIComponent(`${commonJs.config.prefixH5Url}/pay${window.location.search}&bankCode=WEIXIN&t=${state}`)
           window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${resAppId}&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_base&state=${state}#wechat_redirect`
           callback && callback()
         }else{

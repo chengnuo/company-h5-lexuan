@@ -12,7 +12,7 @@ const service = axios.create({
 service.interceptors.request.use(config => { 
   config.data = { // 全局公共参数
     mercId: "888000000000003",
-    platform: "XFYLMALL",
+    platform: "ZBMALL",
     sysCnl: 'H5',
     timestamp: new Date().getTime().toString().substr(0, 10),
     ...config.data,

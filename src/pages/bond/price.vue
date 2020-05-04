@@ -161,7 +161,7 @@ export default {
               let sysCnl = commonJs.isWeiXin() ? 'WX-PUBLIC' : 'H5'
               const getLoginAuthorization = JSON.parse(window.sessionStorage.getItem('loginAuthorization')) || {}
               const userData = JSON.parse(sessionStorage.getItem('userData')) || {}
-              const url = `${commonJs.config.prefixH5Url}pay?mercId=${res.data.mercId}&prePayNo=${res.data.prePayNo}&source=${commonJs.payConfig.XFyinliPAYSourceRecharge}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}&type=bone`
+              const url = `${commonJs.config.prefixH5Url}/pay?mercId=${res.data.mercId}&prePayNo=${res.data.prePayNo}&source=${commonJs.payConfig.XFyinliPAYSourceRecharge}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}&type=bone`
               window.location.href = url;
               // location.replace(url)
             })

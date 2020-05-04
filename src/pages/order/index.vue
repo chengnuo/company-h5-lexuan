@@ -227,15 +227,18 @@ export default {
     init() {
       let userData = JSON.parse(sessionStorage.getItem('userData')) || {}
       this.apiClientIp()
-      this.apiGoodsUserInviteLevelCount({
-        ptLevel: 2,
-      }, () => {
-        // 获取缓存数据
-        this.orderDetail = JSON.parse(window.sessionStorage.getItem('orderDetail'))
-        this.addCartNums = this.orderDetail && this.orderDetail.checkedGoodsList && this.orderDetail.checkedGoodsList[0].number && this.orderDetail.checkedGoodsList[0].number || 1
+      // this.apiGoodsUserInviteLevelCount({
+      //   ptLevel: 2,
+      // }, () => {
+      //   // 获取缓存数据
+      //   this.orderDetail = JSON.parse(window.sessionStorage.getItem('orderDetail'))
+      //   this.addCartNums = this.orderDetail && this.orderDetail.checkedGoodsList && this.orderDetail.checkedGoodsList[0].number && this.orderDetail.checkedGoodsList[0].number || 1
         
         
-      })
+      // })
+
+      this.orderDetail = JSON.parse(window.sessionStorage.getItem('orderDetail'))
+      this.addCartNums = this.orderDetail && this.orderDetail.checkedGoodsList && this.orderDetail.checkedGoodsList[0].number && this.orderDetail.checkedGoodsList[0].number || 1
 
     },
     // 获取客户端IP
@@ -307,7 +310,7 @@ export default {
               const getLoginAuthorization = JSON.parse(window.sessionStorage.getItem('loginAuthorization')) || {}
               const userData = JSON.parse(sessionStorage.getItem('userData')) || {}
               // const url = `${commonJs.config.prefixH5Url}pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&openid=${getLoginAuthorization.openid}&source=${commonJs.payConfig.XFyinliPAYSource}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
-              const url = `${commonJs.config.prefixH5Url}pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&source=${commonJs.payConfig.XFyinliPAYSourceLangshaMall}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
+              const url = `${commonJs.config.prefixH5Url}/pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&source=${commonJs.payConfig.XFyinliPAYSourceLangshaMall}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
               this.submitLoad = false;
               // const url = `http://localhost:8080pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&openid=${getLoginAuthorization.openid}&source=${commonJs.payConfig.XFyinliPAYSource}&platform=${resApiPayMobileUnified.data.prePayOrder.platform}&userId=${userData.id}`
               window.location.href = url;

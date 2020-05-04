@@ -89,7 +89,7 @@ export default {
     return {
       type: null,
       authTime: 0,
-      platform:'XFYLMALL',
+      platform:'ZBMALL',
       inviteCode: '',
       isShow: false,
       tempCode: null,
@@ -115,7 +115,7 @@ export default {
 
     this.platform = commonJs.getPlatform().platform;
 
-    // if(this.platform == 'XFYLMALL'){
+    // if(this.platform == 'ZBMALL'){
     //   this.goHome() // 如果没有登录信息，直接跳回9980
     //   this.wxShare() // 分享
     // }

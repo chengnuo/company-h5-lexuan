@@ -56,6 +56,21 @@ const routerData = {
       component: () => import('@/pages/login/passwordLogin')
     },
     {
+      name: 'QuickLogin',
+      path: '/quickLogin',
+      meta: {
+        title: '幸福引力'
+      },
+      component: () => import('@/pages/login/quickLogin')
+    }, {
+      name: 'QuickLoginBind',
+      path: '/quickLoginBind',
+      meta: {
+        title: '幸福引力'
+      },
+      component: () => import('@/pages/login/quickLoginBind')
+    },
+    {
       path: '/verificationCode',
       name: 'ActVerificationCode',
       meta: {

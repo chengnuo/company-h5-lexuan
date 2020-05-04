@@ -33,7 +33,7 @@ export default {
       activeIndex: '', // 支付
       payClientIp:null,
       actUnifiedObj:null,
-      platform: 'XFYLMALL'
+      platform: 'ZBMALL'
     }
   },
   props:{

@@ -274,7 +274,7 @@ export default {
     },
     // 跳转逻辑
     goInvitationPoster() {
-      window.location.href = `${commonJs.config.prefixH5Url}act/countyStore/invitationPoster?token=${this.userData.userToken}`
+      window.location.href = `${commonJs.config.prefixH5Url}/act/countyStore/invitationPoster?token=${this.userData.userToken}`
     },
     jumpDownload(){
       this.$router.push({
@@ -374,7 +374,7 @@ export default {
         })
         if (this.adList[0].levelList.includes(this.userData.ptLevel + '')) {
           // this.adList
-          window.location.href = `${commonJs.config.prefixH5Url}act/countyStore?token=${this.userData.userToken}`;
+          window.location.href = `${commonJs.config.prefixH5Url}/act/countyStore?token=${this.userData.userToken}`;
         } else {
           Dialog.alert({
             // title: '标题',

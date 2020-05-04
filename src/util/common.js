@@ -13,11 +13,11 @@ if (process.env.NODE_ENV === 'development') { //区别线上线下环境
     signJson: {
       // 'X-MPMALL-SignVer': 'v1'
     },
-    signKey: '1234567890123456',
+    signKey: '12345678',
     signKeyZB: '12345678', // 赚播
-    prefixUrl: 'http://test-api.yinli.gdxfhl.com',
+    prefixUrl: 'http://test-zb-api.zhuanbo.gdxfhl.com',
     // prefixUrl: 'http://192.168.1.96:16111',
-    prefixH5Url: 'http://test-h5.yinli.gdxfhl.com/',
+    prefixH5Url: 'http://test-h5.zhuanbo.gdxfhl.com',
     prefixUrlPhpBase: 'http://test-api-base.yinli.gdxfhl.com', // phpbase域
     prefixUrlPhpSn: 'http://test-api-sn.yinli.gdxfhl.com', // phpbase域
     prefixZhuanboApi: 'http://test-zb-api.zhuanbo.gdxfhl.com',
@@ -33,10 +33,10 @@ if (process.env.NODE_ENV === 'development') { //区别线上线下环境
     signJson: {
       // 'X-MPMALL-SignVer': 'v1'
     },
-    signKey: '1WPTv61IN3oD3747Eqq2rfw5R48c6U4v', // 后端提供-秘玩家生产商户号和密钥 888000000000003 1WPTv61IN3oD3747Eqq2rfw5R48c6U4v
+    signKey: 'B3lv0q99Xou8HCmSdeJrjxwI4WXaGGof', // 后端提供-秘玩家生产商户号和密钥 888000000000003 1WPTv61IN3oD3747Eqq2rfw5R48c6U4v
     signKeyZB: 'B3lv0q99Xou8HCmSdeJrjxwI4WXaGGof', // 赚播
-    prefixUrl: 'http://api.yinli.gdxfhl.com',
-    prefixH5Url: 'http://h5.yinli.gdxfhl.com/',
+    prefixUrl: 'http://zb-api.zhuanbo.gdxfhl.com',
+    prefixH5Url: 'http://h5.zhuanbo.gdxfhl.com',
     prefixUrlPhpBase: 'http://api-base.yinli.gdxfhl.com', // phpbase域
     prefixUrlPhpSn: 'http://api-sn.yinli.gdxfhl.com', // phpbase域
     getApiMppayMingpinmao: 'https://mppay.mingpinmao.cn', // 支付链接
@@ -247,7 +247,7 @@ function outSideShare(infoJson) {
       img: `${getUrl()}/static/logo.png`
     }
     if(userDataJson.ptLevel + '' && userDataJson.ptLevel >= 0){
-      info.link = config.prefixH5Url + 'login?inviteCode=' + userDataJson.inviteCode;
+      info.link = config.prefixH5Url + '/login?inviteCode=' + userDataJson.inviteCode;
       var name = userDataJson.nickname.substring(0,userDataJson.nickname.length-2) + '*' + userDataJson.nickname.substring(userDataJson.nickname.length-1, userDataJson.nickname.length);
       info.desc = name + '邀请你购买幸福精油，用幸福精油，享舒适生活';
     }
@@ -401,18 +401,18 @@ let payConfig = {}
 if (process.env.NODE_ENV === 'development') {
   payConfig = {
     XFyinliPAYSource: `testXFyinli`, // 乐选
-    PAYMiddleware: `${config.prefixH5Url}payMiddleware`, // 站外落地页-中间页
+    PAYMiddleware: `${config.prefixH5Url}/payMiddleware`, // 站外落地页-中间页
 
     XFyinliPAYSourceRecharge: `testXFyinliRecharge`, // 乐选-充值
-    PAYMiddlewareRecharge: `${config.prefixH5Url}payMiddleware` // 站外落地页-中间页
+    PAYMiddlewareRecharge: `${config.prefixH5Url}/payMiddleware` // 站外落地页-中间页
   }
 } else {
   payConfig = {
     XFyinliPAYSource: `XFyinli`, // 乐选1
-    PAYMiddleware: `${config.prefixH5Url}payMiddleware`, // 站外落地页-中间页
+    PAYMiddleware: `${config.prefixH5Url}/payMiddleware`, // 站外落地页-中间页
 
     XFyinliPAYSourceRecharge: `XFyinliRecharge`, // 乐选-充值
-    PAYMiddlewareRecharge: `${config.prefixH5Url}payMiddleware` // 站外落地页-中间页
+    PAYMiddlewareRecharge: `${config.prefixH5Url}/payMiddleware` // 站外落地页-中间页
   }
 }
 
@@ -429,7 +429,7 @@ function getPlatform(){
     }else{
       json = {
         mercId: "888000000000003",
-        platform: "XFYLMALL"
+        platform: "ZBMALL"
       };
     }
     return json;
@@ -441,19 +441,19 @@ function goPayConfig(type) {
   }
  if (type === 'testXFyinli') {
     url = {
-      PAYPaySucceed: `${config.prefixH5Url}paySuccess/payment` // 乐选,
+      PAYPaySucceed: `${config.prefixH5Url}/paySuccess/payment` // 乐选,
     }
   } else if (type === 'XFyinli') {
     url = {
-      PAYPaySucceed: `${config.prefixH5Url}paySuccess/payment` // 乐选,
+      PAYPaySucceed: `${config.prefixH5Url}/paySuccess/payment` // 乐选,
     }
   } else if (type === 'testXFyinliRecharge') {
     url = {
-      PAYPaySucceed: `${config.prefixH5Url}recharge/paySucceed` // 乐选-充值,
+      PAYPaySucceed: `${config.prefixH5Url}/recharge/paySucceed` // 乐选-充值,
     }
   } else if (type === 'XFyinliRecharge') {
     url = {
-      PAYPaySucceed: `${config.prefixH5Url}recharge/paySucceed` // 乐选-充值,
+      PAYPaySucceed: `${config.prefixH5Url}/recharge/paySucceed` // 乐选-充值,
     }
   }
   return url
@@ -507,7 +507,7 @@ function goPayConfig(type) {
 //       platform = JSON.parse(window.sessionStorage.getItem('urlSource'));
 //     }
 
-//     if(platform && platform.platform == 'XFYLMALL'){
+//     if(platform && platform.platform == 'ZBMALL'){
 //       return true;
 //     }else{
 //       return false;
