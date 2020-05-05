@@ -1,8 +1,8 @@
 <!--  广告位 -->
 <template>
-  <div class="advertisingSpace">
+  <div class="customAdvertisingSpace">
     <div class="bg"></div>
-    <div class="advertisingSpaceLayout">
+    <div class="customAdvertisingSpaceLayout">
       <div class="typeOne marginTop10">
         <div class="items">
           <div class="item">1行1个</div>
@@ -95,7 +95,7 @@ import {  apiShopMobileMsgNotifyList } from '@/api/my'
 
 
 export default {
-  name: 'Notice',
+  name: 'CustomAdvertisingSpace',
   data() {
     return {
       noticeList: [],
@@ -155,7 +155,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.advertisingSpace {
+.customAdvertisingSpace {
   .bg {
     width: 100%;
     height: 100%;

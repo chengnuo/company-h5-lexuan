@@ -500,7 +500,7 @@ export default {
     },
     jumpAdvertisingSpace(){
       this.$router.push({
-        name: 'MyAdvertisingSpace'
+        name: 'MyCustomAdvertisingSpace'
       })
     },
   }
