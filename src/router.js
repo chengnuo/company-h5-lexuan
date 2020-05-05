@@ -444,6 +444,14 @@ const routerData = {
       component: () => import('@/pages/my/customAuxiliaryLine')
     },
     {
+      path: '/my/customLimitedTime',
+      name: 'CustomLimitedTime',
+      meta: {
+        title: '限时秒杀' // 乐选-限时秒杀
+      },
+      component: () => import('@/pages/my/customLimitedTime')
+    },
+    {
       path: '/setUp',
       name: 'SetUp',
       meta: {

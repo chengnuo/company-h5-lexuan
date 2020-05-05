@@ -191,6 +191,18 @@
                class="right">
         </div>
       </li>
+      <li @click="jumpCustomLimitedTime">
+        <p class="bar"></p>
+        <img src="../../assets/img/my/icon_04／withdraw deposit_01@2x.png"
+             alt=""
+             class="left">
+        <div class="clearfix">
+          <span>限时秒杀</span>
+          <img src="../../assets/img/my/more_01@2x.png"
+               alt=""
+               class="right">
+        </div>
+      </li>
     </ul>
     <div class="serviceBox"
          v-if="serviceBoxShow">
@@ -518,6 +530,11 @@ export default {
     jumpCustomNavigationBar(){
       this.$router.push({
         name: 'CustomNavigationBar'
+      })
+    },
+    jumpCustomLimitedTime(){
+      this.$router.push({
+        name: 'CustomLimitedTime'
       })
     },
   }
