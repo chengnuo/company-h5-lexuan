@@ -166,6 +166,19 @@
                class="right">
         </div>
       </li>
+      <!-- 分割线 -->
+      <li @click="jumpAdvertisingSpace">
+        <p class="bar"></p>
+        <img src="../../assets/img/my/icon_04／withdraw deposit_01@2x.png"
+             alt=""
+             class="left">
+        <div class="clearfix">
+          <span>广告位</span>
+          <img src="../../assets/img/my/more_01@2x.png"
+               alt=""
+               class="right">
+        </div>
+      </li>
     </ul>
     <div class="serviceBox"
          v-if="serviceBoxShow">
@@ -484,7 +497,12 @@ export default {
     },
     changeArr(str) {
       return str.split(',');
-    }
+    },
+    jumpAdvertisingSpace(){
+      this.$router.push({
+        name: 'MyAdvertisingSpace'
+      })
+    },
   }
 }
 </script>

@@ -412,6 +412,14 @@ const routerData = {
       component: () => import('@/pages/my/certificateAuthorization')
     },
     {
+      path: '/my/advertisingSpace',
+      name: 'MyAdvertisingSpace',
+      meta: {
+        title: '广告位' // 乐选-广告位
+      },
+      component: () => import('@/pages/my/advertisingSpace')
+    },
+    {
       path: '/setUp',
       name: 'SetUp',
       meta: {
