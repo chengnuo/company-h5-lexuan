@@ -423,9 +423,25 @@ const routerData = {
       path: '/my/customNavigationBar',
       name: 'CustomNavigationBar',
       meta: {
-        title: '广告位' // 乐选-导航栏
+        title: '导航栏' // 乐选-导航栏
       },
       component: () => import('@/pages/my/customNavigationBar')
+    },
+    {
+      path: '/my/customAuxiliaryBlank',
+      name: 'CustomAuxiliaryBlank',
+      meta: {
+        title: '辅助线空白' // 乐选-辅助空白
+      },
+      component: () => import('@/pages/my/customAuxiliaryBlank')
+    },
+    {
+      path: '/my/customAuxiliaryLine',
+      name: 'CustomAuxiliaryLine',
+      meta: {
+        title: '辅助线空白' // 乐选-辅助线
+      },
+      component: () => import('@/pages/my/customAuxiliaryLine')
     },
     {
       path: '/setUp',
