@@ -413,11 +413,19 @@ const routerData = {
     },
     {
       path: '/my/customAdvertisingSpace',
-      name: 'MyCustomAdvertisingSpace',
+      name: 'CustomAdvertisingSpace',
       meta: {
         title: '广告位' // 乐选-广告位
       },
       component: () => import('@/pages/my/customAdvertisingSpace')
+    },
+    {
+      path: '/my/customNavigationBar',
+      name: 'CustomNavigationBar',
+      meta: {
+        title: '广告位' // 乐选-导航栏
+      },
+      component: () => import('@/pages/my/customNavigationBar')
     },
     {
       path: '/setUp',

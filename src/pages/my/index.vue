@@ -167,13 +167,25 @@
         </div>
       </li>
       <!-- 分割线 -->
-      <li @click="jumpAdvertisingSpace">
+      <li @click="jumpCustomAdvertisingSpace">
         <p class="bar"></p>
         <img src="../../assets/img/my/icon_04／withdraw deposit_01@2x.png"
              alt=""
              class="left">
         <div class="clearfix">
           <span>广告位</span>
+          <img src="../../assets/img/my/more_01@2x.png"
+               alt=""
+               class="right">
+        </div>
+      </li>
+      <li @click="jumpCustomNavigationBar">
+        <p class="bar"></p>
+        <img src="../../assets/img/my/icon_04／withdraw deposit_01@2x.png"
+             alt=""
+             class="left">
+        <div class="clearfix">
+          <span>导航栏</span>
           <img src="../../assets/img/my/more_01@2x.png"
                alt=""
                class="right">
@@ -498,9 +510,14 @@ export default {
     changeArr(str) {
       return str.split(',');
     },
-    jumpAdvertisingSpace(){
+    jumpCustomAdvertisingSpace(){
       this.$router.push({
-        name: 'MyCustomAdvertisingSpace'
+        name: 'CustomAdvertisingSpace'
+      })
+    },
+    jumpCustomNavigationBar(){
+      this.$router.push({
+        name: 'CustomNavigationBar'
       })
     },
   }
