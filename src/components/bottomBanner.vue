@@ -69,10 +69,10 @@ export default {
 
 <style lang="less" scoped>
 .bottomContainer{
-  div{
-    width: 100%;
-    height:70px;
-  }
+  // div{
+  //   width: 100%;
+  //   height:70px;
+  // }
   ul{
     width: 100%;
     position: fixed;
