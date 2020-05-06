@@ -460,6 +460,14 @@ const routerData = {
       component: () => import('@/pages/home')
     },
     {
+      path: '/shoppingCart',
+      name: 'ShoppingCart',
+      meta: {
+        title: '购物车' // 乐选-购物车
+      },
+      component: () => import('@/pages/shoppingCart')
+    },
+    {
       path: '/setUp',
       name: 'SetUp',
       meta: {
