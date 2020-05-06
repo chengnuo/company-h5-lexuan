@@ -411,46 +411,46 @@ const routerData = {
       },
       component: () => import('@/pages/my/certificateAuthorization')
     },
-    {
-      path: '/my/customAdvertisingSpace',
-      name: 'CustomAdvertisingSpace',
-      meta: {
-        title: '广告位' // 乐选-广告位
-      },
-      component: () => import('@/pages/my/customAdvertisingSpace')
-    },
-    {
-      path: '/my/customNavigationBar',
-      name: 'CustomNavigationBar',
-      meta: {
-        title: '导航栏' // 乐选-导航栏
-      },
-      component: () => import('@/pages/my/customNavigationBar')
-    },
-    {
-      path: '/my/customAuxiliaryBlank',
-      name: 'CustomAuxiliaryBlank',
-      meta: {
-        title: '辅助线空白' // 乐选-辅助空白
-      },
-      component: () => import('@/pages/my/customAuxiliaryBlank')
-    },
-    {
-      path: '/my/customAuxiliaryLine',
-      name: 'CustomAuxiliaryLine',
-      meta: {
-        title: '辅助线空白' // 乐选-辅助线
-      },
-      component: () => import('@/pages/my/customAuxiliaryLine')
-    },
-    {
-      path: '/my/customLimitedTime',
-      name: 'CustomLimitedTime',
-      meta: {
-        title: '限时秒杀' // 乐选-限时秒杀
-      },
-      component: () => import('@/pages/my/customLimitedTime')
-    },
+    // {
+    //   path: '/my/customAdvertisingSpace',
+    //   name: 'CustomAdvertisingSpace',
+    //   meta: {
+    //     title: '广告位' // 乐选-广告位
+    //   },
+    //   component: () => import('@/pages/my/customAdvertisingSpace')
+    // },
+    // {
+    //   path: '/my/customNavigationBar',
+    //   name: 'CustomNavigationBar',
+    //   meta: {
+    //     title: '导航栏' // 乐选-导航栏
+    //   },
+    //   component: () => import('@/pages/my/customNavigationBar')
+    // },
+    // {
+    //   path: '/my/customAuxiliaryBlank',
+    //   name: 'CustomAuxiliaryBlank',
+    //   meta: {
+    //     title: '辅助线空白' // 乐选-辅助空白
+    //   },
+    //   component: () => import('@/pages/my/customAuxiliaryBlank')
+    // },
+    // {
+    //   path: '/my/customAuxiliaryLine',
+    //   name: 'CustomAuxiliaryLine',
+    //   meta: {
+    //     title: '辅助线空白' // 乐选-辅助线
+    //   },
+    //   component: () => import('@/pages/my/customAuxiliaryLine')
+    // },
+    // {
+    //   path: '/my/customLimitedTime',
+    //   name: 'CustomLimitedTime',
+    //   meta: {
+    //     title: '限时秒杀' // 乐选-限时秒杀
+    //   },
+    //   component: () => import('@/pages/my/customLimitedTime')
+    // },
     {
       path: '/home',
       name: 'Home',

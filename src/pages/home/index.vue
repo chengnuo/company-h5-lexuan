@@ -22,9 +22,9 @@ import { Toast, Swipe, SwipeItem } from 'vant';
 import commonJs from '@/util/common';
 import { Dialog } from 'vant';
 
-import customAdvertisingSpace from '../my/customAdvertisingSpace';
-import customNavigationBar from '../my/customNavigationBar';
-import customLimitedTime from '../my/customLimitedTime';
+import customAdvertisingSpace from '@/components/customAdvertisingSpace';
+import customNavigationBar from '@/components/customNavigationBar';
+import customLimitedTime from '@/components/customLimitedTime';
 
 
 

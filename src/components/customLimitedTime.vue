@@ -68,7 +68,7 @@
       <div class="item clearfix">
         <div class="leftbar fl">
           <img class="img"
-               src="../../assets/img/my/SK_a_04@2x.png" />
+               src="../assets/img/my/SK_a_04@2x.png" />
         </div>
         <div class="rightbar fl">
           <div class="title">
@@ -92,7 +92,7 @@
       <div class="item clearfix">
         <div class="leftbar fl">
           <img class="img"
-               src="../../assets/img/my/SK_a_04@2x.png" />
+               src="../assets/img/my/SK_a_04@2x.png" />
         </div>
         <div class="rightbar fl">
           <div class="title">
@@ -116,7 +116,7 @@
       <div class="item clearfix">
         <div class="leftbar fl">
           <img class="img"
-               src="../../assets/img/my/SK_a_04@2x.png" />
+               src="../assets/img/my/SK_a_04@2x.png" />
         </div>
         <div class="rightbar fl">
           <div class="title">
