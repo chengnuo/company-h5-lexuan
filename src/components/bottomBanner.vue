@@ -53,6 +53,10 @@ export default {
       this.$router.push({
         name: 'Index',
       })
+    }else if(type == 2){
+      this.$router.push({
+        name: 'Member',
+      })
     }else if(type == 3){
       this.$router.push({
         name: 'ShoppingCart',

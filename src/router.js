@@ -468,6 +468,14 @@ const routerData = {
       component: () => import('@/pages/shoppingCart')
     },
     {
+      path: '/member',
+      name: 'Member',
+      meta: {
+        title: '会员' // 乐选-会员
+      },
+      component: () => import('@/pages/member')
+    },
+    {
       path: '/setUp',
       name: 'SetUp',
       meta: {
