@@ -56,3 +56,20 @@ export function apiShopMobileUserInfo(data) {
     data
   })
 }
+
+// 获取云仓信息
+export function apiCloudListInfo(data) {
+  return request({
+    url: `${commonJs.config.api_cloud_url}/api/cloud/info`,
+    method: 'post',
+    data
+  })
+}
+
+export function stockApiCloudNum(data) {
+  return request({
+    url: `${commonJs.config.api_cloud_url}/api/cloud/num`,
+    method: 'post',
+    data
+  })
+}

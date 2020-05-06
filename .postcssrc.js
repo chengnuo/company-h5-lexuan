@@ -19,22 +19,25 @@ module.exports = {
       mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
       exclude: /(\/|\\)(node_modules)(\/|\\)/
     },
+    // 'postcss-viewport-units': {
+    //   filterRule(rule) {
+    //     const {
+    //       selector
+    //     } = rule
+    //     const regexps = [
+    //       /^.van.+:before$/i,
+    //       /^.van.+:after$/i
+    //     ]
+
+    //     const isMatch = regexps.find(patt => patt.test(selector))
+
+    //     if (isMatch) return false
+
+    //     return true
+    //   }
+    // },
     'postcss-viewport-units': {
-      filterRule(rule) {
-        const {
-          selector
-        } = rule
-        const regexps = [
-          /^.van.+:before$/i,
-          /^.van.+:after$/i
-        ]
-
-        const isMatch = regexps.find(patt => patt.test(selector))
-
-        if (isMatch) return false
-
-        return true
-      }
+      filterRule: rule => rule.selector.includes('::after') && rule.selector.includes('::before') && rule.selector.includes(':after') && rule.selector.includes(':before')
     },
     cssnano: {
       // preset: 'advanced',

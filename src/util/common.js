@@ -23,7 +23,8 @@ if (process.env.NODE_ENV === 'development') { //区别线上线下环境
     prefixZhuanboApi: 'http://test-zb-api.zhuanbo.gdxfhl.com',
     prefixZhuanboUrl: 'http://test-h5.zhuanbo.gdxfhl.com',
     getApiMppayMingpinmao: 'https://test-mppay.mingpinmao.cn', // 支付链接
-    prefixOrderYinliUrl: 'http://test-order.yinli.gdxfhl.com',
+    prefixOrderYinliUrl: 'http://test-order.zhuanbo.gdxfhl.com',
+    api_cloud_url: 'http://test-mlive.zhuanbo.gdxfhl.com', // go
     webTitle: '乐选',
     appid: 'wxa54f0533340859b3' // 公众号 appid ，支付使用11
   }
@@ -40,9 +41,10 @@ if (process.env.NODE_ENV === 'development') { //区别线上线下环境
     prefixUrlPhpBase: 'http://api-base.yinli.gdxfhl.com', // phpbase域
     prefixUrlPhpSn: 'http://api-sn.yinli.gdxfhl.com', // phpbase域
     getApiMppayMingpinmao: 'https://mppay.mingpinmao.cn', // 支付链接
-    prefixOrderYinliUrl: 'http://order.yinli.gdxfhl.com',
+    prefixOrderYinliUrl: 'http://order.yinli.zhuanbo.com',
     prefixZhuanboApi: 'http://zb-api.zhuanbo.gdxfhl.com',
     prefixZhuanboUrl: 'http://h5.zhuanbo.gdxfhl.com',
+    api_cloud_url: 'http://mlive.zhuanbo.gdxfhl.com', // go
     webTitle: '乐选',
     appid: 'wxa54f0533340859b3' // 公众号 appid ，支付使用
   }
