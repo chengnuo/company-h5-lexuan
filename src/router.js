@@ -452,6 +452,14 @@ const routerData = {
       component: () => import('@/pages/my/customLimitedTime')
     },
     {
+      path: '/home',
+      name: 'Home',
+      meta: {
+        title: '首页' // 乐选-首页
+      },
+      component: () => import('@/pages/home')
+    },
+    {
       path: '/setUp',
       name: 'SetUp',
       meta: {

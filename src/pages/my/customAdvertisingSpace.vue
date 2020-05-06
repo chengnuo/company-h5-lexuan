@@ -8,7 +8,7 @@
           <div class="item">1行1个</div>
         </div>
       </div>
-      <div class="typeTwo marginTop10">
+      <!-- <div class="typeTwo marginTop10">
         <div class="items">
           <div class="item">1行2个</div>
           <div class="item">1行2个</div>
@@ -83,7 +83,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
