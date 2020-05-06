@@ -6,13 +6,21 @@
         <img src="../assets/img/index/icon_22／Tabmy_05@2x.png" alt="" v-if="index != 0">
         <img src="../assets/img/index/icon_UAScale_selected_01@2x.png" alt="" v-if="index == 0">
       </li> -->
-      <li class="center" @click="jump(1)">
-        <img src="../assets/img/index/H5_icon_02@2x.png" alt="" v-if="index != 1">
-        <img src="../assets/img/index/H5_icon_01@2x.png" alt="" v-if="index == 1">
+      <li class="one" @click="jump(1)">
+        <img src="../assets/img/index/icon_UAScale_selected_01@2x.png" alt="" v-if="index == 1">
+        <img src="../assets/img/index/icon_UAScale_unselected_01@2x.png" alt="" v-if="index != 1">
       </li>
-      <li class="right" @click="jump(2)">
-        <img src="../assets/img/index/H5_icon_04@2x.png" alt="" v-if="index != 2">
-        <img src="../assets/img/index/H5_icon_03@2x.png" alt="" v-if="index == 2">
+      <li class="two" @click="jump(2)">
+        <img src="../assets/img/index/icon_coach_selected_01@2x.png" alt="" v-if="index == 2">
+        <img src="../assets/img/index/icon_coach_unselected_01@2x.png" alt="" v-if="index != 2">
+      </li>
+      <li class="three" @click="jump(3)">
+        <img src="../assets/img/index/icon_discover_selected_01@2x.png" alt="" v-if="index == 3">
+        <img src="../assets/img/index/icon_discover_unselected_01@2x.png" alt="" v-if="index != 3">
+      </li>
+      <li class="four" @click="jump(4)">
+        <img src="../assets/img/index/icon_mine_selected_01@2x.png" alt="" v-if="index == 4">
+        <img src="../assets/img/index/icon_mine_unselected_01@2x.png" alt="" v-if="index != 4">
       </li>
     </ul>
   </div>
@@ -45,7 +53,7 @@ export default {
       this.$router.push({
         name: 'Index',
       })
-    }else if(type == 2){
+    }else if(type == 4){
       this.$router.push({
         name: 'my',
       })
@@ -71,8 +79,8 @@ export default {
     z-index: 999;
     background: #fff;
     li{
-      width: 50%;
-      height: 54px;
+      width: 48px;
+      height: 42px;
       float:left;
       &.left{
         // margin-left:25px;
@@ -83,8 +91,18 @@ export default {
       &.right{
         // margin-right:25px;
       }
+      &.one{
+        margin-left: 23px;
+        margin-right: 48px;
+      }
+      &.two{
+        margin-right: 48px;
+      }
+      &.three{
+        margin-right: 48px;
+      }
       img{
-        width: 90px;
+        width: 48px;
         display: block;
         margin:0 auto;
       }

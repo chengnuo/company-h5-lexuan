@@ -167,7 +167,7 @@
         </div>
       </li>
       <!-- 分割线 -->
-      <li @click="jumpCustomAdvertisingSpace">
+      <!-- <li @click="jumpCustomAdvertisingSpace">
         <p class="bar"></p>
         <img src="../../assets/img/my/icon_04／withdraw deposit_01@2x.png"
              alt=""
@@ -202,7 +202,7 @@
                alt=""
                class="right">
         </div>
-      </li>
+      </li> -->
     </ul>
     <div class="serviceBox"
          v-if="serviceBoxShow">
@@ -228,7 +228,7 @@
         </div>
       </div>
     </div>
-    <bottomBanner :index="2"></bottomBanner>
+    <bottomBanner :index="4"></bottomBanner>
   </div>
 </template>
 <script >
