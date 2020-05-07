@@ -174,19 +174,37 @@
              v-if="goodsDetail.status==0">该商品已下架，非常抱歉!</div>
         <div class="shortage"
              v-if="goodsDetail.status==2">该商品暂时缺货，非常抱歉!</div>
-        <van-button v-if="goodsDetail.status==1"
+        <div v-if="goodsDetail.status==1"
+             class="buyNowLayout clearfix">
+          <div @click="handleGoHome" class="img1">
+            <img 
+               src="../../assets/img/index/icon_UAScale_unselected_01@2x.png"
+               alt="">
+          </div>
+          <div @click="handleGoShoppingCart" class="img2">
+            <img 
+                src="../../assets/img/index/icon_discover_unselected_01@2x.png"
+                alt="">
+          </div>
+          <div class="joinCart">加入购物车</div>
+          <div class="buyNow"
+               @click="handleBuy(1)">立即购买</div>
+
+        </div>
+
+        <!-- <van-button 
                     type="primary"
                     :class="['buyBtn', buyObj.upLineMsg?'LineHeight20':'LineHeight40']"
                     @click="handleBuy(1)"
                     :disabled="buyObj.upLineDisabled">
-          <div>
-            <p class="title">线上购买</p>
-            <p v-if="buyObj.upLineMsg"
-               class="msg">{{buyObj.upLineMsg}}</p>
-          </div>
-        </van-button>
+            <div>
+              <p class="title">立即购买</p>
+              <p v-if="buyObj.upLineMsg"
+                class="msg">{{buyObj.upLineMsg}}</p>
+            </div>
+          </van-button> -->
 
-        <van-button v-if="goodsDetail.status==1"
+        <!-- <van-button v-if="goodsDetail.status==1"
                     type="primary"
                     :class="['buyUnderLineBtn', buyObj.upLineMsg?'LineHeight20':'LineHeight40']"
                     :disabled="buyObj.unLineDisabled"
@@ -196,7 +214,7 @@
             <p v-if="buyObj.upLineMsg"
                class="msg">{{buyObj.unLineMsg}}</p>
           </div>
-        </van-button>
+        </van-button> -->
       </div>
 
       <!-- 分享 -->
@@ -205,7 +223,7 @@
         <img src="../../assets/img/goodDetail/share_01@2x.png" />
       </div> -->
 
-      <bottomBanner :index="11" />
+      <!-- <bottomBanner :index="11" /> -->
     </div>
     <div v-else>
       <PreLoading />
@@ -897,7 +915,7 @@ export default {
     // 点击购买弹出
     handleBuy(purchType) {
 
-      if(this.userData && !this.userData.id){
+      if (this.userData && !this.userData.id) {
         this.$router.push({
           name: 'Login',
           query: {
@@ -1272,7 +1290,21 @@ export default {
           inviteCode: inviteCode,
         }
       })
-    }
+    },
+    // 跳到首页
+    handleGoHome(){
+      console.log('home')
+      this.$router.push({
+        name: 'Home',
+      })
+    },
+    // 跳到购物车
+    handleGoShoppingCart(){
+      console.log('ShoppingCart')
+      this.$router.push({
+        name: 'ShoppingCart',
+      })
+    },
 
   }
 }
@@ -1420,10 +1452,67 @@ export default {
   .buy {
     position: fixed;
     width: 100%;
-    bottom: 70px;
-    padding: 10px 15px;
+    bottom: 0;
+    padding: 10px 10px;
     background: #fff;
     z-index: 1000;
+
+    & .buyNowLayout {
+      & .img1 {
+        width: 48px;
+        height: 42px;
+        float: left;
+        border: 1px dashed #878787;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      & .img2 {
+        width: 48px;
+        height: 42px;
+        float: left;
+        margin-left: 10px;
+        border: 1px dashed #878787;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      & .joinCart {
+        width: 110px;
+        height: 40px;
+        border-radius: 20px;
+        border: 1px solid rgba(198, 28, 28, 1);
+
+        font-size: 15px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(198, 28, 28, 1);
+        line-height: 40px;
+        float: left;
+        text-align: center;
+        margin-left: 14px;
+      }
+      & .buyNow {
+        width: 110px;
+        height: 40px;
+        background: linear-gradient(
+          45deg,
+          rgba(237, 73, 73, 1) 0%,
+          rgba(198, 28, 28, 1) 100%
+        );
+        border-radius: 20px;
+        font-size: 15px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 1);
+        line-height: 40px;
+        float: left;
+        text-align: center;
+        margin-left: 10px;
+      }
+    }
 
     .buyContent {
       padding: 20px 20px 20px 20px;
