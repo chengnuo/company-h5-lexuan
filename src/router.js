@@ -517,6 +517,14 @@ const routerData = {
       component: () => import('@/pages/my/certificateAuthorizationBook')
     },
     {
+      path: '/my/materialCircle',
+      name: 'MaterialCircle',
+      meta: {
+        title: '素材圈' // 乐选-素材圈
+      },
+      component: () => import('@/pages/my/materialCircle')
+    },
+    {
       path: '/act/countyStore',
       name: 'actCountyStore',
       meta: {
