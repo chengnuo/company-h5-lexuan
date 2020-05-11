@@ -4,28 +4,12 @@
     <div class="bg"></div>
     <div class="typeOne">
       <div class="items">
-        <div class="item">
+        <div class="item" v-for="(item) in columns" :key="item.goodsId" @click="handleClickColumns(item)">
           <div class="logo">
-            图标
+            <img class="img" :src="item.banner" alt="" />
           </div>
           <div class="description">
-            名称一
-          </div>
-        </div>
-        <div class="item">
-          <div class="logo">
-            图标
-          </div>
-          <div class="description">
-            名称一
-          </div>
-        </div>
-        <div class="item">
-          <div class="logo">
-            图标
-          </div>
-          <div class="description">
-            名称一
+            {{item.name}}
           </div>
         </div>
       </div>
@@ -124,6 +108,14 @@ import {  apiShopMobileMsgNotifyList } from '@/api/my'
 
 export default {
   name: 'CustomNavigationBar',
+  props: {
+    columns: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
+  },
   data() {
     return {
       noticeList: [],
@@ -179,6 +171,10 @@ export default {
         Toast.fail(error)
       })
     },
+    // 点击的跳转
+    handleClickColumns(item){
+      window.location.href = `${item.turnUrl1}`
+    },
   }
 }
 </script>
@@ -211,6 +207,10 @@ export default {
           width: 50px;
           height: 50px;
           border: 0.5px solid #c00;
+          & .img{
+            width: 100%;
+            height: 100%;
+          }
         }
         & .description{
           margin-top: 7px;

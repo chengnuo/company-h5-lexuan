@@ -21,15 +21,20 @@
 
     </div>
 
-    <div class="banner">
-      <customAdvertisingSpace />
+    <div v-for="(item) in homeIndex.templates" :key="item.indexs">
+      <!-- {{item.indexs}}-- -->
+      <!-- <div class="banner" >
+        <customAdvertisingSpace />
+      </div> -->
+      <div class="nav" v-if="item.templateType==0">
+        <customNavigationBar :columns="item.columns" />
+      </div>
+      <!-- <div class="limitedTime">
+        <customLimitedTime />
+      </div> -->
     </div>
-    <div class="nav">
-      <customNavigationBar />
-    </div>
-    <div class="limitedTime">
-      <customLimitedTime />
-    </div>
+
+    
   </div>
 </template>
 <script >
@@ -48,6 +53,9 @@ export default {
   data() {
     return {
       search: '',
+      homeIndex: {
+        templates: [],
+      },
     }
   },
   components: {
@@ -56,10 +64,111 @@ export default {
     customLimitedTime
   },
   mounted() {
-
+    this.init();
   },
   methods: {
+    init(){
+      this.apiIndex();
+    },
+    apiIndex() {
+      let res = {
+        "msg": "成功",
+        "code": 10000,
+        "data": {
+          "id": 413,
+          "status": 1,
+          "pageType": 0,
+          "updateTime": "2020-05-07 15:58:24",
+          "templates": [
+            {
+              "templateType": 0,
+              "displayType": 0,
+              "columns": [
+                {
+                  "goodsId": "1",
+                  "name": "名称1",
+                  "banner": "http://thirdwx.qlogo.cn/mmopen/vi_32/GyyZ9gHrjhnSBuPa4pX4ibib6yB0zk4DHjysibwUrpYmCptDL9RmSgibKEkln3wSLG0ficH8MyZ8LyqHmnAOrib6eLyQ/132",
+                  "turnUrl1": "http://baidu.com/"
+                },
+                {
+                  "goodsId": "2",
+                  "name": "名称2",
+                  "banner": "http://thirdwx.qlogo.cn/mmopen/vi_32/GyyZ9gHrjhnSBuPa4pX4ibib6yB0zk4DHjysibwUrpYmCptDL9RmSgibKEkln3wSLG0ficH8MyZ8LyqHmnAOrib6eLyQ/132",
+                  "turnUrl1": "http://thirdwx.qlogo.cn/mmopen/vi_32/GyyZ9gHrjhnSBuPa4pX4ibib6yB0zk4DHjysibwUrpYmCptDL9RmSgibKEkln3wSLG0ficH8MyZ8LyqHmnAOrib6eLyQ/132"
+                }
+              ],
+              "indexs": 0,
+              "isDisplayBorder": 1,
+              "bgBanner": "http://thirdwx.qlogo.cn/mmopen/vi_32/GyyZ9gHrjhnSBuPa4pX4ibib6yB0zk4DHjysibwUrpYmCptDL9RmSgibKEkln3wSLG0ficH8MyZ8LyqHmnAOrib6eLyQ/132"
+            },
+            {
+              "templateType": 1,
+              "ads": [
+                {
+                  "turnUrl": "http://thirdwx.qlogo.cn/mmopen/vi_32/GyyZ9gHrjhnSBuPa4pX4ibib6yB0zk4DHjysibwUrpYmCptDL9RmSgibKEkln3wSLG0ficH8MyZ8LyqHmnAOrib6eLyQ/132",
+                  "turnType": "1",
+                  "banner": "http://thirdwx.qlogo.cn/mmopen/vi_32/GyyZ9gHrjhnSBuPa4pX4ibib6yB0zk4DHjysibwUrpYmCptDL9RmSgibKEkln3wSLG0ficH8MyZ8LyqHmnAOrib6eLyQ/132",
+                  "title": "标题1"
+                },
+                {
+                  "turnUrl": "http://thirdwx.qlogo.cn/mmopen/vi_32/GyyZ9gHrjhnSBuPa4pX4ibib6yB0zk4DHjysibwUrpYmCptDL9RmSgibKEkln3wSLG0ficH8MyZ8LyqHmnAOrib6eLyQ/132",
+                  "turnType": "2",
+                  "banner": "http://thirdwx.qlogo.cn/mmopen/vi_32/GyyZ9gHrjhnSBuPa4pX4ibib6yB0zk4DHjysibwUrpYmCptDL9RmSgibKEkln3wSLG0ficH8MyZ8LyqHmnAOrib6eLyQ/132",
+                  "title": "标题2"
+                }
+              ],
+              "displayType": 0,
+              "acrossCarousel": 0,
+              "indexs": 1
+            },
+            {
+              "templateType": 2,
+              "isDisplayPrice": 0,
+              "displayType": 1,
+              "displayMark": 0,
+              "sortType": 1,
+              "isDisplayNum": 0,
+              "isDisplayTitle": 0,
+              "goodsCategory": 0,
+              "indexs": 2,
+              "displayNum": 11,
+              "goodsIds": [
+                "0",
+                "22",
+                "1"
+              ],
+              "goodsType": 1
+            },
+            {
+              "templateType": 3,
+              "isDisplayPrice": 0,
+              "displayType": 1,
+              "displayMark": 0,
+              "sortType": 1,
+              "isDisplayNum": 0,
+              "isDisplayTitle": 0,
+              "indexs": 3,
+              "displayNum": 2
+            },
+            {
+              "templateType": 4,
+              "indexs": 4,
+              "hight": "11px"
+            },
+            {
+              "templateType": 5,
+              "indexs": 5,
+              "hight": "11px"
+            }
+          ]
+        }
+      }
 
+      
+
+      this.homeIndex = res.data;
+      console.log('this.homeIndex',this.homeIndex)
+    },
   },
 }
 </script>
