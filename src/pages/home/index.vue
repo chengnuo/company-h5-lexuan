@@ -1,42 +1,45 @@
 <template>
-  <div class="home">
-    <div class="header">
-      <div class="search clearfix">
-        <div class="leftbar fl">
-          <input v-model="search"
-                 placeholder="请输入您要搜索的商品" />
-        </div>
-        <div class="rightbar fl"></div>
-      </div>
-
-      <div class="nav clearfix">
-        <div class="items">
-          <div class="item active">热销</div>
-          <div class="item">面膜</div>
-          <div class="item">美肤</div>
-          <div class="item">周边</div>
+  <div>
+    <div class="headerBg"></div>
+    <div class="home">
+      <div class="header">
+        <div class="search clearfix">
+          <div class="leftbar fl">
+            <input v-model="search"
+                  placeholder="请输入您要搜索的商品" />
+          </div>
+          <div class="rightbar fl"></div>
         </div>
 
+        <div class="nav clearfix">
+          <div class="items">
+            <div class="item active">热销</div>
+            <div class="item">面膜</div>
+            <div class="item">美肤</div>
+            <div class="item">周边</div>
+          </div>
+
+        </div>
+
       </div>
 
+      <div v-for="(item) in homeIndex.templates" :key="item.indexs">
+        <div class="banner" v-if="item.templateType==1">
+          <customAdvertisingSpace />
+        </div>
+        <div class="nav" v-if="item.templateType==0">
+          <customNavigationBar :columns="item.columns" />
+        </div>
+        <div class="limitedTime" v-if="item.templateType==3">
+          <customLimitedTime :item="item" />
+        </div>
+      </div>
+
+
+      <bottomBanner :index="1"></bottomBanner>
+
+      
     </div>
-
-    <div v-for="(item) in homeIndex.templates" :key="item.indexs">
-      <!-- {{item.indexs}}-- -->
-      <div class="banner" v-if="item.templateType==1">
-        <customAdvertisingSpace />
-      </div>
-      <div class="nav" v-if="item.templateType==0">
-        <customNavigationBar :columns="item.columns" />
-      </div>
-      <!-- <div class="limitedTime">
-        <customLimitedTime />
-      </div> -->
-    </div>
-
-    <bottomBanner :index="1"></bottomBanner>
-
-    
   </div>
 </template>
 <script >
@@ -177,14 +180,21 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.home {
-  background: #fff;
-  & .header {
-    padding-top: 10px;
-    width: 375px;
-    height: 200px;
-    background: #c61c1c;
+.headerBg{
+  padding-top: 10px;
+  width: 375px;
+  height: 200px;
+  background: #c61c1c;
+  position:absolute;
+  top:0;
+  left: 0;
+  z-index: 0;
 
+}
+.home {
+  // background: #fff;
+  position: relative;
+  & .header {
     & .search {
       & .leftbar {
         width: 270px;
@@ -234,7 +244,7 @@ export default {
     width: 355px;
     height: 160px;
     padding: 0 10px;
-    margin-top: -100px;
+    // margin-top: -100px;
   }
   & .nav {
 
