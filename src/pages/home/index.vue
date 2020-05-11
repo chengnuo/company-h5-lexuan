@@ -33,6 +33,12 @@
         <div class="limitedTime" v-if="item.templateType==3">
           <customLimitedTime :item="item" />
         </div>
+        <div v-if="item.templateType==5">
+          <customAuxiliaryBlank />
+        </div>
+        <div v-if="item.templateType==4">
+          <customAuxiliaryLine  />
+        </div>
       </div>
 
 
@@ -50,6 +56,8 @@ import { Dialog } from 'vant';
 import customAdvertisingSpace from '@/components/customAdvertisingSpace';
 import customNavigationBar from '@/components/customNavigationBar';
 import customLimitedTime from '@/components/customLimitedTime';
+import customAuxiliaryBlank from '@/components/customAuxiliaryBlank';
+import customAuxiliaryLine from '@/components/customAuxiliaryLine';
 import bottomBanner from '@/components/bottomBanner';
 
 
@@ -69,6 +77,8 @@ export default {
     customNavigationBar,
     customLimitedTime,
     bottomBanner,
+    customAuxiliaryBlank,
+    customAuxiliaryLine,
   },
   mounted() {
     this.init();
@@ -181,7 +191,6 @@ export default {
 </script>
 <style lang="less" scoped>
 .headerBg{
-  padding-top: 10px;
   width: 375px;
   height: 200px;
   background: #c61c1c;
@@ -194,7 +203,9 @@ export default {
 .home {
   // background: #fff;
   position: relative;
+  margin-bottom: 60px;
   & .header {
+    padding-top: 10px;
     & .search {
       & .leftbar {
         width: 270px;
