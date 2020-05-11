@@ -80,37 +80,6 @@
                   <span slot="price"
                         class="headerbarPrice">
                     你正在以
-                    <!-- <span class="headerbarPriceType" v-if="purchaseQuantity==5">VIP</span>
-                    <span class="headerbarPriceType" v-if="purchaseQuantity==30">县级店</span> -->
-
-                    <!-- <span class="headerbarPriceType" v-if="userInviteLevelCount.profitPtLevel==0">普通用户</span>
-                    <span class="headerbarPriceType" v-if="userInviteLevelCount.profitPtLevel==1">VIP</span>
-                    <span class="headerbarPriceType" v-else-if="userInviteLevelCount.profitPtLevel==2">县级店</span>
-                    <span class="headerbarPriceType" v-else-if="userInviteLevelCount.profitPtLevel==3">品牌店</span>
-                    <span class="headerbarPriceType" v-else-if="userInviteLevelCount.profitPtLevel==4">金钻</span>
-                    <span class="headerbarPriceType" v-else-if="userInviteLevelCount.profitPtLevel==5">总裁</span>
-                    <span class="headerbarPriceType" v-else-if="userInviteLevelCount.profitPtLevel==6">分公司</span>
-                    <span v-else class="headerbarPriceType">-</span> -->
-
-                    <!-- <span class="headerbarPriceType"
-                          v-if="buyObj.type==0">普通用户</span>
-                    <span class="headerbarPriceType"
-                          v-if="buyObj.type==1">VIP</span>
-                    <span class="headerbarPriceType"
-                          v-else-if="buyObj.type==2">县级店</span>
-                    <span class="headerbarPriceType"
-                          v-else-if="buyObj.type==3">品牌店</span>
-                    <span class="headerbarPriceType"
-                          v-else-if="buyObj.type==4">金钻</span>
-                    <span class="headerbarPriceType"
-                          v-else-if="buyObj.type==5">总裁</span>
-                    <span class="headerbarPriceType"
-                          v-else-if="buyObj.type==6">分公司</span>
-                    <span v-else
-                          class="headerbarPriceType">-</span> -->
-
-                    <!-- <span v-else class="headerbarPriceType">-</span> -->
-
                     <span class="headerbarPriceType">{{buyObj.ptLevelName}}</span>
                     价格
                     <span class="headerbarPriceNum">¥ {{commonJs.numFilterToFixed2(nowPrice)}}</span>
@@ -241,6 +210,7 @@ import { Lazyload } from 'vant'
 import Vue from 'vue'
 import bottomBanner from '@/components/bottomBanner';
 import { Dialog } from 'vant';
+import {  apiCartAdd } from '@/api/shoppingCart'
 
 Vue.use(Lazyload)
 
@@ -301,6 +271,7 @@ export default {
       userData: {
         id: ''
       },
+      isJoinCart: false, // 是否购物车打开
     }
   },
   mounted() {
@@ -872,7 +843,8 @@ export default {
     },
     // 立即购买
     apiShoppingCartBuy() {
-      this.getProductId()
+      
+      // this.getProductId()
 
       const data = {
         productId: this.productId,
@@ -965,8 +937,17 @@ export default {
     },
     // 点击购买
     confirmBtn() {
+      this.getProductId() // 获取productId
+      
       if (this.isSku()) {
 
+      }else if(this.isJoinCart==true){ // 购物车点击的时候
+        this.isJoinCart = false;
+        // true
+        this.apiCartAdd({
+          productId: this.productId,
+          number: this.purchaseQuantity,
+        })
       } else {
         this.apiShoppingCartBuy()
       }
@@ -1308,6 +1289,22 @@ export default {
     // 加入购物车
     handleJoinCart(){
       this.buyShow = true
+      this.isJoinCart = true
+    },
+    // 新增购物车
+    apiCartAdd(obj){
+      const data = Object.assign({},obj)
+      apiCartAdd(data).then(res=>{
+        if (res.code.toString() === '10000') {
+          this.buyShow = false
+          Toast(`成功添加到购物车`)
+        } else {
+          Toast(res.msg)
+        }
+
+      }).catch(error=>{
+        Toast(error)
+      })
     },
 
   }
