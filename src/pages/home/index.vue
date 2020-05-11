@@ -23,9 +23,9 @@
 
     <div v-for="(item) in homeIndex.templates" :key="item.indexs">
       <!-- {{item.indexs}}-- -->
-      <!-- <div class="banner" >
+      <div class="banner" v-if="item.templateType==1">
         <customAdvertisingSpace />
-      </div> -->
+      </div>
       <div class="nav" v-if="item.templateType==0">
         <customNavigationBar :columns="item.columns" />
       </div>
@@ -175,7 +175,7 @@ export default {
 <style lang="less" scoped>
 .home {
   background: #fff;
-  .header {
+  & .header {
     padding-top: 10px;
     width: 375px;
     height: 200px;
@@ -226,13 +226,14 @@ export default {
       }
     }
   }
-  .banner {
+  & .banner {
     width: 355px;
     height: 160px;
     padding: 0 10px;
     margin-top: -100px;
   }
-  .nav {
+  & .nav {
+
   }
 
   .fl {
