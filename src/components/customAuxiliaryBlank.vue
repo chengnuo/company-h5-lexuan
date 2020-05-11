@@ -1,8 +1,8 @@
 <!-- 辅助空白 -->
 <template>
   <div class="customAuxiliaryBlank">
-    <div class="bg"></div>
-    <div class="lineBlank" :style="[{'height':`${height}px` }]">
+    <!-- <div class="bg"></div> -->
+    <div class="lineBlank" :style="[{'height':`${item.hight}` }]">
     </div>
   </div>
 </template>
@@ -16,10 +16,10 @@ import {  apiShopMobileMsgNotifyList } from '@/api/my'
 export default {
   name: 'CustomAuxiliaryBlank',
   props:{
-    height: {
-      type: Number,
+    item: {
+      type: Object,
       default: () => {
-        return 0
+        return {}
       }
     }
   },

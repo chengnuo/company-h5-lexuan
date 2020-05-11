@@ -1,9 +1,8 @@
 <!-- 辅助线 -->
 <template>
   <div class="customAuxiliaryLine">
-    <div class="bg"></div>
-    <!-- :style="[{'height':`${height}px` }]" -->
-    <div class="line" >
+    <!-- <div class="bg"></div> -->
+    <div class="line" :style="[{'height':`${item.hight}` }]" >
     </div>
   </div>
 </template>
@@ -17,10 +16,10 @@ import {  apiShopMobileMsgNotifyList } from '@/api/my'
 export default {
   name: 'CustomAuxiliaryLine',
   props:{
-    height: {
-      type: Number,
+    item: {
+      type: Object,
       default: () => {
-        return 0
+        return {}
       }
     }
   },

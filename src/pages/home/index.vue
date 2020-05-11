@@ -34,10 +34,10 @@
           <customLimitedTime :item="item" />
         </div>
         <div v-if="item.templateType==5">
-          <customAuxiliaryBlank />
+          <customAuxiliaryBlank :item="item"  />
         </div>
         <div v-if="item.templateType==4">
-          <customAuxiliaryLine  />
+          <customAuxiliaryLine :item="item"  />
         </div>
       </div>
 
