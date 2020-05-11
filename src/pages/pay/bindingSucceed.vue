@@ -28,7 +28,7 @@ export default {
       applet: false,
       webapp: false,
       process: null,
-      platform: 'ZBMALL'
+      platform: 'LXMALL'
     }
   },
 
@@ -36,7 +36,7 @@ export default {
 
     this.platform = commonJs.getPlatform().platform;
 
-    // if(this.platform == 'ZBMALL'){
+    // if(this.platform == 'LXMALL'){
     //   this.goHome() // 跳回首页
     //   this.wxShare() // 分享
     // }

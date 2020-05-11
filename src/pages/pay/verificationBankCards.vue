@@ -233,7 +233,7 @@ export default {
   data() {
     return {
       validDate: new Date(),
-      platform: 'ZBMALL',
+      platform: 'LXMALL',
       cardTypeName: '身份证', // cardType
       payload: {
         // bankCode: '',
@@ -286,7 +286,7 @@ export default {
 
     this.platform = commonJs.getPlatform().platform;
 
-    // if(this.platform == 'ZBMALL'){
+    // if(this.platform == 'LXMALL'){
       
     //   this.goHome() // 如果没有登录信息，直接跳回9980
     //   this.wxShare() // 分享
@@ -609,7 +609,7 @@ export default {
     // 支付协议
     handlePayAgree() {
       this.verificationBankCardsInfoSession()
-      if(commonJs.getPlatform().platform == "ZBMALL"){
+      if(commonJs.getPlatform().platform == "LXMALL"){
         //乐选支付协议
         this.$router.push({
           path: '/pay/payAgree',

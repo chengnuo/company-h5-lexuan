@@ -197,11 +197,11 @@ export default {
 
       const formData = new FormData()
       formData.append('files', resfile.file)
-      formData.append('mercId', '888000000000003')
-      formData.append('platform', 'ZBMALL')
+      formData.append('mercId', '888000000000001')
+      formData.append('platform', 'LXMALL')
       const format = {
-        mercId: '888000000000003',
-        platform: 'ZBMALL'
+        mercId: '888000000000001',
+        platform: 'LXMALL'
       }
 
       axios.post(commonJs.config.prefixUrl + '/shop/mobile/user/head/upload', formData, commonJs.jsSign(format), {

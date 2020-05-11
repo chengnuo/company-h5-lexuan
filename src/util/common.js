@@ -9,32 +9,75 @@ var config = null;
 
 if (process.env.NODE_ENV === 'development') { //区别线上线下环境 
   //测试环境http请求配置参数
+  // config = {
+  //   signJson: {
+  //     // 'X-SignVer': 'v1'
+  //   },
+  //   signKey: '12345678',
+  //   signKeyZB: '12345678', // 赚播
+  //   prefixUrl: 'http://test-zb-api.zhuanbo.gdxfhl.com',
+  //   // prefixUrl: 'http://192.168.1.96:16111',
+  //   prefixH5Url: 'http://test-h5.zhuanbo.gdxfhl.com',
+  //   prefixUrlPhpBase: 'http://test-api-base.yinli.gdxfhl.com', // phpbase域
+  //   prefixUrlPhpSn: 'http://test-api-sn.yinli.gdxfhl.com', // phpbase域
+  //   prefixZhuanboApi: 'http://test-zb-api.zhuanbo.gdxfhl.com',
+  //   prefixZhuanboUrl: 'http://test-h5.zhuanbo.gdxfhl.com',
+  //   getApiMppayMingpinmao: 'https://test-mppay.mingpinmao.cn', // 支付链接
+  //   prefixOrderYinliUrl: 'http://test-order.zhuanbo.gdxfhl.com',
+  //   api_cloud_url: 'http://test-mlive.zhuanbo.gdxfhl.com', // go
+  //   webTitle: '乐选',
+  //   appid: 'wxa54f0533340859b3' // 公众号 appid ，支付使用11
+  // }
+
+  // // 乐选
+  // config = {
+  //   signJson: {
+  //     // 'X-SignVer': 'v1'
+  //   },
+  //   signKey: '12345678',
+  //   signKeyZB: '12345678', // 赚播
+  //   prefixUrl: 'http://jgw.lexuanj.buxiabai.cn/lexuan-shop-api',
+  //   // prefixUrl: 'http://192.168.1.96:16111',
+  //   prefixH5Url: 'http://test-h5.zhuanbo.gdxfhl.com',
+  //   prefixUrlPhpBase: 'http://test-api-base.yinli.gdxfhl.com', // phpbase域
+  //   prefixUrlPhpSn: 'http://test-api-sn.yinli.gdxfhl.com', // phpbase域
+  //   prefixZhuanboApi: 'http://jgw.lexuanj.buxiabai.cn/lexuan-shop-api',
+  //   prefixZhuanboUrl: 'http://test-h5.zhuanbo.gdxfhl.com',
+  //   getApiMppayMingpinmao: 'http://jgw.lexuanj.buxiabai.cn/pay-api', // 支付链接
+  //   prefixOrderYinliUrl: 'http://test-order.zhuanbo.gdxfhl.com',
+  //   api_cloud_url: 'http://test-mlive.zhuanbo.gdxfhl.com', // go
+  //   webTitle: '乐选',
+  //   appid: 'wxa54f0533340859b3' // 公众号 appid ，支付使用11
+  // }
+
+  // 捷凯
   config = {
     signJson: {
-      // 'X-MPMALL-SignVer': 'v1'
+      // 'X-SignVer': 'v1'
     },
     signKey: '12345678',
     signKeyZB: '12345678', // 赚播
-    prefixUrl: 'http://test-zb-api.zhuanbo.gdxfhl.com',
-    // prefixUrl: 'http://192.168.1.96:16111',
+    // prefixUrl: 'http://192.168.1.96:16121', // 捷凯
+    prefixUrl: ' http://192.168.1.96:16099/lexuan-shop-api',
     prefixH5Url: 'http://test-h5.zhuanbo.gdxfhl.com',
-    prefixUrlPhpBase: 'http://test-api-base.yinli.gdxfhl.com', // phpbase域
+    prefixUrlPhpBase: 'http://goods.lexuanp.buxiabai.cn', // phpbase域
     prefixUrlPhpSn: 'http://test-api-sn.yinli.gdxfhl.com', // phpbase域
-    prefixZhuanboApi: 'http://test-zb-api.zhuanbo.gdxfhl.com',
+    prefixZhuanboApi: 'http://192.168.1.96:16099/lexuan-shop-api',
     prefixZhuanboUrl: 'http://test-h5.zhuanbo.gdxfhl.com',
-    getApiMppayMingpinmao: 'https://test-mppay.mingpinmao.cn', // 支付链接
+    getApiMppayMingpinmao: 'http://192.168.1.96:16099/pay-api', // 支付链接
     prefixOrderYinliUrl: 'http://test-order.zhuanbo.gdxfhl.com',
     api_cloud_url: 'http://test-mlive.zhuanbo.gdxfhl.com', // go
     webTitle: '乐选',
     appid: 'wxa54f0533340859b3' // 公众号 appid ，支付使用11
   }
+
 } else {
   //正式环境http请求配置参数
   config = {
     signJson: {
-      // 'X-MPMALL-SignVer': 'v1'
+      // 'X-SignVer': 'v1'
     },
-    signKey: 'B3lv0q99Xou8HCmSdeJrjxwI4WXaGGof', // 后端提供-秘玩家生产商户号和密钥 888000000000003 1WPTv61IN3oD3747Eqq2rfw5R48c6U4v
+    signKey: 'B3lv0q99Xou8HCmSdeJrjxwI4WXaGGof', // 后端提供-秘玩家生产商户号和密钥 888000000000001 1WPTv61IN3oD3747Eqq2rfw5R48c6U4v
     signKeyZB: 'B3lv0q99Xou8HCmSdeJrjxwI4WXaGGof', // 赚播
     prefixUrl: 'http://zb-api.zhuanbo.gdxfhl.com',
     prefixH5Url: 'http://h5.zhuanbo.gdxfhl.com',
@@ -107,7 +150,7 @@ function jsSign(obj) {
   }
   // str  = str.substring(0,str.length-1);
   // str = `${str}key=${config.signKey}`
-  if (obj.platform === 'ZBMALL') {
+  if (obj.platform === 'LXMALL') {
     str = `${str}key=${config.signKeyZB}`
   } else {
     str = `${str}key=${config.signKey}`
@@ -116,16 +159,10 @@ function jsSign(obj) {
   str = window.btoa(md5(str))
   return {
     headers: {
-      // 'X-MPMALL-Token': userData.userToken,
-      // 'X-MPMALL-Token': 'l135aqexx6j241ok5w95jfew67hc09ck',
-      // 'X-MP-Sign': str,
-      // 'X-MPMALL-APPVer': 'v1' // 添加版本号，后端处理逻辑
-
-
-      'X-MPMALL-SignVer': 'v1',
-      'X-MPMALL-Token': userData.userToken || userDataToken.userToken,
-      'X-MPMALL-Sign': str,
-      'X-MPMALL-APPVer': '1.3' // 添加版本号，后端处理逻辑
+      'X-SignVer': 'v1',
+      'X-Token': userData.userToken || userDataToken.userToken,
+      'X-Sign': str,
+      'X-APPVer': '1.3' // 添加版本号，后端处理逻辑
     }
   }
 }
@@ -430,8 +467,8 @@ function getPlatform(){
       json = JSON.parse(window.sessionStorage.getItem('urlSource')); 
     }else{
       json = {
-        mercId: "888000000000003",
-        platform: "ZBMALL"
+        mercId: "888000000000001",
+        platform: "LXMALL"
       };
     }
     return json;
@@ -509,7 +546,7 @@ function goPayConfig(type) {
 //       platform = JSON.parse(window.sessionStorage.getItem('urlSource'));
 //     }
 
-//     if(platform && platform.platform == 'ZBMALL'){
+//     if(platform && platform.platform == 'LXMALL'){
 //       return true;
 //     }else{
 //       return false;

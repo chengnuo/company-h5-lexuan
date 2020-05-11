@@ -140,7 +140,7 @@ export default {
 
       console.log('赚播', commonJs.getPlatform().platform)
 
-      if(commonJs.getPlatform().platform=='ZBMALL'){ // 赚播
+      if(commonJs.getPlatform().platform=='LXMALL'){ // 赚播
         payZhuanboAuthCode2openid(data).then((res)=>{
           if(res.code.toString()==='10000'){
 
@@ -312,7 +312,7 @@ export default {
           openId: self.openId, // 注意大小写
           clientIp: self.payClientIp, // 获取ip
           sysCnl: 'WX-PUBLIC',
-          platform: platform, // 平台编号 名品猫:MPMALL，名品玩家：ZBMALL
+          platform: platform, // 平台编号 名品猫:MPMALL，名品玩家：LXMALL
           bankCardType: '08',
           callbackUrl,
         }

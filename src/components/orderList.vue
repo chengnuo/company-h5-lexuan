@@ -120,7 +120,7 @@ export default {
         const userData = JSON.parse(sessionStorage.getItem('userData')) || {}
 
 
-        const url = `${commonJs.config.prefixH5Url}/pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&source=${commonJs.payConfig.XFyinliPAYSourceLangshaMall}&platform=ZBMALL&userId=${userData.id}`
+        const url = `${commonJs.config.prefixH5Url}/pay?mercId=${res.data.mercId}&prePayNo=${res.data.prepayNo}&source=${commonJs.payConfig.XFyinliPAYSourceLangshaMall}&platform=LXMALL&userId=${userData.id}`
 
 
 

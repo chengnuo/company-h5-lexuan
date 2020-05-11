@@ -11,17 +11,17 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(config => { 
   config.data = { // 全局公共参数
-    mercId: "888000000000003",
-    platform: "ZBMALL",
+    mercId: "888000000000001",
+    platform: "LXMALL",
     sysCnl: 'H5',
     timestamp: new Date().getTime().toString().substr(0, 10),
     ...config.data,
   }
   var headerJson = commonJs.jsSign(config.data).headers;
-  config.headers['X-MPMALL-SignVer'] = headerJson['X-MPMALL-SignVer'];
-  config.headers['X-MPMALL-Sign'] = headerJson['X-MPMALL-Sign'];
-  config.headers['X-MPMALL-Token'] = headerJson['X-MPMALL-Token'];
-  config.headers['X-MPMALL-APPVer'] = headerJson['X-MPMALL-APPVer'];
+  config.headers['X-SignVer'] = headerJson['X-SignVer'];
+  config.headers['X-Sign'] = headerJson['X-Sign'];
+  config.headers['X-Token'] = headerJson['X-Token'];
+  config.headers['X-APPVer'] = headerJson['X-APPVer'];
   
   return config;
 }, error => { 

@@ -37,7 +37,7 @@ export default {
       activeIndex: '', // 支付
       payClientIp:null,
       actUnifiedObj:null,
-      platform: 'ZBMALL'
+      platform: 'LXMALL'
     }
   },
   props:{

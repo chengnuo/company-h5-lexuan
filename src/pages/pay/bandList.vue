@@ -42,14 +42,14 @@ export default {
       bankType: '01',
       debitCard: null,
       creditCard: null,
-      platform:'ZBMALL',
+      platform:'LXMALL',
     }
   },
   mounted() {
 
     this.platform = commonJs.getPlatform().platform;
 
-    // if(this.platform == 'ZBMALL'){
+    // if(this.platform == 'LXMALL'){
     //   this.goHome() // 跳回首页
     //   this.wxShare() // 分享
     // }

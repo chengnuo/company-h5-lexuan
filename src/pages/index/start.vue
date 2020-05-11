@@ -59,7 +59,7 @@ export default {
     getShopMobileCommonValue(){
       let data = Object.assign({} , {
         mercId: '888000000000004',
-        platform: 'ZBMALL',
+        platform: 'LXMALL',
       })
       apiPayActCommonValueZB(data).then((res)=>{
         if (res.code.toString() === '10000') {

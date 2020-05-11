@@ -24,7 +24,7 @@ export default {
       showCodeTip: false,
       time: 60,
       mobile: null,
-      platform: 'ZBMALL'
+      platform: 'LXMALL'
     }
   },
   mounted() {
@@ -32,7 +32,7 @@ export default {
     this.platform = commonJs.getPlatform().platform;
 
    
-    // if(this.platform == 'ZBMALL'){
+    // if(this.platform == 'LXMALL'){
     //   this.goHome() // 跳回首页
     //   this.wxShare() // 分享
     // }

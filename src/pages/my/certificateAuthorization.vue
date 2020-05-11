@@ -312,12 +312,12 @@ export default {
       const formData = new FormData()
       formData.append('files', resfile.file)
       formData.append('type', 1)
-      formData.append('mercId', '888000000000003')
-      formData.append('platform', 'ZBMALL')
+      formData.append('mercId', '888000000000001')
+      formData.append('platform', 'LXMALL')
       const format = {
         type: 1,
-        mercId: '888000000000003',
-        platform: 'ZBMALL'
+        mercId: '888000000000001',
+        platform: 'LXMALL'
       }
 
       console.log('this.imgFrontList', this.imgFrontList)
