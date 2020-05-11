@@ -221,6 +221,7 @@ export default {
           color:rgba(51,51,51,1);
           height:16.5px;
           line-height:16.5px;
+          text-align: center;
         }
       }
     }
