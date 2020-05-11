@@ -740,14 +740,9 @@ export default {
         width: 110px;
         height: 40px;
         line-height: 40px;
-        // background: #333333;
-        background: linear-gradient(
-          225deg,
-          rgba(10, 211, 238, 1) 0%,
-          rgba(10, 190, 213, 1) 100%
-        );
-        border-color: #09c2da;
-        border-radius: 4px;
+        background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
+        border-radius:22px;
+        border-color: none;
         font-size: 15px;
         font-weight: 500;
         color: #ffffff;
