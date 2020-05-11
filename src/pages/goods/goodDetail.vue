@@ -186,7 +186,7 @@
                 src="../../assets/img/index/icon_discover_unselected_01@2x.png"
                 alt="">
           </div>
-          <div class="joinCart">加入购物车</div>
+          <div class="joinCart" @click="handleJoinCart">加入购物车</div>
           <div class="buyNow"
                @click="handleBuy(1)">立即购买</div>
 
@@ -1304,6 +1304,10 @@ export default {
       this.$router.push({
         name: 'ShoppingCart',
       })
+    },
+    // 加入购物车
+    handleJoinCart(){
+      this.buyShow = true
     },
 
   }

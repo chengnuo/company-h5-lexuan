@@ -26,6 +26,7 @@ export function apiGoodsDetailGetDetail(data) {
 // 立即购买
 export function apiShoppingCartBuy(data) {
   return request({
+    // url: '/shop/mobile/cart/once/add',
     url: '/shop/mobile/cart/once/add',
     method: 'post',
     data

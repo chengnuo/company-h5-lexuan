@@ -4,35 +4,42 @@
       购物车
       <div class="editor">编辑</div>
     </div>
-
+    
     <div class="list">
-      <div class="items">
+      <div class="items" v-for="(item,index) in cartIndex.cartList" :key="item.id">
         <div class="item clearfix">
-          <img class="leftbar fl"
+          <div class="leftbar fl" @click="handleSelect(item,index)">
+            <img class="img"
                src="../../assets/img/shoppingCart/choice_01@2x2.png"
-               alt="" />
+               alt=""  v-if="item.isSelect==false" />
+            <img class="img"
+                src="../../assets/img/shoppingCart/choice_01@2x.png"
+                alt="" v-else />
+          </div>
+          
           <div class="centerbar fl">
             <img class="img"
-                 src="../../assets/img/shoppingCart/1.png"
+                 :src="item.picUrl"
                  alt="" />
           </div>
           <div class="rightbar fl">
             <div class="headerbar">
-              青春泉7号睡眠面膜
+              {{item.goodsName}}
             </div>
             <div class="bodybar">
-              30ml;粉色
+              <!-- 30ml;粉色 -->
+              {{item.specificationsStr}}
             </div>
             <div class="footerbar clearfix">
-              <div class="leftbarTwo fl">¥786.00 </div>
+              <div class="leftbarTwo fl">¥{{item.price}}</div>
               <div class="rightbarTwo fr">
                 <div class="purchaseQuantity">
                   <van-cell center
                             class="addCartNumsLayout">
-                    <van-stepper v-model="purchaseQuantity"
+                    <van-stepper v-model="item.number"
                                  class="addCartNums"
                                  :disable-input='true'
-                                 @change="changePurchaseQuantity" />
+                                 @change="changePurchaseQuantity(item)" />
                   </van-cell>
                 </div>
               </div>
@@ -43,7 +50,7 @@
       </div>
       
 
-      <div class="items">
+      <!-- <div class="items">
         <div class="item clearfix">
           <img class="leftbar fl"
                src="../../assets/img/shoppingCart/choice_01@2x2.png"
@@ -77,57 +84,25 @@
           </div>
         </div>
         <div class="line fr"></div>
-      </div>
+      </div> -->
 
-      <div class="items">
-        <div class="item clearfix">
-          <img class="leftbar fl"
-               src="../../assets/img/shoppingCart/choice_01@2x2.png"
-               alt="" />
-          <div class="centerbar fl">
-            <img class="img"
-                 src="../../assets/img/shoppingCart/1.png"
-                 alt="" />
-          </div>
-          <div class="rightbar fl">
-            <div class="headerbar">
-              青春泉7号睡眠面膜
-            </div>
-            <div class="bodybar">
-              30ml;粉色
-            </div>
-            <div class="footerbar clearfix">
-              <div class="leftbarTwo fl">¥786.00 </div>
-              <div class="rightbarTwo fr">
-                <div class="purchaseQuantity">
-                  <van-cell center
-                            class="addCartNumsLayout">
-                    <van-stepper v-model="purchaseQuantity"
-                                 class="addCartNums"
-                                 :disable-input='true'
-                                 @change="changePurchaseQuantity" />
-                  </van-cell>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line fr"></div>
-      </div>
 
     </div>
 
     <div class="buy clearfix">
-      <div class="leftbar fl">
+      <div class="leftbar fl" @click="handleAllSelect">
         <img class="img fl clearfix"
              src="../../assets/img/shoppingCart/choice_01@2x2.png"
-             alt="" />
+             alt="" v-if="allSelect==false" />
+        <img class="img fl clearfix"
+            src="../../assets/img/shoppingCart/choice_01@2x.png"
+            alt="" v-else />
         <span class="fl checkboxAll">全选</span>
       </div>
       <div class="centerbar fl">
-        ¥6,014.00
+        ¥ {{cartIndex.cartTotal.goodsAmount}}
       </div>
-      <div class="rightbar fr">
+      <div class="rightbar fr" @click="handleSettlement">
         结算
       </div>
     </div>
@@ -139,6 +114,8 @@
 <script> 
 import commonJs from '@/util/common'
 import bottomBanner from '@/components/bottomBanner';
+import {  apiCartIndex,apiCartDelete,apiCartAdd,apiCartCheckout } from '@/api/shoppingCart'
+import { Toast } from 'vant'
 
 export default {
   name: 'ShoppingCart',
@@ -148,13 +125,139 @@ export default {
   data() {
     return {
       purchaseQuantity: 0,
+      cartIndex: {
+        cartTotal: {},
+      },
+      allSelect: false,
     }
   },
   mounted() {
-
+    this.init();
   },
   methods: {
-    changePurchaseQuantity() { },
+    init(){
+      this.apiCartIndex();
+    },
+    changePurchaseQuantity(item) {
+      // console.log('1', targrt, targrt1)
+      this.apiCartAdd({
+        productId: item.productId,
+        number: item.number,
+      })
+    },
+    // 新增
+    apiCartAdd(obj){
+      const data = Object.assign({},obj)
+      apiCartAdd(data).then(res=>{
+        if (res.code.toString() === '10000') {
+          // this.cartIndex = res.data
+        } else {
+          Toast(res.msg)
+        }
+
+      }).catch(error=>{
+        Toast(error)
+      })
+    },
+    // 列表
+    apiCartIndex(){
+      const data = Object.assign({})
+      apiCartIndex(data).then(res=>{
+        if (res.code.toString() === '10000') {
+          this.cartIndex = Object.assign({},{
+            ...res.data,
+            cartList: res.data.cartList.map((item)=>{
+              return {
+                ...item,
+                isSelect: false,
+              }
+            })
+          })
+        } else {
+          Toast(res.msg)
+        }
+
+      }).catch(error=>{
+        console.log(`error`, error)
+        Toast(error)
+      })
+    },
+    // 点击单选的时候
+    handleSelect(item,index){
+      let isSelect = this.cartIndex.cartList[index].isSelect
+      if(isSelect==true){
+        this.cartIndex.cartList[index].isSelect=false;
+      }else if(isSelect==false){
+        this.cartIndex.cartList[index].isSelect=true;
+      }
+
+      this.cartIndex.cartList.map((item)=>{
+        if(item.isSelect==true){
+          this.allSelect = true;
+        }else{
+          this.allSelect = false;
+        }
+      })
+    },
+    // 点击全选的时候
+    handleAllSelect(){
+      if(this.allSelect==true){
+        this.allSelect = false
+        this.cartIndex.cartList = this.cartIndex.cartList.map((item)=>{
+          return {
+            ...item,
+            isSelect: false,
+          }
+        })
+      }else{
+        this.allSelect=true
+        this.cartIndex.cartList = this.cartIndex.cartList.map((item)=>{
+          return {
+            ...item,
+            isSelect: true,
+          }
+        })
+      }
+
+      console.log('this.cartIndex.cartList', this.cartIndex.cartList)
+    },
+    // 点击结算的时候
+    handleSettlement(){
+      this.apiCartCheckout();
+    },
+    // 结算api
+    apiCartCheckout(){
+      // cartIds
+      let cartIds = this.cartIndex.cartList.map((item)=>{
+        if(item.isSelect==true){
+          return item.id
+        }
+      }).filter((item)=>{
+        return item
+      })
+      const data = Object.assign({},{
+        cartIds
+      })
+      apiCartCheckout(data).then(res=>{
+        if (res.code.toString() === '10000') {
+          // 成功跳转
+          window.sessionStorage.setItem('orderDetail', JSON.stringify(res.data)) // 商户购买的时候，缓存信息
+          this.$router.push({
+            name: 'Order',
+            query: {
+              inviteCode: this.$route.query.inviteCode,
+            }
+          })
+        } else {
+          Toast(res.msg)
+        }
+
+      }).catch(error=>{
+        console.log(`error`, error)
+        Toast(error)
+      })
+    },
+    
   },
 
 }
@@ -196,6 +299,10 @@ export default {
           width: 18px;
           height: 18px;
           padding: 41px 19px 41px 20px;
+          .img{
+            width: 100%;
+            height: 100%;
+          }
         }
         & .centerbar {
           width: 70px;
