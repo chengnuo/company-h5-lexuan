@@ -45,13 +45,14 @@ export default {
   methods: {
    jump(type){
     if(this.index == type) return;
-    if(type == 0){
+    // if(type == 0){
+    //   this.$router.push({
+    //     name: 'Home',
+    //   })
+    // }else 
+    if(type == 1){
       this.$router.push({
-        name: 'Index',
-      })
-    }else if(type == 1){
-      this.$router.push({
-        name: 'Index',
+        name: 'Home',
       })
     }else if(type == 2){
       this.$router.push({

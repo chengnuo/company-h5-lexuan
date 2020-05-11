@@ -34,6 +34,8 @@
       </div> -->
     </div>
 
+    <bottomBanner :index="1"></bottomBanner>
+
     
   </div>
 </template>
@@ -45,6 +47,7 @@ import { Dialog } from 'vant';
 import customAdvertisingSpace from '@/components/customAdvertisingSpace';
 import customNavigationBar from '@/components/customNavigationBar';
 import customLimitedTime from '@/components/customLimitedTime';
+import bottomBanner from '@/components/bottomBanner';
 
 
 
@@ -61,7 +64,8 @@ export default {
   components: {
     customAdvertisingSpace,
     customNavigationBar,
-    customLimitedTime
+    customLimitedTime,
+    bottomBanner,
   },
   mounted() {
     this.init();

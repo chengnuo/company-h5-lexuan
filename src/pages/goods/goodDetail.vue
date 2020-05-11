@@ -192,7 +192,6 @@
         <img src="../../assets/img/goodDetail/share_01@2x.png" />
       </div> -->
 
-      <!-- <bottomBanner :index="11" /> -->
     </div>
     <div v-else>
       <PreLoading />
