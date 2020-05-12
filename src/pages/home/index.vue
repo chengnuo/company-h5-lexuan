@@ -61,10 +61,11 @@
       <div class="nav clearfix"
            v-if="searchFocus==false">
         <div class="items clearfix">
-          <div class="item active">热销</div>
+          <!-- <div class="item active">热销</div>
           <div class="item">面膜</div>
           <div class="item">美肤</div>
-          <div class="item">周边</div>
+          <div class="item">周边</div> -->
+          <div :class="['item', headerNavActive==item.id?'active':''] " v-for="(item,index) in headerNavArray" :key="item.id" @click="handleHeaderNav(item,index)">{{item.name}}</div>
         </div>
 
       </div>
@@ -123,6 +124,25 @@ export default {
       homeIndex: {
         templates: [],
       },
+      headerNavArray: [
+        {
+          id: 1,
+          name: '热销',
+        },
+        {
+          id: 2,
+          name: '面膜',
+        },
+        {
+          id: 3,
+          name: '美肤',
+        },
+        {
+          id: 4,
+          name: '周边',
+        },
+      ],
+      headerNavActive: 1,
     }
   },
   components: {
@@ -247,6 +267,9 @@ export default {
     handleBlurSeach() {
       this.searchFocus = false
     },
+    handleHeaderNav(item){
+      this.headerNavActive = item.id
+    },
   },
 }
 </script>
@@ -350,7 +373,7 @@ export default {
   margin-bottom: 60px;
   & .banner {
     width: 355px;
-    height: 160px;
+    // height: 160px;
     padding: 0 10px;
     // margin-top: -100px;
   }
