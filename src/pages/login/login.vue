@@ -539,8 +539,8 @@ export default {
     width: 375px;
     height: 180px;
     // background: ('03@2x.png');1
-    background: url(../../assets/img/goods/03@2x.png) center center no-repeat;
-    background-size: 100% 100%;
+    // background: url(../../assets/img/goods/03@2x.png) center center no-repeat;
+    // background-size: 100% 100%;
     .img {
       padding-top: 40px;
       text-align: center;
@@ -620,8 +620,9 @@ export default {
       height: 44px;
       margin: 30px auto 0;
       line-height: 44px;
-      border-radius: 2px;
-      border: 1px solid #ccc;
+      background:rgba(255,255,255,1);
+      border-radius:22px;
+      border:1px solid rgba(230,230,230,1);
 
       /deep/ .van-field__control {
         margin-top: 2px;
@@ -651,6 +652,7 @@ export default {
 
       &--input {
         text-indent: 10px;
+        border-radius:22px;
         input::-webkit-input-placeholder {
           color: #ccc;
           font-size: 16px;
