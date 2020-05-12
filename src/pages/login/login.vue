@@ -1,30 +1,18 @@
 <template>
   <div class="login">
-    <div class="userImgLayout">
-      <div v-if="userData.nickname">
-        <div class="img">
-          <!-- <img class="mobile--icon"
-              src="../../assets/img/login/default@2x.png"
-              alt=""> -->
-          <img v-if="userData.headImgUrl === ''"
-               src="../../assets/img/home/head portrait_02@2x.png"
-               alt="">
-          <img v-show="userData.headImgUrl"
-               :src="userData.headImgUrl"
-               alt="">
-        </div>
-        <div class="Inviter">
-          <span class="leftbar">邀请人：</span>
-          <span class="rightbar">{{ userData.nickname }}</span>
-        </div>
-      </div>
+
+    <div class="loginTab clearfix">
+      <div :class="['item', loginTabActive=='1'?'active':'']"
+           @click="handleLoginTab(1)">注册</div>
+      <div :class="['item', loginTabActive=='2'?'active':'']"
+           @click="handleLoginTab(2)">登录</div>
     </div>
 
     <!-- 表单 -->
     <div class="login__form">
       <div class="mobile">
         <img class="mobile--icon"
-             src="../../assets/img/login/icon_user_01@2x(1).png"
+             src="../../assets/img/login/icon_user_01@2x.png"
              alt="">
         <span class="mobile--region"
               ref="areaNo"
@@ -44,42 +32,28 @@
                      v-click-outside="onClickOutside"
                      v-show="checkDialog.visible"
                      :visible.sync="checkDialog.visible" />
-
-      <div class="mobile modifier"
-           v-if="!checkDialog.visible">
-        <img class="mobile--icon"
-             src="../../assets/img/login/icon_user_01@2x(2).png"
-             alt="">
-        <van-field class="mobile--input"
-                   type="tel"
-                   maxlength="4"
-                   v-model="form.code"
-                   placeholder="请输入验证码"
-                   @input="handleCode"
-                   @focus="handleCodeFocus"
-                   @blur="handleCodeBlur" />
-        <span v-if="sendAuthCode"
-              class="mobile--code"
-              @click="verifyTel">获取验证码</span>
-        <span v-else
-              class="mobile--count-down mobile--code">{{ authTime }}s后可再次获取</span>
-      </div>
     </div>
-
-    <!-- 底部 -->
-    <div class="login__footer"
-         v-if="!checkDialog.visible">
+    <div class="login__footer">
       <van-button class="btn-save"
-                  type="danger"
-                  @click="handlelogin"
-                  :disabled="form.mobile.length>0 && form.code.length>0 ?false:true">注 册 / 登 录</van-button>
-      <!-- <p class="describe">
-        <router-link :to="{ name: 'ActPasswordLogin' }">
-          <span>使用密码登录</span>
-        </router-link>
-      </p> -->
-      <!-- style="position: absolute;bottom: 20px;width: 100%;text-align: center;" 安卓兼容问题 -->
-      <p class="describe">
+                    type="danger"
+                    @click="verifyTel"
+                    :disabled="form.mobile.length>0 ?false:true">获取验证码</van-button>
+    </div>
+    <!-- 快捷登录方式 -->
+    <div class="quickLoginLayout">
+
+      <div class="description clearfix">
+        <div class="leftbar"></div>
+        <div class="centerbar">快捷登录方式</div>
+        <div class="rightbar"></div>
+      </div>
+      <div class="list">
+        <div class="item">
+          <img class="img" src="../../assets/img/login/wechat.png" />
+        </div>
+      </div>
+
+      <p class="agreement">
         注册即表示你同意
         <router-link :to="{ name: 'YinliUserAgreement' }">
           <span>《用户协议》</span>
@@ -90,6 +64,9 @@
         </router-link>
       </p>
     </div>
+
+
+
 
     <!-- logo -->
     <!-- <div class="login__logo"
@@ -145,6 +122,7 @@ export default {
       actRegister: 0, // 是否注册
       userData: {},
       inputFoucus: false,
+      loginTabActive: 1,
     }
   },
 
@@ -398,7 +376,7 @@ export default {
               // }).catch(() => {
               //   // on cancel
               // });
-              
+
               this.$router.push({
                 path: `index` // 商品详情
               })
@@ -473,7 +451,7 @@ export default {
             this.$router.push({
               path: `/index` // 商品详情
             })
-            
+
           } else {
             this.$router.push({
               path: `/goodDetail?inviteCode=${inviteCode}` // 商品详情
@@ -529,13 +507,20 @@ export default {
     handleCodeBlur() {
       this.inputFoucus = false;
     },
+    // 点击注册登录
+    handleLoginTab(type) {
+      this.loginTabActive = type;
+    },
   }
 }
 </script>
 
 <style lang="less" scoped>
 .login {
-  .userImgLayout {
+  height: 100vh;
+  background: #fff;
+  text-align: center;
+  & .userImgLayout {
     width: 375px;
     height: 180px;
     // background: ('03@2x.png');1
@@ -572,9 +557,81 @@ export default {
       }
     }
   }
-  height: 100vh;
-  background: #fff;
-  text-align: center;
+
+  & .quickLoginLayout {
+    margin-top: 233px;
+    & .description {
+      position: relative;
+      & .leftbar {
+        width: 61px;
+        height: 1px;
+        background: rgba(204, 204, 204, 1);
+        position:absolute;
+        left: 75px;
+        top: 10px;
+      }
+      & .centerbar {
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(153, 153, 153, 1);
+        line-height: 20px;
+      }
+      & .rightbar {
+        width: 61px;
+        height: 1px;
+        background: rgba(204, 204, 204, 1);
+        position:absolute;
+        left: 240px;
+        top: 10px;
+      }
+    }
+    & .list {
+      width: 40px;
+      margin: 23px auto;
+      & .item{
+        
+        .img{
+          width: 40px;
+          img{
+            width: 100%;
+          }
+        }
+      }
+    }
+    & .agreement{
+
+      font-size:11px;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(153,153,153,1);
+      line-height:16px;
+      span {
+        color: #e60017;
+      }
+    }
+  }
+
+  & .loginTab {
+    & .item {
+      font-size: 18px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(102, 102, 102, 1);
+      line-height: 25px;
+      float: left;
+      padding-left: 99px;
+      padding-top: 31px;
+      padding-bottom: 32px;
+    }
+    & .item.active {
+      font-size: 18px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: rgba(230, 0, 23, 1);
+      line-height: 25px;
+    }
+  }
 
   &__logo {
     // position: absolute;
@@ -618,11 +675,11 @@ export default {
       width: 335px;
       display: flex;
       height: 44px;
-      margin: 30px auto 0;
+      margin: 0 auto 0;
       line-height: 44px;
-      background:rgba(255,255,255,1);
-      border-radius:22px;
-      border:1px solid rgba(230,230,230,1);
+      background: rgba(255, 255, 255, 1);
+      border-radius: 22px;
+      border: 1px solid rgba(230, 230, 230, 1);
 
       /deep/ .van-field__control {
         margin-top: 2px;
@@ -638,7 +695,7 @@ export default {
       &--region {
         font-size: 16px;
         padding: 1px 11px 0 10px;
-        color: #E60017;
+        color: #e60017;
         display: inline-block;
       }
 
@@ -652,7 +709,7 @@ export default {
 
       &--input {
         text-indent: 10px;
-        border-radius:22px;
+        border-radius: 22px;
         input::-webkit-input-placeholder {
           color: #ccc;
           font-size: 16px;
@@ -663,7 +720,7 @@ export default {
         top: 2px;
         right: 20px;
         font-size: 14px;
-        color: #E60017;
+        color: #e60017;
         position: absolute;
       }
 
@@ -699,7 +756,7 @@ export default {
       line-height: 18px;
 
       span {
-        color: #E60017;
+        color: #e60017;
       }
     }
   }
@@ -712,9 +769,25 @@ export default {
     height: 44px;
     line-height: 44px;
     font-size: 16px;
-    background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
-    border-radius:22px;
+    background: linear-gradient(
+      45deg,
+      rgba(230, 0, 23, 1) 0%,
+      rgba(204, 0, 20, 1) 100%
+    );
+    border-radius: 22px;
     color: #ffffff;
   }
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix::after {
+  clear: both;
+  content: " ";
+  visibility: hidden;
+  height: 0;
 }
 </style>
