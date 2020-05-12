@@ -100,7 +100,7 @@
         <span class="fl checkboxAll">全选</span>
       </div>
       <div class="centerbar fl">
-        ¥ {{cartIndex.cartTotal.goodsAmount}}
+        ¥ {{cartIndex.cartTotal.goodsAmount || 0}}
       </div>
       <div class="rightbar fr" @click="handleSettlement">
         结算
@@ -164,14 +164,17 @@ export default {
       const data = Object.assign({})
       apiCartIndex(data).then(res=>{
         if (res.code.toString() === '10000') {
+          let cartList = res.data.cartList || []
+          let cartTotal = res.data.cartTotal || {}
           this.cartIndex = Object.assign({},{
             ...res.data,
-            cartList: res.data.cartList.map((item)=>{
+            cartList: cartList.map((item)=>{
               return {
                 ...item,
                 isSelect: false,
               }
-            })
+            }),
+            cartTotal: cartTotal,
           })
         } else {
           Toast(res.msg)
