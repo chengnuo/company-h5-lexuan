@@ -1,50 +1,102 @@
 <template>
   <div>
-    <div class="headerBg"></div>
-    <div class="home">
-      <div class="header">
-        <div class="search clearfix">
+    <div>
+      <div class="headerBg"
+           v-if="searchFocus==false"></div>
+    </div>
+    <div class="header">
+      <div class="search">
+        <div class="headerbar clearfix">
           <div class="leftbar fl">
             <input v-model="search"
-                  placeholder="请输入您要搜索的商品" />
+                   placeholder="请输入您要搜索的商品"
+                   ref="searchInput"
+                   @focus="handleFouceSeach"
+                   @blur="handleBlurSeach" />
           </div>
-          <div class="rightbar fl"></div>
+          <div class="rightbar fl">搜索</div>
         </div>
-
-        <div class="nav clearfix">
-          <div class="items">
-            <div class="item active">热销</div>
-            <div class="item">面膜</div>
-            <div class="item">美肤</div>
-            <div class="item">周边</div>
+        <div class="bodybar clearfix" v-if="searchFocus==true">
+          <div class="leftbar fl">
+            最近搜索
           </div>
+          <div class="rightbar fr">删除</div>
+        </div>
+        <div class="footerbar clearfix" v-if="searchFocus==true">
+          <div class="item">口红</div>
+          <div class="item">口红1</div>
+          <div class="item">口红2</div>
+          <div class="item">口红3</div>
+          <div class="item">口红</div>
+          <div class="item">口红4</div>
+          <div class="item">口红</div>
+          <div class="item">口红</div>
+          <div class="item">口红</div>
+          <div class="item">口红1</div>
+          <div class="item">口红2</div>
+          <div class="item">口红3</div>
+          <div class="item">口红</div>
+          <div class="item">口红4</div>
+          <div class="item">口红</div>
+          <div class="item">口红</div>
+          <div class="item">口红</div>
+          <div class="item">口红1</div>
+          <div class="item">口红2</div>
+          <div class="item">口红3</div>
+          <div class="item">口红</div>
+          <div class="item">口红4</div>
+          <div class="item">口红</div>
+          <div class="item">口红</div>
+          <div class="item">口红</div>
+          <div class="item">口红1</div>
+          <div class="item">口红2</div>
+          <div class="item">口红3</div>
+          <div class="item">口红</div>
+          <div class="item">口红4</div>
+          <div class="item">口红</div>
+          <div class="item">口红</div>
+        </div>
+      </div>
 
+      <div class="nav clearfix"
+           v-if="searchFocus==false">
+        <div class="items clearfix">
+          <div class="item active">热销</div>
+          <div class="item">面膜</div>
+          <div class="item">美肤</div>
+          <div class="item">周边</div>
         </div>
 
       </div>
 
-      <div v-for="(item) in homeIndex.templates" :key="item.indexs">
-        <div class="banner" v-if="item.templateType==1">
+    </div>
+    <div class="home"
+         v-if="searchFocus==false">
+
+      <div v-for="(item) in homeIndex.templates"
+           :key="item.indexs">
+        <div class="banner"
+             v-if="item.templateType==1">
           <customAdvertisingSpace :item="item" />
         </div>
-        <div class="nav" v-if="item.templateType==0">
+        <div class="nav"
+             v-if="item.templateType==0">
           <customNavigationBar :item="item" />
         </div>
-        <div class="limitedTime" v-if="item.templateType==3">
+        <div class="limitedTime"
+             v-if="item.templateType==3">
           <customLimitedTime :item="item" />
         </div>
         <div v-if="item.templateType==5">
-          <customAuxiliaryBlank :item="item"  />
+          <customAuxiliaryBlank :item="item" />
         </div>
         <div v-if="item.templateType==4">
-          <customAuxiliaryLine :item="item"  />
+          <customAuxiliaryLine :item="item" />
         </div>
       </div>
 
-
       <bottomBanner :index="1"></bottomBanner>
 
-      
     </div>
   </div>
 </template>
@@ -67,6 +119,7 @@ export default {
   data() {
     return {
       search: '',
+      searchFocus: false,
       homeIndex: {
         templates: [],
       },
@@ -84,7 +137,7 @@ export default {
     this.init();
   },
   methods: {
-    init(){
+    init() {
       this.apiIndex();
     },
     apiIndex() {
@@ -181,32 +234,39 @@ export default {
         }
       }
 
-      
+
 
       this.homeIndex = res.data;
-      console.log('this.homeIndex',this.homeIndex)
+      console.log('this.homeIndex', this.homeIndex)
+    },
+    // 搜索商品
+    handleFouceSeach() {
+      this.searchFocus = true
+      // this.$refs.searchInput.focus()
+    },
+    handleBlurSeach() {
+      this.searchFocus = false
     },
   },
 }
 </script>
 <style lang="less" scoped>
-.headerBg{
+.headerBg {
   width: 375px;
   height: 200px;
   background: #c61c1c;
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
   left: 0;
   z-index: 0;
-
 }
-.home {
-  // background: #fff;
+
+.header {
   position: relative;
-  margin-bottom: 60px;
-  & .header {
-    padding-top: 10px;
-    & .search {
+  & .search {
+    & .headerbar {
+      background: #c61c1c;
+      padding: 10px 0;
       & .leftbar {
         width: 270px;
         height: 20px;
@@ -218,39 +278,76 @@ export default {
         margin-right: 14px;
       }
       & .rightbar {
-        width: 24px;
+        width: 30px;
         height: 20px;
-        background: rgba(255, 255, 255, 1);
+        // background: rgba(255, 255, 255, 1);
         margin-top: 4px;
+        color: #fff;
       }
     }
-    & .nav {
-      & .items {
-        margin-top: 24px;
-        margin-left: 20px;
-        & .item.active {
-          font-size: 14px;
-          font-family: PingFangSC-Semibold, PingFang SC;
-          font-weight: 600;
-          color: rgba(255, 255, 255, 1);
-          line-height: 18px;
-
-          border-bottom: 2px solid #fff;
-          padding-bottom: 8px;
-        }
-        & .item {
-          float: left;
-          margin-right: 20px;
-
-          font-size: 14px;
-          font-family: PingFangSC-Regular, PingFang SC;
-          font-weight: 400;
-          color: rgba(254, 205, 205, 1);
-          line-height: 18px;
-        }
+    & .bodybar {
+      padding: 10px 15px;
+      & .leftbar {
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(51, 51, 51, 1);
+        line-height: 20px;
+      }
+      & .rightbar {
+        background: rgba(153, 153, 153, 1);
+      }
+    }
+    & .footerbar {
+      padding: 10px 15px;
+      & .item {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(102, 102, 102, 1);
+        line-height: 16px;
+        padding: 5px 20px;
+        float: left;
+        height: 16px;
+        background: rgba(224, 224, 224, 1);
+        border-radius: 13px;
+        margin-top: 10px;
+        margin-right: 10px;
       }
     }
   }
+  & .nav {
+    // color: #fff;
+    & .items {
+      margin-top: 24px;
+      margin-left: 20px;
+      & .item.active {
+        font-size: 14px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 1);
+        line-height: 18px;
+
+        border-bottom: 2px solid #fff;
+        padding-bottom: 8px;
+      }
+      & .item {
+        float: left;
+        margin-right: 20px;
+
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(254, 205, 205, 1);
+        line-height: 18px;
+      }
+    }
+  }
+}
+.home {
+  // background: #fff;
+  position: relative;
+  margin-bottom: 60px;
   & .banner {
     width: 355px;
     height: 160px;
@@ -258,20 +355,18 @@ export default {
     // margin-top: -100px;
   }
   & .nav {
-
   }
-
-  .fl {
-    float: left;
-  }
-  .fr {
-    float: right;
-  }
-  .clearfix::after {
-    clear: both;
-    content: " ";
-    visibility: hidden;
-    height: 0;
-  }
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix::after {
+  clear: both;
+  content: " ";
+  visibility: hidden;
+  height: 0;
 }
 </style>
