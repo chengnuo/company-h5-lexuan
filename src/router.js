@@ -476,6 +476,22 @@ const routerData = {
       component: () => import('@/pages/member')
     },
     {
+      path: '/member/openMembershipCard',
+      name: 'OpenMembershipCard',
+      meta: {
+        title: '开通会员卡' // 乐选-开通会员卡
+      },
+      component: () => import('@/pages/member/openMembershipCard')
+    },
+    {
+      path: '/member/exclusivePurchase',
+      name: 'ExclusivePurchase',
+      meta: {
+        title: '开通会员卡' // 乐选-团长专享购
+      },
+      component: () => import('@/pages/member/exclusivePurchase')
+    },
+    {
       path: '/setUp',
       name: 'SetUp',
       meta: {

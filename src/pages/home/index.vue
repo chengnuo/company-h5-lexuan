@@ -25,10 +25,10 @@
 
       <div v-for="(item) in homeIndex.templates" :key="item.indexs">
         <div class="banner" v-if="item.templateType==1">
-          <customAdvertisingSpace />
+          <customAdvertisingSpace :item="item" />
         </div>
         <div class="nav" v-if="item.templateType==0">
-          <customNavigationBar :columns="item.columns" />
+          <customNavigationBar :item="item" />
         </div>
         <div class="limitedTime" v-if="item.templateType==3">
           <customLimitedTime :item="item" />

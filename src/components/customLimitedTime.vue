@@ -150,10 +150,10 @@ import { apiShopMobileMsgNotifyList } from '@/api/my'
 export default {
   name: 'CustomLimitedTime',
   props: {
-    height: {
-      type: Number,
+    item: {
+      type: Object,
       default: () => {
-        return 0
+        return {}
       }
     }
   },

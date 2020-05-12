@@ -4,7 +4,7 @@
     <div class="bg"></div>
     <div class="typeOne">
       <div class="items">
-        <div class="item" v-for="(item) in columns" :key="item.goodsId" @click="handleClickColumns(item)">
+        <div class="item" v-for="(item) in item.columns" :key="item.goodsId" @click="handleClickColumns(item)">
           <div class="logo">
             <img class="img" :src="item.banner" alt="" />
           </div>
@@ -109,12 +109,12 @@ import {  apiShopMobileMsgNotifyList } from '@/api/my'
 export default {
   name: 'CustomNavigationBar',
   props: {
-    columns: {
-      type: Array,
+    item: {
+      type: Object,
       default: () => {
-        return []
+        return {}
       }
-    },
+    }
   },
   data() {
     return {
