@@ -3,7 +3,7 @@
     <div class="login ignore-login"
          v-if="isShow && notShow">
 
-      <div class="userImgLayout">
+      <!-- <div class="userImgLayout">
         <div class="loginLogo">
           <img class="loginLogoImg"
                src="../../assets/img/login/login_logo.png" />
@@ -21,14 +21,10 @@
                v-if="userData.nickname">
             <span class="leftbar">邀请人：</span>
             <span class="rightbar">{{ userData.nickname }}</span>
-
-            <!-- <div class="description">
-              邀请你成为TA的粉丝
-            </div> -->
           </div>
 
         </div>
-      </div>
+      </div> -->
 
       <!-- logo -->
       <!-- <div class="login__logo">
@@ -38,6 +34,11 @@
       <p class="title">幸福引力商城
         <p />
     </div> -->
+
+      <div class="describeLayout">
+        <div class="describeTitle">绑定手机号</div>
+        <div class="describe">为了你的保护账号安全，请绑定手机号</div>
+      </div>
 
       <!-- 表单 -->
       <div class="login__form">
@@ -124,8 +125,6 @@
         </div>
       </van-dialog>
 
-
-
       <!-- 登录绑定 -->
       <van-dialog className="loginBindShow"
                   v-model="loginBindShow"
@@ -163,6 +162,8 @@ import CountryAreaNo from './CountryAreaNo'
 import clickOutside from '@/util/bind'
 
 import PreLoading from '../../components/preLoading'
+
+import { apiUserInfoInviteCode } from '@/api/home'
 
 export default {
   name: 'Login',
@@ -208,7 +209,7 @@ export default {
 
   mounted() {
     this.getParams()
-  
+
 
     this.$nextTick(() => {
       this.getInviteCode()
@@ -221,10 +222,10 @@ export default {
     },
 
     // 微信联登绑定
-    async apiLoginAuthWxBind(obj){
+    async apiLoginAuthWxBind(obj) {
       const inviteCode = this.form.inviteCode || this.$route.query.inviteCode;
-      const getLoginAuthWxBind = JSON.parse(window.sessionStorage.getItem('loginAuthWxBind')) || {}      
-       let loginAuthWxBindData = Object.assign({},{
+      const getLoginAuthWxBind = JSON.parse(window.sessionStorage.getItem('loginAuthWxBind')) || {}
+      let loginAuthWxBindData = Object.assign({}, {
         // tokenId: getLoginAuthWxBind.data.tokenId,
         tokenId: getLoginAuthWxBind.tokenId,
         mobile: this.form.mobile,
@@ -232,7 +233,7 @@ export default {
         sureBind: 0,
         inviteCode: inviteCode,
         source: 'h5',
-      },obj)
+      }, obj)
       const resLoginAuthWxBind = await this.$post(this.$api.loginAuthWxBind, loginAuthWxBindData)
 
       console.log('resLoginAuthWxBind', resLoginAuthWxBind)
@@ -243,11 +244,11 @@ export default {
         const inviteCode = resLoginAuthWxBind.data.inviteCode || ''
         if (getInviteCodeRedirectUrlFn && getInviteCodeRedirectUrlFn.redirectUrl) { // 跳转逻辑，如果商品详情存在 redirectUrl 就跳转到登录
           window.location.href = `${getInviteCodeRedirectUrlFn.redirectUrl}?inviteCode=${inviteCode}`
-        }else{
+        } else {
           window.location.href = `/my?inviteCode=${inviteCode}`
         }
-        
-      }else if (resLoginAuthWxBind.code.toString() === '10007') {
+
+      } else if (resLoginAuthWxBind.code.toString() === '10007') {
         // 用户不存在
         this.inviteCodeShow = true // 注册并且登录
       } else if (resLoginAuthWxBind.code.toString() === '10047') {
@@ -289,7 +290,7 @@ export default {
 
     // 获取验证码
     async getAuthCode(fn) {
-      
+
 
       const paramsData = Object.assign({}, {
         type: 6,
@@ -406,28 +407,28 @@ export default {
     },
 
     // 获取邀请码换用户信息
-    async getInviteCode() {
+    getInviteCode() {
       const inviteCodeRedirectUrl = JSON.parse(sessionStorage.getItem('inviteCodeRedirectUrl')) || {}
       const paramsData = Object.assign({}, { inviteCode: inviteCodeRedirectUrl.firstInviteCode.inviteCode || '' })
-      const res = await this.$post(this.$api.inviteCode, paramsData)
-
-      try {
+      // const res = await this.$post(this.$api.inviteCode, paramsData)
+      apiUserInfoInviteCode(paramsData).then((res) => {
         if (res.code.toString() === '10000' || res.code.toString() === '10404') {
           this.userData = res.data
         }
-      } catch (error) {
-        console.error(error)
-      }
+      }).catch(error => {
+        console.log('error', error)
+      })
+
     },
     // 绑定ok
-    loginBindOk(){
+    loginBindOk() {
       this.apiLoginAuthWxBind({
         sureBind: 1,
       })
       this.loginBindShow = false;
     },
     // 绑定取消
-    loginBindCancel(){
+    loginBindCancel() {
       this.loginBindShow = false;
     },
   }
@@ -440,11 +441,29 @@ export default {
   background: #f5f8fa;
   text-align: center;
 
+  .describeLayout {
+    margin-top: 36px;
+    .describeTitle {
+      font-size: 20px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: rgba(51, 51, 51, 1);
+      line-height: 28px;
+    }
+    .describe {
+      font-size: 16px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(153, 153, 153, 1);
+      line-height: 22px;
+      margin-top:10px;
+    }
+  }
+
   .userImgLayout {
     width: 375px;
     height: 200px;
-    background: url(../../assets/img/login/bg_01@2x.png) center center
-      no-repeat;
+    background: url(../../assets/img/login/bg_01@2x.png) center center no-repeat;
     background-size: 100% 100%;
     .loginLogo {
       position: absolute;
@@ -520,16 +539,16 @@ export default {
   }
 
   &__form {
-    margin-top: 152px;
+    margin-top: 40px;
     .mobile {
       width: 335px;
       display: flex;
       height: 44px;
       margin: 0 auto;
       line-height: 44px;
-      border-radius: 2px;
-      border: 1px solid #ccc;
-      background: #fff;
+      background: rgba(255, 255, 255, 1);
+      border-radius: 22px;
+      border: 1px solid rgba(230, 230, 230, 1);
 
       &--icon {
         width: 24px;
@@ -555,6 +574,7 @@ export default {
 
       &--input {
         text-indent: 10px;
+        border-radius: 22px;
 
         input::-webkit-input-placeholder {
           color: #ccc;
@@ -618,8 +638,12 @@ export default {
 
   /deep/ .van-button--danger {
     font-size: 16px;
-    background-color: #333;
-    border: 1px solid #333;
+    background: linear-gradient(
+      45deg,
+      rgba(230, 0, 23, 1) 0%,
+      rgba(204, 0, 20, 1) 100%
+    );
+    border-radius: 22px;
   }
 
   .inviteCodeShow {
