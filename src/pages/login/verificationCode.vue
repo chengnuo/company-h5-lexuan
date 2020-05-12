@@ -254,7 +254,7 @@ export default {
         if (res.code.toString() === '10000') {
           window.sessionStorage.setItem('userData', JSON.stringify(res.data)) // 这个保持跟之前一样。
           this.$router.push({
-            name: 'ActLoginSuccess'
+            name: 'Home'
           })
           return
         }
@@ -277,7 +277,7 @@ export default {
         if (res.code.toString() === '10000') {
           window.sessionStorage.setItem('userData', JSON.stringify(res.data)) // 这个保持跟之前一样。
           this.$router.push({
-            name: 'ActLoginSuccess'
+            name: 'Home'
           })
           return
         }
