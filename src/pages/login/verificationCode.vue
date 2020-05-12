@@ -336,10 +336,9 @@ export default {
       display: flex;
       height: 44px;
       margin: 0 auto;
-      line-height: 44px;
-      border-radius: 2px;
-      border: 1px solid #ccc;
-
+      background:rgba(255,255,255,1);
+      border-radius:22px;
+      border:1px solid rgba(230,230,230,1);
       &--icon {
         width: 24px;
         height: 24px;
@@ -364,6 +363,7 @@ export default {
 
       &--input {
         text-indent: 10px;
+        border-radius:22px;
 
         input::-webkit-input-placeholder {
           color: #ccc;
@@ -423,9 +423,13 @@ export default {
 
   /deep/ .van-button--danger {
     font-size: 16px;
-    background:linear-gradient(225deg,rgba(250,185,2,1) 0%,rgba(250,167,2,1) 100%);
-    border: 0px;
-    color: #333333;
+    background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
+    border-radius:22px;
+    font-size:16px;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:22px;
   }
 }
 </style>
