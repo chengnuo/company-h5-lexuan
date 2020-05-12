@@ -14,7 +14,7 @@
               :src="item.logo" v-if="item.logo" />
           <img class="img"
                 v-else
-              src="../../assets/img/my/87@2x.png" />
+              src="../../assets/img/my/img_01@2x.png" />
         </div>
         <div class="rightbar">
           <div class="headerbar clearfix">
