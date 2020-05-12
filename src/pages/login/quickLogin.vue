@@ -2,14 +2,17 @@
   <div>
     <div class="quickLoginContainer">
       <div class="bg"></div>
+      <div class="bg2"></div>
       <div class="loginBox">
-        <img class="image" src="../../assets/img/login/logo_03@2x.png" />
+        <!-- <img class="image" src="../../assets/img/login/logo_03@2x.png" /> -->
       </div>
-      <div class="loginButton" @click="login">手机号码登录</div>
+      
+      <!-- v-if="commonJs.isWeiXin()" -->
       <div class="wxLoginButton" v-if="commonJs.isWeiXin()" @click="handleQuickLogin">
         <img class="img" src="../../assets/img/login/Combined_Shape@2x.png" />
         <span class="description">微信登录</span>
       </div>
+      <div class="loginButton" @click="login">手机号码登录</div>
     </div>
   </div>
 </template>
@@ -105,13 +108,21 @@ export default {
   //   height: 603px;
   // }
   .bg {
-    // width: 375px;
-    // height: 603px;
-    background: #F6FAF8;
     position: absolute;
     height: 100%;
     width: 100%;
     z-index: -1;
+    background: url("../../assets/img/login/icon_bg_01@2x.png") no-repeat;
+    background-size: 375px 286px;
+  }
+  .bg2 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: url("../../assets/img/login/icon_bg_02@2x.png") no-repeat;
+    background-size: 375px 310px;
+    background-position: 0 bottom;
   }
   .loginBox {
     width: 100%;
@@ -146,12 +157,8 @@ export default {
   .loginButton {
     width: 335px;
     height: 44px;
-    background: linear-gradient(
-      225deg,
-      rgba(51, 51, 51, 1) 0%,
-      rgba(26, 26, 26, 1) 100%
-    );
-    border-radius: 2px;
+    background:linear-gradient(225deg,rgba(255,103,0,1) 0%,rgba(237,173,57,1) 100%);
+    border-radius:22px;
     font-size: 16px;
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
@@ -160,7 +167,7 @@ export default {
     position: absolute;
     left: 50%;
     margin-left: -167px;
-    bottom: 148px;
+    bottom: 49px;
   }
   .wxLoginButton {
     width: 335px;
@@ -173,14 +180,15 @@ export default {
     border-radius: 2px;
     font-size: 16px;
     font-weight: 400;
-    background:rgba(7,193,96,1);
+    background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
+    border-radius:22px;
     color:rgba(255,255,255,1);
     line-height: 44px;
     text-align: center;
     position: absolute;
     left: 50%;
     margin-left: -167px;
-    bottom: 89px;
+    bottom: 123px;
     .img{
       width:28px;
       height:23px;
