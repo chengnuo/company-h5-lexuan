@@ -58,3 +58,12 @@ export function apiOrderQueryOrderUnified(data) {
 }
 
 
+// 充值提交
+export function orderDepositSubmit(data) {
+  return request({
+    url: `/shop/mobile/deposit/submit`,
+    method: 'post',
+    data
+  })
+}
+

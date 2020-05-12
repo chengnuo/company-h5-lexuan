@@ -460,6 +460,14 @@ const routerData = {
       component: () => import('@/pages/home')
     },
     {
+      path: '/becomeServiceProvider', // 成为服务商-我要升级
+      name: 'BecomeServiceProvider',
+      meta: {
+        title: '我要升级'
+      },
+      component: () => import('@/pages/becomeServiceProvider/index')
+    },
+    {
       path: '/shoppingCart',
       name: 'ShoppingCart',
       meta: {
