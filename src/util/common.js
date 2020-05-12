@@ -58,13 +58,13 @@ if (process.env.NODE_ENV === 'development') { //区别线上线下环境
     signKey: '12345678',
     signKeyZB: '12345678', // 赚播
     // prefixUrl: 'http://192.168.1.96:16121', // 捷凯
-    prefixUrl: ' http://192.168.1.96:16099/lexuan-shop-api',
+    prefixUrl: 'http://jgw.lexuanj.buxiabai.cn/lexuan-shop-api',
     prefixH5Url: 'http://test-h5.zhuanbo.gdxfhl.com',
     prefixUrlPhpBase: 'http://goods.lexuanp.buxiabai.cn', // phpbase域
     prefixUrlPhpSn: 'http://test-api-sn.yinli.gdxfhl.com', // phpbase域
-    prefixZhuanboApi: 'http://192.168.1.96:16099/lexuan-shop-api',
+    prefixZhuanboApi: 'http://jgw.lexuanj.buxiabai.cn/lexuan-shop-api',
     prefixZhuanboUrl: 'http://test-h5.zhuanbo.gdxfhl.com',
-    getApiMppayMingpinmao: 'http://192.168.1.96:16099/pay-api', // 支付链接
+    getApiMppayMingpinmao: 'http://jgw.lexuanj.buxiabai.cn/pay-api', // 支付链接
     prefixOrderYinliUrl: 'http://test-order.zhuanbo.gdxfhl.com',
     api_cloud_url: 'http://test-mlive.zhuanbo.gdxfhl.com', // go
     webTitle: '乐选',
