@@ -48,7 +48,7 @@
         <div class="rightbar"></div>
       </div>
       <div class="list">
-        <div class="item">
+        <div class="item" @click="handleGoQuickLogin">
           <img class="img" src="../../assets/img/login/wechat.png" />
         </div>
       </div>
@@ -510,6 +510,12 @@ export default {
     // 点击注册登录
     handleLoginTab(type) {
       this.loginTabActive = type;
+    },
+    // 跳快捷支付
+    handleGoQuickLogin(){
+      this.$router.push({
+        name: 'QuickLogin',
+      })
     },
   }
 }
