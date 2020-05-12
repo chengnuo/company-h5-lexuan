@@ -6,8 +6,35 @@
         <div class="rightIcon fr"></div>
         <div class="title">开启创业</div>
       </div>
+      <div class="userInfoLayout">
+        <div class="userInfo clearfix fl">
+          <div class="leftbar fl">
+            <div class="img">
+              <img v-if="userData.headImgUrl"
+                   :src="userData.headImgUrl"
+                   alt="">
+              <img v-else
+                   src="../../assets/img/home/head portrait_02@2x.png"
+                   alt="">
+            </div>
+          </div>
+          <div class="rightbar  fl">
+            <div class="name">萧十一郎</div>
+            <div class="ptlevel">乐选团长</div>
+          </div>
+        </div>
+
+        <div class="temporaryAccount fr">
+          <div class="name">临时账户(元)</div>
+          <div class="number">275.25</div>
+        </div>
+
+      </div>
     </div>
-    <div class="vipcart"></div>
+    <div class="vipcart">
+      <img class="img"
+           src="../../assets/img/member/icon_bg_03@2x.png" />
+    </div>
     <div class="openNow">
       立即开通
     </div>
@@ -39,11 +66,10 @@
       </div>
       <div class="line"></div>
 
-
-
       <div class="items clearfix">
         <div class="item">
-          <img class="headerbar" src="../../assets/img/member/a1.png" />
+          <img class="headerbar"
+               src="../../assets/img/member/a1.png" />
           <div class="bodybar">不老日记深层清洁泡ol面膜哈哈面膜100ml</div>
           <div class="footerbar">
             <div class="price">
@@ -56,7 +82,8 @@
         </div>
 
         <div class="item">
-          <img class="headerbar" src="../../assets/img/member/a1.png" />
+          <img class="headerbar"
+               src="../../assets/img/member/a1.png" />
           <div class="bodybar">不老日记深层清洁泡ol面膜哈哈面膜100ml</div>
           <div class="footerbar">
             <div class="price">
@@ -69,7 +96,8 @@
         </div>
 
         <div class="item">
-          <img class="headerbar" src="../../assets/img/member/a1.png" />
+          <img class="headerbar"
+               src="../../assets/img/member/a1.png" />
           <div class="bodybar">不老日记深层清洁泡ol面膜哈哈面膜100ml</div>
           <div class="footerbar">
             <div class="price">
@@ -99,6 +127,7 @@ export default {
   data() {
     return {
       purchaseQuantity: 0,
+      userData: {},
     }
   },
   mounted() {
@@ -119,7 +148,9 @@ export default {
   & .headerbar {
     width: 375px;
     height: 200px;
-    background: #c61c1c;
+    // background: #c61c1c;
+    background: url(../../assets/img/member/bg_100@2x.png) no-repeat;
+    background-size: 100% 100%;
     & .titleLayout {
       padding-top: 30px;
       text-align: center;
@@ -134,12 +165,77 @@ export default {
         width: 22px;
         height: 22px;
         background: rgba(255, 255, 255, 1);
-        margin-right: 13px;
+        // margin-right: 13px;
+        position: absolute;
+        right: 13px;
+      }
+    }
+    & .userInfoLayout {
+      margin-top: 19px;
+      & .userInfo {
+        width: 140px;
+        margin-left: 20px;
+        & .leftbar {
+          & .img {
+            width: 56px;
+            height: 56px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+        & .rightbar {
+          margin-left: 10px;
+          margin-top: 8px;
+          & .name {
+            font-size: 16px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 1);
+            line-height: 18px;
+          }
+          & .ptlevel {
+            height: 10px;
+            line-height: 10px;
+            background: rgba(255, 237, 199, 1);
+            border: 1px solid rgba(192, 176, 140, 1);
+            padding: 3px 6px;
+            font-size: 10px;
+            border-radius: 10px;
+            color: #ae7637;
+            text-align: center;
+            margin-top: 5px;
+          }
+        }
+      }
+      & .temporaryAccount {
+        width: 80px;
+        height: 36px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 133, 133, 1);
+        margin-right: 20px;
+        padding: 10px;
+        & .name {
+          font-size: 10px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+          line-height: 14px;
+        }
+        & .number {
+          font-size: 20px;
+          font-family: PingFangSC-Semibold, PingFang SC;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 1);
+          line-height: 20px;
+          margin-top: 2px;
+        }
       }
     }
   }
   & .vipcart {
-    margin: -20px 10px 0;
+    margin: -60px 10px 0;
     width: 355px;
     height: 150px;
     background: linear-gradient(
@@ -148,6 +244,14 @@ export default {
       rgba(115, 115, 115, 1) 100%
     );
     border-radius: 4px;
+    & .img {
+      width: 355px;
+      height: 150px;
+      & img {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
   & .openNow {
     width: 305px;
@@ -166,6 +270,8 @@ export default {
     font-family: PingFang-SC-Bold, PingFang-SC;
     font-weight: bold;
     color: rgba(255, 255, 255, 1);
+    position: relative;
+    z-index: 1;
   }
   & .membershipInterestsLayout {
     width: 355px;
@@ -279,15 +385,14 @@ export default {
             height: 100%;
           }
         }
-        .bodybar{
-
-          font-size:14px;
-          font-family:PingFangSC-Medium,PingFang SC;
-          font-weight:500;
-          color:rgba(51,51,51,1);
-          line-height:20px;
+        .bodybar {
+          font-size: 14px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: rgba(51, 51, 51, 1);
+          line-height: 20px;
         }
-        .footerbar{
+        .footerbar {
           .price {
             margin-top: 10px;
             .symbol1 {
