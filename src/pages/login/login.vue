@@ -187,12 +187,12 @@ export default {
         console.log('res', res)
         if (res.code.toString() === '10004' || res.code.toString() === '10014') {
           // 登录
-          // this.$router.push({
-          //   name: 'ActVerificationCode',
-          //   query: {
-          //     mobile: this.form.mobile
-          //   }
-          // })
+          this.$router.push({
+            name: 'ActVerificationCode',
+            query: {
+              mobile: this.form.mobile
+            }
+          })
           this.loadAuthTime(); // 加载倒计时
           return
         } else if (res.code.toString() === '10029') {
@@ -207,14 +207,14 @@ export default {
             if (resActRegister.code.toString() === '10004') {
 
               this.actRegister = 1;
-              // this.$router.push({
-              //   name: 'ActVerificationCode',
-              //   query: {
-              //     mobile: this.form.mobile,
-              //     actRegister: 1,
-              //     inviteCode: this.$route.query.inviteCode
-              //   }
-              // })
+              this.$router.push({
+                name: 'ActVerificationCode',
+                query: {
+                  mobile: this.form.mobile,
+                  actRegister: 1,
+                  inviteCode: this.$route.query.inviteCode
+                }
+              })
               this.loadAuthTime(); // 加载倒计时
             } else {
               this.$toast(resActRegister.msg)
@@ -310,13 +310,13 @@ export default {
     },
 
     // login() {
-    // this.$router.push({
-    //   name: 'ActVerificationCode',
-    //   query: {
-    //     mobile: this.form.mobile
-    //   }
-    // })
-    // }
+    //   this.$router.push({
+    //     name: 'ActVerificationCode',
+    //     query: {
+    //       mobile: this.form.mobile
+    //     }
+    //   })
+    // },
 
     // 点击登录
     handlelogin() {
