@@ -92,14 +92,14 @@
     </div>
 
     <!-- logo -->
-    <div class="login__logo"
+    <!-- <div class="login__logo"
          :class="[inputFoucus?'inputFoucus':'']">
       <img class="img"
            src="../../assets/img/login/default@2x.png"
            alt="">
       <p class="title">乐选
         <p />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -637,7 +637,7 @@ export default {
       &--region {
         font-size: 16px;
         padding: 1px 11px 0 10px;
-        color: #0079ff;
+        color: #E60017;
         display: inline-block;
       }
 
@@ -661,7 +661,7 @@ export default {
         top: 2px;
         right: 20px;
         font-size: 14px;
-        color: #09c2da;
+        color: #E60017;
         position: absolute;
       }
 
@@ -697,7 +697,7 @@ export default {
       line-height: 18px;
 
       span {
-        color: #09c2da;
+        color: #E60017;
       }
     }
   }
