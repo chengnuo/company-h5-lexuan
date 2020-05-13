@@ -141,7 +141,7 @@
                alt="" />
           <span>意见反馈</span>
         </li>
-        <li @click="jumpPage(111)">
+        <li @click="jumpPage('sweepCode')">
           <img src="../../assets/img/my/42.png"
                alt="" />
           <span>防伪查询</span>
@@ -435,6 +435,7 @@ export default {
         3: "quickLevel",
         4: "",
         5: 'myStock',
+        'sweepCode': 'sweepCode',
       };
 
       const userData =
