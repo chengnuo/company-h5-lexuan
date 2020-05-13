@@ -625,7 +625,7 @@ export default {
     width: 375px;
     height: 260px;
     position: relative;
-    background: url(../../assets/img/member/bg_100@2x.png) center center no-repeat;
+    background: url(../../assets/img/my/head.png) center center no-repeat;
     background-size: 100%;
 
     .userInfo {
