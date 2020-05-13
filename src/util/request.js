@@ -22,6 +22,7 @@ service.interceptors.request.use(config => {
   config.headers['X-Sign'] = headerJson['X-Sign'];
   config.headers['X-Token'] = headerJson['X-Token'];
   config.headers['X-APPVer'] = headerJson['X-APPVer'];
+  // config.headers['TTTTT'] = 'TTTTT';
   
   return config;
 }, error => { 
