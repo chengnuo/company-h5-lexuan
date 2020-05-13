@@ -189,11 +189,11 @@
           <span>我的业绩</span>
         </li>
 
-        <!-- <li @click="jumpPage(0)">
+        <li @click="jumpPage(0)">
           <img src="../../assets/img/my/41.png"
                alt="" />
           <span>购买到家</span>
-        </li> -->
+        </li>
         <!-- <li v-if="ptLevel !== 0" @click="jumpPage(3)">
           <img src="../../assets/img/my/44.png" alt="" />
           <span>会员升级</span>
@@ -218,11 +218,11 @@
     </div>
 
     <!-- 退出登录 -->
-    <div class="sign-out"
+    <!-- <div class="sign-out"
          @click="signOut">
       <img src="../../assets/img/my/btn.png"
            alt="" />
-    </div>
+    </div> -->
 
     <!-- 客服电话 -->
     <div class="serviceBox"
