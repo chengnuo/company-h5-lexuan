@@ -49,7 +49,7 @@
     </div> -->
     <div class="headerbar">
       <div class="titleLayout clearfix">
-        <div class="rightIcon fr"></div>
+        <div class="rightIcon fr" @click="handleSetUp"></div>
         <!-- <div class="title">开启创业</div> -->
       </div>
       <div class="userInfoLayout">
@@ -557,6 +557,10 @@ export default {
       }).catch(error => {
         this.$toast(error);
       })
+    },
+    // 点击设置的时候
+    handleSetUp(){
+      this.$router.push({ name: `SetUp` });
     },
   }
 };
