@@ -134,22 +134,66 @@
 
     <!-- 列表 -->
     <div class="list">
-      <ul>
-        <li @click="jumpPage(0)">
-          <img src="../../assets/img/my/41.png"
+      <div class="title">我的服务</div>
+      <ul class="clearfix">
+        <li @click="jumpPage(111)">
+          <img src="../../assets/img/my/42.png"
                alt="" />
-          <span>购买到家</span>
+          <span>意见反馈</span>
         </li>
-        <li @click="jumpPage(1)">
-          <img src="../../assets/img/my/45.png"
+        <li @click="jumpPage(111)">
+          <img src="../../assets/img/my/42.png"
                alt="" />
-          <span>购买套餐</span>
+          <span>防伪查询</span>
+        </li>
+        <li @click="jumpPage(111)">
+          <img src="../../assets/img/my/42.png"
+               alt="" />
+          <span>我的上级</span>
         </li>
         <li @click="jumpPage(2)">
           <img src="../../assets/img/my/43.png"
                alt="" />
           <span>邀请好友</span>
         </li>
+
+        <li @click="jumpPage(1)">
+          <img src="../../assets/img/my/45.png"
+               alt="" />
+          <span>我要升级</span>
+        </li>
+
+        <li @click="jumpPage(111)">
+          <img src="../../assets/img/my/42.png"
+               alt="" />
+          <span>进货</span>
+        </li>
+        <li @click="jumpPage(111)">
+          <img src="../../assets/img/my/42.png"
+               alt="" />
+          <span>会员升级</span>
+        </li>
+        <li @click="jumpPage(111)">
+          <img src="../../assets/img/my/42.png"
+               alt="" />
+          <span>会员升级</span>
+        </li>
+        <li @click="jumpPage(111)">
+          <img src="../../assets/img/my/42.png"
+               alt="" />
+          <span>我的云仓</span>
+        </li>
+        <li @click="jumpPage(111)">
+          <img src="../../assets/img/my/42.png"
+               alt="" />
+          <span>我的业绩</span>
+        </li>
+
+        <!-- <li @click="jumpPage(0)">
+          <img src="../../assets/img/my/41.png"
+               alt="" />
+          <span>购买到家</span>
+        </li> -->
         <!-- <li v-if="ptLevel !== 0" @click="jumpPage(3)">
           <img src="../../assets/img/my/44.png" alt="" />
           <span>会员升级</span>
@@ -157,19 +201,19 @@
         </li> -->
 
         <!-- 普通用户不给看库存 -->
-        <li @click="jumpPage(5)"
+        <!-- <li @click="jumpPage(5)"
             v-if="userData.ptLevel!=0">
           <img src="../../assets/img/my/46.png"
                alt="" />
           <span>我的库存</span>
           <div class="description"
                v-if="cloudNum>0">({{cloudNum}}盒)</div>
-        </li>
-        <li @click="jumpPage(4)">
+        </li> -->
+        <!-- <li @click="jumpPage(4)">
           <img src="../../assets/img/my/42.png"
                alt="" />
           <span>咨询客服</span>
-        </li>
+        </li> -->
       </ul>
     </div>
 
@@ -668,7 +712,7 @@ export default {
     align-items: center;
   }
 
-  .title {
+  &>.title {
     height: 22px;
     font-size: 16px;
     font-family: PingFangSC-Medium, PingFang SC;
@@ -971,7 +1015,7 @@ export default {
   // }
 
   .order {
-    padding: 10px 15px 0;
+    padding: 10px 10px 0;
 
     &__top {
       background: #fff;
@@ -1044,38 +1088,51 @@ export default {
       }
     }
   }
+  & .list {
+    // height: 192px;
+    min-height: 192px;
+    // margin-top: ;
+    // display: flex;
+    margin: 11px 10px 0;
 
-  .list {
-    height: 192px;
-    margin-top: 11px;
-    display: flex;
-    padding: 0 15px;
+    background: #fff;
+    width: 355px;
+    
+    &>.title {
+      font-size: 14px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(51, 51, 51, 1);
+      line-height: 16px;
+      padding-top: 12px;
+      padding-left: 15px;
+    }
 
     ul {
-      background: #fff;
-      width: 345px;
       border-radius: 6px;
       box-shadow: 0px 7px 7px -6px rgba(0, 0, 0, 0.2);
+      padding-bottom: 32px;
 
       li {
         float: left;
-        margin: 32px 70px 0 0;
+        margin: 32px 32px 0 0;
         text-align: center;
         position: relative;
 
         img {
-          width: 28px;
-          height: 28px;
+          width: 40px;
+          height: 40px;
           margin: 0 auto;
         }
 
         span {
-          color: #333;
-          font-size: 12px;
-          margin-top: 6px;
-          line-height: 16px;
-          text-align: center;
-          font-family: PingFangSC-Regular, PingFang SC;
+          font-size:13px;
+          font-family:PingFangSC-Regular,PingFang SC;
+          font-weight:400;
+          color:rgba(51,51,51,1);
+          line-height:18px;
+          margin-top: 12px;
+          display: inline-block;
         }
         .description {
           font-size: 10px;
@@ -1096,12 +1153,11 @@ export default {
         margin-right: 0;
       }
 
-      li:nth-child(1),
-      li:nth-child(4) {
-        padding-left: 30px;
+      li:nth-child(4n + 1) {
+        padding-left: 26px;
       }
 
-      li:nth-child(3) {
+      li:nth-child(4n) {
         margin-right: 0;
       }
     }
