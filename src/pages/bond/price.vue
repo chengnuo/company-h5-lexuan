@@ -19,7 +19,7 @@
     <a href="javascript:;"
        class="submit"
        @click="handleSubmitDialog">
-      <!-- 充 值 -->
+      充 值
     </a>
 
     <van-overlay :show="showBond"
@@ -292,9 +292,12 @@ export default {
     font-weight: 400;
     line-height: 44px;
     color: rgba(255, 255, 255, 1);
-    background: url(../../assets/img/bond/btn_01_01@2x.png) center center
-      no-repeat;
-    background-size: 100% 100%;
+    // background: url(../../assets/img/bond/btn_01_01@2x.png) center center
+    //   no-repeat;
+    // background-size: 100% 100%;
+
+    background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
+    border-radius:22px;
   }
   input::-webkit-input-placeholder {
     color: #ccc;

@@ -293,12 +293,8 @@ export default {
     width: 90%;
     height: 44px;
     line-height: 44px;
-    background: linear-gradient(
-      225deg,
-      rgba(10, 211, 238, 1) 0%,
-      rgba(10, 190, 213, 1) 100%
-    );
-    border-radius: 2px;
+    background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
+    border-radius:22px;
     display: block;
     font-size: 16px;
     font-weight: 400;
