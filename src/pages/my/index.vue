@@ -1,7 +1,7 @@
 <template>
   <div class="my myCon">
     <!-- banner -->
-    <div class="banner">
+    <!-- <div class="banner">
       <div class="userInfo clearfix">
         <div>
           <img
@@ -46,6 +46,53 @@
           </div>
         </div>
       </div>
+    </div> -->
+    <div class="headerbar">
+      <div class="titleLayout clearfix">
+        <div class="rightIcon fr"></div>
+        <!-- <div class="title">开启创业</div> -->
+      </div>
+      <div class="userInfoLayout">
+        <div class="userInfo clearfix fl">
+          <div class="leftbar fl">
+            <div class="img">
+              <img v-if="userData.headImgUrl"
+                   :src="userData.headImgUrl"
+                   alt="">
+              <img v-else
+                   src="../../assets/img/home/head portrait_02@2x.png"
+                   alt="">
+            </div>
+          </div>
+          <div class="rightbar  fl">
+            <div>
+              <div class="name">萧十一郎</div>
+              <div class="ptlevel">乐选团长</div>
+            </div>
+            <div class="invitecode">
+              邀请码：274832
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="temporaryAccount fr">
+          <div class="name">临时账户(元)</div>
+          <div class="number">275.25</div>
+        </div> -->
+
+      </div>
+    </div>
+
+    <div class="teamNuber clearfix">
+      <div class="leftbar fl">
+        <div class="name">我的团队(人)</div>
+        <div class="number">198</div>
+      </div>
+      <div class="centerbar fl"></div>
+      <div class="rightbar fl">
+        <div class="name">我的资产(元)</div>
+        <div class="number">2753</div>
+      </div>
     </div>
 
     <!-- 我的订单 -->
@@ -53,31 +100,28 @@
       <ul class="order__top">
         <li @click="jumpMyOrder(10)">
           <p>我的订单</p>
-          <van-icon class="right" name="arrow" />
+          <van-icon class="right"
+                    name="arrow" />
         </li>
       </ul>
       <ul class="order__box">
-        <li
-          v-for="(item, index) in orderList"
-          :key="item.title"
-          @click="jumpMyOrder(index)"
-        >
-          <img :src="item.imgUrl" alt="" />
+        <li v-for="(item, index) in orderList"
+            :key="item.title"
+            @click="jumpMyOrder(index)">
+          <img :src="item.imgUrl"
+               alt="" />
           <p>{{ item.title }}</p>
           <div v-if="falg">
-            <div v-if="orderState.waitPay != 0 && index === 0" class="bedeck">
+            <div v-if="orderState.waitPay != 0 && index === 0"
+                 class="bedeck">
               {{ orderState.waitPay }}
             </div>
-            <div
-              v-else-if="orderState.waitShip != 0 && index === 1"
-              class="bedeck"
-            >
+            <div v-else-if="orderState.waitShip != 0 && index === 1"
+                 class="bedeck">
               {{ orderState.waitShip }}
             </div>
-            <div
-              v-else-if="orderState.waitReceipt != 0 && index === 2"
-              class="bedeck"
-            >
+            <div v-else-if="orderState.waitReceipt != 0 && index === 2"
+                 class="bedeck">
               {{ orderState.waitReceipt }}
             </div>
             <!-- <div v-if="orderState.finish != 0 && index === 3" class="bedeck">
@@ -92,15 +136,18 @@
     <div class="list">
       <ul>
         <li @click="jumpPage(0)">
-          <img src="../../assets/img/my/41.png" alt="" />
+          <img src="../../assets/img/my/41.png"
+               alt="" />
           <span>购买到家</span>
         </li>
         <li @click="jumpPage(1)">
-          <img src="../../assets/img/my/45.png" alt="" />
+          <img src="../../assets/img/my/45.png"
+               alt="" />
           <span>购买套餐</span>
         </li>
         <li @click="jumpPage(2)">
-          <img src="../../assets/img/my/43.png" alt="" />
+          <img src="../../assets/img/my/43.png"
+               alt="" />
           <span>邀请好友</span>
         </li>
         <!-- <li v-if="ptLevel !== 0" @click="jumpPage(3)">
@@ -110,30 +157,40 @@
         </li> -->
 
         <!-- 普通用户不给看库存 -->
-        <li @click="jumpPage(5)" v-if="userData.ptLevel!=0">
-          <img src="../../assets/img/my/46.png" alt="" />
+        <li @click="jumpPage(5)"
+            v-if="userData.ptLevel!=0">
+          <img src="../../assets/img/my/46.png"
+               alt="" />
           <span>我的库存</span>
-          <div class="description" v-if="cloudNum>0">({{cloudNum}}盒)</div>
+          <div class="description"
+               v-if="cloudNum>0">({{cloudNum}}盒)</div>
         </li>
         <li @click="jumpPage(4)">
-          <img src="../../assets/img/my/42.png" alt="" />
+          <img src="../../assets/img/my/42.png"
+               alt="" />
           <span>咨询客服</span>
         </li>
       </ul>
     </div>
 
     <!-- 退出登录 -->
-    <div class="sign-out" @click="signOut">
-      <img src="../../assets/img/my/btn.png" alt="" />
+    <div class="sign-out"
+         @click="signOut">
+      <img src="../../assets/img/my/btn.png"
+           alt="" />
     </div>
 
     <!-- 客服电话 -->
-    <div class="serviceBox" v-if="serviceBoxShow">
-      <div class="bg" @click="serviceBoxShow = false"></div>
+    <div class="serviceBox"
+         v-if="serviceBoxShow">
+      <div class="bg"
+           @click="serviceBoxShow = false"></div>
       <div class="modalDlg">
-        <div bind:tap="serviceCanel" class="kefuCloseBox"></div>
+        <div bind:tap="serviceCanel"
+             class="kefuCloseBox"></div>
         <div>
-          <img src="../../assets/img/my/kefu16@2x.jpg" class="kefuImage" />
+          <img src="../../assets/img/my/kefu16@2x.jpg"
+               class="kefuImage" />
         </div>
         <div class="title">客服热线</div>
         <div class="content">
@@ -141,8 +198,11 @@
           - 21:00
         </div>
         <div class="action clearfix">
-          <div class="leftbar" @click="serviceBoxShow = false">暂不需要</div>
-          <a class="rightbar" href="javascript:;" @click="telPhone">立即拨打</a>
+          <div class="leftbar"
+               @click="serviceBoxShow = false">暂不需要</div>
+          <a class="rightbar"
+             href="javascript:;"
+             @click="telPhone">立即拨打</a>
         </div>
       </div>
     </div>
@@ -155,9 +215,9 @@
 import Vue from "vue";
 import VueClipboard from "vue-clipboard2";
 import { Toast } from 'vant'
-import {apiUserIndex, apiCloudListInfo, apiShopMobileUserInfo, stockApiCloudNum} from '@/api/my'
+import { apiUserIndex, apiCloudListInfo, apiShopMobileUserInfo, stockApiCloudNum } from '@/api/my'
 
-import {apiShopMobileIncomeBal} from '@/api/bond'
+import { apiShopMobileIncomeBal } from '@/api/bond'
 import bottomBanner from '@/components/bottomBanner';
 
 
@@ -258,14 +318,14 @@ export default {
       //   this.$toast(res.msg);
       // }
 
-      apiUserIndex({}).then(res=>{
+      apiUserIndex({}).then(res => {
         if (res.code.toString() === "10000") {
           this.orderState = res.data.order;
           this.userIndexInfo = res.data;
           this.ptLevel = res.data.ptLevel;
           this.falg = true;
         }
-      }).catch(error=>{
+      }).catch(error => {
         this.$toast(res.msg);
       })
     },
@@ -279,12 +339,12 @@ export default {
       // } catch (error) {
       //   this.$toast(res.msg);
       // }
-      
-      apiShopMobileIncomeBal({}).then(res=>{
+
+      apiShopMobileIncomeBal({}).then(res => {
         if (res.code.toString() === "10000") {
           this.acBal = res.data.acBal;
         }
-      }).catch(error=>{
+      }).catch(error => {
         this.$toast(error.msg);
       })
     },
@@ -312,13 +372,13 @@ export default {
       //   this.$toast(res.msg);
       // }
 
-      
-      
-      apiCloudListInfo({}).then(res=>{
+
+
+      apiCloudListInfo({}).then(res => {
         if (res.code.toString() === "10000") {
           this.num = res.data.num;
         }
-      }).catch(error=>{
+      }).catch(error => {
         this.$toast(error);
       })
     },
@@ -340,13 +400,13 @@ export default {
 
       if (type === 0) {
         window.location.href = `/goodDetail?inviteCode=${inviteCode}`;
-      } else if(type ===1){
-        if(this.userData.ptLevel==0){
+      } else if (type === 1) {
+        if (this.userData.ptLevel == 0) {
           Toast(`抱歉，你暂无购买资格，请联系你的上级进行购买`);
-        }else{
+        } else {
           this.$router.push({ name: `BecomeServiceProvider` });
         }
-      }else if (type === 2) {
+      } else if (type === 2) {
         window.location.href = `/mysInvitationPoster?token=${userData.userToken}`;
       } else if (type === 4) {
         this.serviceBoxShow = true;
@@ -422,17 +482,17 @@ export default {
       // }
 
       Toast.clear();
-      
-      stockApiCloudNum({}).then(res=>{
+
+      stockApiCloudNum({}).then(res => {
         if (res.code.toString() === "10000") {
           this.cloudNum = res.data.num;
         }
-      }).catch(error=>{
+      }).catch(error => {
         this.$toast(res.msg);
       })
     },
     // 个人资料
-    async apiHomeUserInfo(){
+    async apiHomeUserInfo() {
       let sendData = {}
       // const res = await this.$post(this.$api.homeUserInfo, sendData)
       // try {
@@ -444,13 +504,13 @@ export default {
       // } catch (error) {
       //   console.error(error)
       // }
-      
-      apiShopMobileUserInfo(sendData).then(res=>{
+
+      apiShopMobileUserInfo(sendData).then(res => {
         if (res.code.toString() === "10000") {
           window.sessionStorage.setItem('userData', JSON.stringify(res.data)) // 这个保持跟之前一样。
           this.userData = res.data;
         }
-      }).catch(error=>{
+      }).catch(error => {
         this.$toast(error);
       })
     },
@@ -460,7 +520,64 @@ export default {
 
 <style lang="less" scoped>
 .my {
-  background: #F5F8FA;
+  background: #f5f8fa;
+
+  & .teamNuber {
+    width: 355px;
+    height: 80px;
+    background: linear-gradient(
+      225deg,
+      rgba(247, 222, 176, 1) 0%,
+      rgba(247, 195, 153, 1) 100%
+    );
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: -36px auto 0;
+    & .leftbar {
+      width: 177px;
+      text-align: center;
+      & .name {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(155, 93, 56, 1);
+        line-height: 19px;
+        margin-top: 15px;
+      }
+      & .number {
+        font-size: 24px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: rgba(155, 93, 56, 1);
+        line-height: 33px;
+      }
+    }
+    & .centerbar {
+      width: 1px;
+      height: 30px;
+      background: rgba(5, 5, 5, 0.1);
+      margin: 26px 0;
+    }
+    & .rightbar {
+      width: 177px;
+      text-align: center;
+      & .name {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(155, 93, 56, 1);
+        line-height: 19px;
+        margin-top: 15px;
+      }
+      & .number {
+        font-size: 24px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: rgba(155, 93, 56, 1);
+        line-height: 33px;
+      }
+    }
+  }
 
   .serviceBox {
     width: 100%;
@@ -621,136 +738,236 @@ export default {
   color: #333;
   position: relative;
 
-  .banner {
+  & .headerbar {
     width: 375px;
-    height: 260px;
-    position: relative;
-    background: url(../../assets/img/member/bg_100@2x.png) center center no-repeat;
-    background-size: 100%;
-
-    .userInfo {
-      width: 100%;
-      height: 95px;
-      padding-top: 63px;
-
-      .img {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        margin: 0 auto;
-        object-fit: cover;
+    height: 200px;
+    // background: #c61c1c;
+    background: url(../../assets/img/member/bg_100@2x.png) no-repeat;
+    background-size: 100% 100%;
+    & .titleLayout {
+      padding-top: 32px;
+      text-align: center;
+      & .title {
+        font-size: 18px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 25px;
       }
-
-      .right {
-        .right-top {
-          display: flex;
-          margin-top: 6px;
-          align-items: center;
-          justify-content: center;
-
-          &__name {
-            height: 18px;
+      & .rightIcon {
+        width: 22px;
+        height: 22px;
+        background: rgba(255, 255, 255, 1);
+        margin-right: 13px;
+      }
+    }
+    & .userInfoLayout {
+      margin-top: 35px;
+      & .userInfo {
+        // width: 140px;
+        margin-left: 20px;
+        & .leftbar {
+          & .img {
+            width: 56px;
+            height: 56px;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 100%;
+            }
+          }
+        }
+        & .rightbar {
+          margin-left: 10px;
+          margin-top: 8px;
+          & .name {
             font-size: 16px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
             color: rgba(255, 255, 255, 1);
-            color: #fff;
-            font-weight: bold;
-            margin-right: 6px;
+            line-height: 18px;
+            display: inline-block;
+          }
+          & .ptlevel {
+            height: 10px;
+            line-height: 10px;
+            background: rgba(255, 237, 199, 1);
+            border: 1px solid rgba(192, 176, 140, 1);
+            padding: 3px 6px;
+            font-size: 10px;
+            border-radius: 10px;
+            color: #ae7637;
             text-align: center;
-            vertical-align: middle;
+            margin-top: 5px;
+            display: inline-block;
+            margin-left: 10px;
           }
-
-          > img {
-            height: 16px;
-            vertical-align: middle;
-          }
-        }
-
-        .balance {
-          .top {
-            padding: 14px 0 2px;
-            text-align: center;
-            line-height: 20px;
-
-            .first {
-              display: inline-block;
-              width: 80px;
-              height: 1px;
-              background: rgba(0, 0, 0, 1);
-              opacity: 0.1;
-              vertical-align: middle;
-            }
-
-            span {
-              font-size: 12px;
-              font-family: PingFangSC-Regular, PingFang SC;
-              color: rgba(107, 77, 33, 1);
-              line-height: 19px;
-              padding: 0 10px;
-              display: inline-block;
-            }
-
-            p {
-              line-height: 30px;
-              font-weight: bold;
-              font-size: 22px;
-              color: #6b4d21;
-              padding: 2px 0 6px;
-            }
-
-            .second {
-              width: 263px;
-              height: 1px;
-              margin: 0 auto;
-              display: block;
-              background: rgba(0, 0, 0, 1);
-              opacity: 0.1;
-            }
-          }
-        }
-
-        &__info {
-          display: flex;
-          line-height: 18px;
-          position: absolute;
-          bottom: 10px;
-          left: 130px;
-
-          > span {
-            color: #333;
+          & .invitecode {
             font-size: 12px;
-            margin-right: 10px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            line-height: 17px;
+            margin-top: 5px;
           }
-
-          .copy {
-            width: 14px;
-            height: 14px;
-          }
         }
-
-        .name-act {
-          line-height: 56px;
-          color: #fff;
-          margin-top: 0;
-          font-weight: bold;
+      }
+      & .temporaryAccount {
+        width: 80px;
+        height: 36px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 133, 133, 1);
+        margin-right: 20px;
+        padding: 10px;
+        & .name {
+          font-size: 10px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+          line-height: 14px;
         }
-
-        .logo-1 {
-          width: 36px;
-          padding: 6px 0;
-        }
-
-        .logo-2 {
-          width: 39px;
-          padding: 6px 0;
-        }
-
-        .logo-3 {
-          width: 49px;
-          padding: 6px 0;
+        & .number {
+          font-size: 20px;
+          font-family: PingFangSC-Semibold, PingFang SC;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 1);
+          line-height: 20px;
+          margin-top: 2px;
         }
       }
     }
   }
+
+  // .banner {
+  //   width: 375px;
+  //   height: 260px;
+  //   position: relative;
+  //   background: url(../../assets/img/my/head.png) center center no-repeat;
+  //   background-size: 100%;
+
+  //   .userInfo {
+  //     width: 100%;
+  //     height: 95px;
+  //     padding-top: 63px;
+
+  //     .img {
+  //       width: 56px;
+  //       height: 56px;
+  //       border-radius: 50%;
+  //       margin: 0 auto;
+  //       object-fit: cover;
+  //     }
+
+  //     .right {
+  //       .right-top {
+  //         display: flex;
+  //         margin-top: 6px;
+  //         align-items: center;
+  //         justify-content: center;
+
+  //         &__name {
+  //           height: 18px;
+  //           font-size: 16px;
+  //           color: rgba(255, 255, 255, 1);
+  //           color: #fff;
+  //           font-weight: bold;
+  //           margin-right: 6px;
+  //           text-align: center;
+  //           vertical-align: middle;
+  //         }
+
+  //         > img {
+  //           height: 16px;
+  //           vertical-align: middle;
+  //         }
+  //       }
+
+  //       .balance {
+  //         .top {
+  //           padding: 14px 0 2px;
+  //           text-align: center;
+  //           line-height: 20px;
+
+  //           .first {
+  //             display: inline-block;
+  //             width: 80px;
+  //             height: 1px;
+  //             background: rgba(0, 0, 0, 1);
+  //             opacity: 0.1;
+  //             vertical-align: middle;
+  //           }
+
+  //           span {
+  //             font-size: 12px;
+  //             font-family: PingFangSC-Regular, PingFang SC;
+  //             color: rgba(107, 77, 33, 1);
+  //             line-height: 19px;
+  //             padding: 0 10px;
+  //             display: inline-block;
+  //           }
+
+  //           p {
+  //             line-height: 30px;
+  //             font-weight: bold;
+  //             font-size: 22px;
+  //             color: #6b4d21;
+  //             padding: 2px 0 6px;
+  //           }
+
+  //           .second {
+  //             width: 263px;
+  //             height: 1px;
+  //             margin: 0 auto;
+  //             display: block;
+  //             background: rgba(0, 0, 0, 1);
+  //             opacity: 0.1;
+  //           }
+  //         }
+  //       }
+
+  //       &__info {
+  //         display: flex;
+  //         line-height: 18px;
+  //         position: absolute;
+  //         bottom: 10px;
+  //         left: 130px;
+
+  //         > span {
+  //           color: #333;
+  //           font-size: 12px;
+  //           margin-right: 10px;
+  //         }
+
+  //         .copy {
+  //           width: 14px;
+  //           height: 14px;
+  //         }
+  //       }
+
+  //       .name-act {
+  //         line-height: 56px;
+  //         color: #fff;
+  //         margin-top: 0;
+  //         font-weight: bold;
+  //       }
+
+  //       .logo-1 {
+  //         width: 36px;
+  //         padding: 6px 0;
+  //       }
+
+  //       .logo-2 {
+  //         width: 39px;
+  //         padding: 6px 0;
+  //       }
+
+  //       .logo-3 {
+  //         width: 49px;
+  //         padding: 6px 0;
+  //       }
+  //     }
+  //   }
+  // }
 
   .order {
     padding: 10px 15px 0;
@@ -859,12 +1076,12 @@ export default {
           text-align: center;
           font-family: PingFangSC-Regular, PingFang SC;
         }
-        .description{
-          font-size:10px;
-          font-family:PingFangSC-Regular,PingFang SC;
-          font-weight:400;
-          color:rgba(153,153,153,1);
-          line-height:12px;
+        .description {
+          font-size: 10px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(153, 153, 153, 1);
+          line-height: 12px;
           // width: 48px;
         }
 
@@ -874,7 +1091,7 @@ export default {
           font-family: PingFangSC-Regular, PingFang SC;
         }
       }
-      li:last-child{
+      li:last-child {
         margin-right: 0;
       }
 
@@ -913,5 +1130,18 @@ export default {
     font-weight: bold;
     margin: 0px -2px 0 0;
   }
+}
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix::after {
+  clear: both;
+  content: " ";
+  visibility: hidden;
+  height: 0;
 }
 </style>
