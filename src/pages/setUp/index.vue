@@ -20,7 +20,7 @@
         </van-uploader>
       </li>
       <li class="clearfix">
-        <span class="left">真实姓名</span>
+        <span class="left">昵称</span>
         <em class="center">{{userInfo.nickname}}</em>
       </li>
       <li class="clearfix"
@@ -31,7 +31,23 @@
              class="right">
         <em class="center">{{userInfo.hasPwd == 1 ?'已设置':'未设置'}}</em>
       </li>
-      <li class="clearfix"
+      <li class="clearfix">
+        <span class="left">支付密码</span>
+        <em class="center">xxx</em>
+      </li>
+      <li class="clearfix">
+        <span class="left">绑定微信</span>
+        <em class="center">xxx</em>
+      </li>
+      <li class="clearfix">
+        <span class="left">我的微信名片</span>
+        <em class="center">xxx</em>
+      </li>
+      <li class="clearfix">
+        <span class="left">关于慧乐选</span>
+        <em class="center">版本 1.0</em>
+      </li>
+      <!-- <li class="clearfix"
           @click="jumpBondPrice">
         <span class="left">保证金</span>
         <img src="../../assets/img/my/more_01@2x.png"
@@ -45,7 +61,7 @@
         <img src="../../assets/img/my/more_01@2x.png"
              alt=""
              class="right">
-      </li>
+      </li> -->
     </ul>
     <a href="javascript:;"
        class="logOut"
