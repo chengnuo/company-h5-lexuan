@@ -25,6 +25,7 @@ if (process.env.NODE_ENV === 'development') { //区别线上线下环境
     getApiMppayMingpinmao: 'https://test-mppay.mingpinmao.cn', // 支付链接
     prefixOrderYinliUrl: 'http://test-order.zhuanbo.gdxfhl.com',
     api_cloud_url: 'http://test-mlive.zhuanbo.gdxfhl.com', // go
+    api_goods_url: 'http://test-mlive-api.zhuanbo.gdxfhl.com', // go 商品
     webTitle: '乐选',
     appid: 'wxa54f0533340859b3' // 公众号 appid ，支付使用11
   }
@@ -45,6 +46,7 @@ if (process.env.NODE_ENV === 'development') { //区别线上线下环境
     prefixZhuanboApi: 'http://zb-api.zhuanbo.gdxfhl.com',
     prefixZhuanboUrl: 'http://h5.zhuanbo.gdxfhl.com',
     api_cloud_url: 'http://mlive.zhuanbo.gdxfhl.com', // go
+    api_goods_url: 'http://mlive-api.zhuanbo.gdxfhl.com', // go 商品
     webTitle: '乐选',
     appid: 'wxa54f0533340859b3' // 公众号 appid ，支付使用
   }

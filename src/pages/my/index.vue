@@ -521,6 +521,7 @@ export default {
 <style lang="less" scoped>
 .my {
   background: #f5f8fa;
+  margin-bottom: 100px;
 
   & .teamNuber {
     width: 355px;

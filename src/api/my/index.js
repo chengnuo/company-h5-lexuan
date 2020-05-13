@@ -1,7 +1,7 @@
 import request from '@/util/request.js'
 import commonJs from '@/util/common';
 
-// 国家区域编号
+// 图片资料
 export function apiUserIndex(data) {
   return request({
     url: '/shop/mobile/user/index',
@@ -69,6 +69,33 @@ export function apiCloudListInfo(data) {
 export function stockApiCloudNum(data) {
   return request({
     url: `${commonJs.config.api_cloud_url}/api/cloud/num`,
+    method: 'post',
+    data
+  })
+}
+
+// 个人资料
+export function myMobileUserInfo(data) {
+  return request({
+    url: `/shop/mobile/user/info`,
+    method: 'post',
+    data
+  })
+}
+
+// 商品列表
+export function goodsDetailGetList(data) {
+  return request({
+    url: `${commonJs.config.api_goods_url}/base/goods/list`,
+    method: 'post',
+    data
+  })
+}
+
+// 商品详情
+export function goodsDetailGetDetail(data) {
+  return request({
+    url: `${commonJs.config.api_goods_url}/base/goods/detail`,
     method: 'post',
     data
   })
