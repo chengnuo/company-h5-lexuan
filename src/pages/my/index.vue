@@ -178,7 +178,7 @@
                alt="" />
           <span>我的云仓</span>
         </li>
-        <li @click="jumpPage(111)">
+        <li @click="jumpPage('MyAchievements')">
           <img src="../../assets/img/my/42.png"
                alt="" />
           <span>我的业绩</span>
@@ -433,6 +433,7 @@ export default {
         'sweepCode': 'sweepCode',
         'FeedbackQuestions': 'FeedbackQuestions',
         'MySuperior': 'MySuperior',
+        'MyAchievements': 'MyAchievements',
       };
 
       const userData =

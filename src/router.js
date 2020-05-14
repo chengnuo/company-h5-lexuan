@@ -557,6 +557,14 @@ const routerData = {
       component: () => import('@/pages/my/certificateAuthorizationBook')
     },
     {
+      path: '/my/myAchievements',
+      name: 'MyAchievements',
+      meta: {
+        title: '我的业绩' // 乐选-我的业绩
+      },
+      component: () => import('@/pages/my/myAchievements')
+    },
+    {
       path: '/my/mySuperior',
       name: 'MySuperior',
       meta: {
