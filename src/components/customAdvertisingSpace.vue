@@ -1,58 +1,93 @@
 <!--  广告位 -->
 <template>
   <div class="customAdvertisingSpace">
-    <div class="bg"></div>
+    <!-- <div class="bg"></div> -->
     <div class="customAdvertisingSpaceLayout">
-      <div class="typeOne marginTop10">
+      <div class="typeOne marginTop10"
+           v-if="displayType==0">
         <div class="items">
-          <div class="item">1行1个</div>
-        </div>
-      </div>
-      <div class="typeTwo marginTop10">
-        <div class="items">
-          <div class="item">1行2个</div>
-          <div class="item">1行2个</div>
-          <div class="item">1行2个</div>
-          <div class="item">1行2个</div>
-        </div>
-      </div>
-      <div class="typeThree marginTop10">
-        <div class="items">
-          <div class="item">1行3个</div>
-          <div class="item">1行3个</div>
-          <div class="item">1行3个</div>
-          <div class="item">1行3个</div>
-        </div>
-      </div>
-      <div class="typeFour marginTop10">
-        <div class="items">
-          <div class="item">1行4个</div>
-          <div class="item">1行4个</div>
-          <div class="item">1行4个</div>
-          <div class="item">1行4个</div>
-        </div>
-      </div>
-      <div class="typeFive marginTop10">
-        <div class="items">
-          <div class="item">2左2右</div>
-          <div class="item">2左2右</div>
-          <div class="item">2左2右</div>
-          <div class="item">2左2右</div>
-        </div>
-      </div>
-      <div class="typeSix marginTop10">
-        <div class="items">
-          <div class="leftbar">
-            <div class="item">1左2右</div>
+          <div class="item">
+            <img class="img"
+                 src="../assets/img/home/banner.jpg" />
           </div>
-          <div class="rightbar">
-            <div class="item">1左2右</div>
-            <div class="item">1左2右</div>
+        </div>
+      </div>
+      <div class="typeTwo"
+           v-if="displayType==1">
+        <div class="items clearfix">
+          <div class="item fl">
+            <img class="img"
+                 src="../assets/img/home/banner.jpg" />
+          </div>
+          <div class="item fl">
+            <img class="img"
+                 src="../assets/img/home/banner.jpg" />
+          </div>
+        </div>
+      </div>
+      <div class="typeThree marginTop10"
+           v-if="displayType==2">
+        <div class="items">
+          <div class="item">1行3个</div>
+          <div class="item">1行3个</div>
+          <div class="item">1行3个</div>
+          <div class="item">1行3个</div>
+        </div>
+      </div>
+      <div class="typeFour marginTop10"
+           v-if="displayType==3">
+        <div class="items">
+          <div class="item">1行4个</div>
+          <div class="item">1行4个</div>
+          <div class="item">1行4个</div>
+          <div class="item">1行4个</div>
+        </div>
+      </div>
+      <div class="typeFive"
+           v-if="displayType==4">
+        <div class="items clearfix">
+          <div class="item fl">
+            <img class="img"
+                 src="../assets/img/home/banner.jpg" />
+          </div>
+          <div class="item fl">
+            <img class="img"
+                 src="../assets/img/home/banner.jpg" />
+          </div>
+          <div class="item fl">
+            <img class="img"
+                 src="../assets/img/home/banner.jpg" />
+          </div>
+          <div class="item fl">
+            <img class="img"
+                 src="../assets/img/home/banner.jpg" />
+          </div>
+        </div>
+      </div>
+      <div class="typeSix"
+           v-if="displayType==5">
+        <div class="items clearfix">
+          <div class="leftbar fl">
+            <div class="item">
+              <img class="img"
+                   src="../assets/img/home/banner.jpg" />
+            </div>
+          </div>
+          <div class="rightbar fl">
+            <div class="item">
+              <img class="img"
+                   src="../assets/img/home/banner.jpg" />
+            </div>
+            <div class="item">
+              <img class="img"
+                   src="../assets/img/home/banner.jpg" />
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="typeSeven marginTop10">
+      <div class="typeSeven marginTop10"
+           v-if="displayType==6">
         <div class="items">
           <div class="headerbar">
             <div class="item">1上2下</div>
@@ -68,7 +103,8 @@
         </div>
       </div>
 
-      <div class="typeEight marginTop10">
+      <div class="typeEight marginTop10"
+           v-if="displayType==7">
         <div class="items">
           <div class="leftbarOne">
             <div class="item">1左3右</div>
@@ -91,11 +127,19 @@
 import { Toast } from 'vant';
 
 import commonJs from '@/util/common'
-import {  apiShopMobileMsgNotifyList } from '@/api/my'
+import { apiShopMobileMsgNotifyList } from '@/api/my'
 
 
 export default {
   name: 'CustomAdvertisingSpace',
+  props: {
+    displayType: {
+      type: Number,
+      default: () => {
+        return 0
+      }
+    }
+  },
   data() {
     return {
       noticeList: [],
@@ -108,19 +152,19 @@ export default {
     }
   },
   mounted() {
-    
+
     commonJs.outSideShare();
     // this.apiShopMobileMsgNotifyList();
   },
   methods: {
-    onLoad(){
+    onLoad() {
       this.apiShopMobileMsgNotifyList();
     },
-    apiShopMobileMsgNotifyList(){
-      const data = Object.assign({}, this.filterData,{
+    apiShopMobileMsgNotifyList() {
+      const data = Object.assign({}, this.filterData, {
 
       })
-      apiShopMobileMsgNotifyList(data).then(res=>{
+      apiShopMobileMsgNotifyList(data).then(res => {
         if (res.code.toString() === '10000') {
 
           // this.noticeList = res.data.items;
@@ -146,7 +190,7 @@ export default {
         } else {
           Toast.fail(res.msg)
         }
-      }).catch(error=>{
+      }).catch(error => {
         console.log('error', error)
         Toast.fail(error)
       })
@@ -155,6 +199,18 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix::after {
+  clear: both;
+  content: " ";
+  visibility: hidden;
+  height: 0;
+}
 .customAdvertisingSpace {
   .bg {
     width: 100%;
@@ -165,50 +221,65 @@ export default {
     top: 0;
     z-index: -1;
   }
-  .marginTop10{
+  .marginTop10 {
     margin-top: 10px;
   }
-  .typeOne{
+  .typeOne {
     color: #fff;
-    & .items{
+    & .items {
       display: flex;
       flex-wrap: wrap;
-      & .item{
+      & .item {
         // width: 375px;
-        height: 150px;
+        height: 160px;
         background: #111;
         flex: 1;
         width: 100%;
         min-width: 100%;
         max-width: 100%;
-        border: 0.5px solid #c00;
+        // border: 0.5px solid #c00;
         box-sizing: border-box;
+        overflow: hidden;
+
+        & .img {
+          width: 355px;
+          // height: 160px;
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
     }
   }
-  .typeTwo{
+  .typeTwo {
     color: #fff;
-    & .items{
-      display: flex;
-      flex-wrap: wrap;
-      & .item{
-        height: 150px;
+    & .items {
+      & .item {
+        width: 172px;
         background: #222;
-        flex: 1;
-        width: 50%;
-        min-width: 50%;
-        max-width: 50%;
-        border: 0.5px solid #c00;
+        overflow: hidden;
         box-sizing: border-box;
+        & .img {
+          width: 172px;
+          height: 80px;
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      & .item:nth-of-type(2n) {
+        margin-left: 11px;
       }
     }
   }
-  .typeThree{
+  .typeThree {
     color: #fff;
-    & .items{
+    & .items {
       display: flex;
       flex-wrap: wrap;
-      & .item{
+      & .item {
         height: 150px;
         background: #333;
         flex: 1;
@@ -217,15 +288,23 @@ export default {
         max-width: 33.3%;
         border: 0.5px solid #c00;
         box-sizing: border-box;
+        & .img {
+          width: 355px;
+          // height: 160px;
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
     }
   }
-  .typeFour{
+  .typeFour {
     color: #fff;
-    & .items{
+    & .items {
       display: flex;
       flex-wrap: wrap;
-      & .item{
+      & .item {
         height: 150px;
         background: #444;
         flex: 1;
@@ -234,164 +313,235 @@ export default {
         max-width: 25%;
         border: 0.5px solid #c00;
         box-sizing: border-box;
+        & .img {
+          width: 355px;
+          // height: 160px;
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
     }
   }
-  .typeFive{
+  .typeFive {
     color: #fff;
-    & .items{
-      display: flex;
-      flex-wrap: wrap;
-      & .item{
-        height: 150px;
+    & .items {
+      & .item {
+        width: 172px;
         background: #555;
-        flex: 1;
-        width: 50%;
-        min-width: 50%;
-        max-width: 50%;
-        border: 0.5px solid #c00;
         box-sizing: border-box;
+        margin-top: 10px;
+        & .img {
+          width: 172px;
+          height: 80px;
+          background: rgba(230, 230, 255, 1);
+          border-radius: 4px;
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      & .item:nth-of-type(2n) {
+        margin-left: 11px;
       }
     }
   }
-  .typeSix{
+  .typeSix {
     color: #fff;
-    & .items{
-      display: flex;
-      flex-wrap: wrap;
-      & .leftbar{
-        flex: 1;
-        width: 50%;
-        min-width: 50%;
-        max-width: 50%;
-        & .item{
-          height: 240px;
+    & .items {
+      & .leftbar {
+        & .item {
+          width: 170px;
+          height: 170px;
           background: #666;
-          border: 0.5px solid #c00;
+          // border: 0.5px solid #c00;
           box-sizing: border-box;
+          & .img {
+            width: 170px;
+            height: 170px;
+            & img {
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
-      & .rightbar{
-        flex: 1;
-        width: 50%;
-        min-width: 50%;
-        max-width: 50%;
-        & .item{
-          height: 120px;
+      & .rightbar {
+        margin-left: 13px;
+        & .item {
+          width: 172px;
+          height: 80px;
           background: #666;
-          border: 0.5px solid #c00;
           box-sizing: border-box;
+          & .img {
+            width: 172px;
+            height: 80px;
+            & img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+        & .item:nth-child(n + 2) {
+          margin-top: 10px;
         }
       }
-      
     }
   }
-  .typeSeven{
+  .typeSeven {
     color: #fff;
-    & .items{
+    & .items {
       display: flex;
       flex-wrap: wrap;
-      & .headerbar{
+      & .headerbar {
         flex: 1;
         width: 100%;
         min-width: 100%;
         max-width: 100%;
-        & .item{
+        & .item {
           height: 187.5px;
           background: #777;
           border: 0.5px solid #c00;
           box-sizing: border-box;
+          & .img {
+            width: 355px;
+            // height: 160px;
+            & img {
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
-      & .bodybar{
+      & .bodybar {
         flex: 1;
         width: 100%;
         min-width: 100%;
         max-width: 100%;
         display: flex;
         flex-wrap: wrap;
-        & .leftbar{
+        & .leftbar {
           flex: 1;
           width: 50%;
           min-width: 50%;
           max-width: 50%;
-          & .item{
+          & .item {
             height: 187.5px;
             background: #777;
             border: 0.5px solid #c00;
             box-sizing: border-box;
+            & .img {
+              width: 355px;
+              // height: 160px;
+              & img {
+                width: 100%;
+                height: 100%;
+              }
+            }
           }
         }
-        & .rightbar{
+        & .rightbar {
           flex: 1;
           width: 50%;
           min-width: 50%;
           max-width: 50%;
-          & .item{
+          & .item {
             height: 187.5px;
             background: #777;
             border: 0.5px solid #c00;
             box-sizing: border-box;
+            & .img {
+              width: 355px;
+              // height: 160px;
+              & img {
+                width: 100%;
+                height: 100%;
+              }
+            }
           }
         }
       }
-      
     }
   }
 
-  .typeEight{
+  .typeEight {
     color: #fff;
-    & .items{
+    & .items {
       display: flex;
       flex-wrap: wrap;
-      & .leftbarOne{
+      & .leftbarOne {
         flex: 1;
         width: 50%;
         min-width: 50%;
         max-width: 50%;
-        & .item{
+        & .item {
           height: 240px;
           background: #888;
           border: 0.5px solid #c00;
           box-sizing: border-box;
+          & .img {
+            width: 355px;
+            // height: 160px;
+            & img {
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
-      & .rightbarOne{
+      & .rightbarOne {
         flex: 1;
         width: 50%;
         min-width: 50%;
         max-width: 50%;
         display: flex;
         flex-wrap: wrap;
-        & .leftbarTwo{
+        & .leftbarTwo {
           flex: 1;
           width: 100%;
           min-width: 100%;
           max-width: 100%;
-          & .item{
+          & .item {
             height: 120px;
             background: #888;
             border: 0.5px solid #c00;
             box-sizing: border-box;
+            & .img {
+              width: 355px;
+              // height: 160px;
+              & img {
+                width: 100%;
+                height: 100%;
+              }
+            }
           }
         }
-        & .rightbarTwo{
+        & .rightbarTwo {
           flex: 1;
           width: 100%;
           min-width: 100%;
           max-width: 100%;
           display: flex;
           flex-wrap: wrap;
-          & .item{
+          & .item {
             height: 120px;
             background: #888;
             border: 0.5px solid #c00;
             box-sizing: border-box;
             flex: 1;
+            & .img {
+              width: 355px;
+              // height: 160px;
+              & img {
+                width: 100%;
+                height: 100%;
+              }
+            }
           }
         }
       }
-      
     }
   }
 }

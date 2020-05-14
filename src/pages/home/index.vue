@@ -16,13 +16,15 @@
           </div>
           <div class="rightbar fl">搜索</div>
         </div>
-        <div class="bodybar clearfix" v-if="searchFocus==true">
+        <div class="bodybar clearfix"
+             v-if="searchFocus==true">
           <div class="leftbar fl">
             最近搜索
           </div>
           <div class="rightbar fr">删除</div>
         </div>
-        <div class="footerbar clearfix" v-if="searchFocus==true">
+        <div class="footerbar clearfix"
+             v-if="searchFocus==true">
           <div class="item">口红</div>
           <div class="item">口红1</div>
           <div class="item">口红2</div>
@@ -65,7 +67,10 @@
           <div class="item">面膜</div>
           <div class="item">美肤</div>
           <div class="item">周边</div> -->
-          <div :class="['item', headerNavActive==item.id?'active':''] " v-for="(item,index) in headerNavArray" :key="item.id" @click="handleHeaderNav(item,index)">{{item.name}}</div>
+          <div :class="['item', headerNavActive==item.id?'active':''] "
+               v-for="(item,index) in headerNavArray"
+               :key="item.id"
+               @click="handleHeaderNav(item,index)">{{item.name}}</div>
         </div>
 
       </div>
@@ -74,11 +79,12 @@
     <div class="home"
          v-if="searchFocus==false">
 
+
       <div v-for="(item) in homeIndex.templates"
            :key="item.indexs">
         <div class="banner"
              v-if="item.templateType==1">
-          <customAdvertisingSpace :item="item" />
+          <customAdvertisingSpace :item="item" :displayType="item.displayType" />
         </div>
         <div class="nav"
              v-if="item.templateType==0">
@@ -86,6 +92,14 @@
         </div>
         <div class="limitedTime"
              v-if="item.templateType==3">
+          <div class="homeTitle clearfix">
+            <div class="name fl">
+              限时秒杀
+            </div>
+            <div class="description fl">
+              精选生活必备好物
+            </div>
+          </div>
           <customLimitedTime :item="item" />
         </div>
         <div v-if="item.templateType==5">
@@ -94,6 +108,45 @@
         <div v-if="item.templateType==4">
           <customAuxiliaryLine :item="item" />
         </div>
+      </div>
+
+      <!-- 一行2个 -->
+      <div class="banner1 ">
+        <!-- <div class="homeTitle clearfix">
+          <div class="name fl">
+            限时秒杀
+          </div>
+          <div class="description fl">
+            精选生活必备好物
+          </div>
+        </div> -->
+        <customAdvertisingSpace :displayType="1" />
+      </div>
+
+      <!-- 精选专区 -->
+      <div class="banner1 marginTop10">
+        <div class="homeTitle clearfix">
+          <div class="name fl">
+            精选专区
+          </div>
+          <div class="description fl">
+            精选生活必备好物
+          </div>
+        </div>
+        <customAdvertisingSpace :displayType="5" />
+      </div>
+
+      <!-- 乐选专区 -->
+      <div class="banner1 marginTop10">
+        <div class="homeTitle clearfix">
+          <div class="name fl">
+            乐选专区
+          </div>
+          <div class="description fl">
+            精选生活必备好物
+          </div>
+        </div>
+        <customAdvertisingSpace :displayType="4" />
       </div>
 
       <bottomBanner :index="1"></bottomBanner>
@@ -267,7 +320,7 @@ export default {
     handleBlurSeach() {
       this.searchFocus = false
     },
-    handleHeaderNav(item){
+    handleHeaderNav(item) {
       this.headerNavActive = item.id
     },
   },
@@ -368,7 +421,7 @@ export default {
   }
 }
 .home {
-  // background: #fff;
+  background: #F1F5F9;
   position: relative;
   margin-bottom: 60px;
   & .banner {
@@ -377,7 +430,14 @@ export default {
     padding: 0 10px;
     // margin-top: -100px;
   }
+  & .banner1 {
+    width: 355px;
+    padding: 0 10px;
+  }
   & .nav {
+  }
+  .limitedTime{
+    margin-top: 10px;
   }
 }
 .fl {
@@ -392,4 +452,31 @@ export default {
   visibility: hidden;
   height: 0;
 }
+.homeTitle {
+  padding: 10px;
+  background: #fff;
+  .name {
+    font-size: 18px;
+    font-family: PingFang-SC-Heavy, PingFang-SC;
+    font-weight: 800;
+    color: rgba(51, 51, 51, 1);
+    line-height: 25px;
+  }
+  .description {
+    font-size: 12px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    line-height: 17px;
+    margin-left: 5px;
+    margin-top: 6px;
+  }
+}
+
+
+.marginTop10 {
+  margin-top: 10px;
+}
+
+
 </style>
