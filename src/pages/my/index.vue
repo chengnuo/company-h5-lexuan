@@ -434,6 +434,7 @@ export default {
         'FeedbackQuestions': 'FeedbackQuestions',
         'MySuperior': 'MySuperior',
         'MyAchievements': 'MyAchievements',
+        // 'PartnerTeams': 'PartnerTeams',
       };
 
       const userData =

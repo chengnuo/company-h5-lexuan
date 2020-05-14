@@ -412,6 +412,14 @@ const routerData = {
       component: () => import('@/pages/my/certificateAuthorization')
     },
     {
+      path: '/my/partnerTeams',
+      name: 'PartnerTeams',
+      meta: {
+        title: '合伙人团队' // 乐选-合伙人团队
+      },
+      component: () => import('@/pages/my/partnerTeams')
+    },
+    {
       path: '/my/feedbackQuestions',
       name: 'FeedbackQuestions',
       meta: {
