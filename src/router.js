@@ -411,6 +411,14 @@ const routerData = {
       },
       component: () => import('@/pages/my/certificateAuthorization')
     },
+    {
+      path: '/my/feedbackQuestions',
+      name: 'feedbackQuestions',
+      meta: {
+        title: '反馈问题' // 乐选-反馈问题
+      },
+      component: () => import('@/pages/my/feedbackQuestions')
+    },
     // {
     //   path: '/my/customAdvertisingSpace',
     //   name: 'CustomAdvertisingSpace',

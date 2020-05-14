@@ -136,7 +136,7 @@
     <div class="list">
       <div class="title">我的服务</div>
       <ul class="clearfix">
-        <li @click="jumpPage(111)">
+        <li @click="jumpPage('feedbackQuestions')">
           <img src="../../assets/img/my/42.png"
                alt="" />
           <span>意见反馈</span>
@@ -436,6 +436,7 @@ export default {
         4: "",
         5: 'myStock',
         'sweepCode': 'sweepCode',
+        'feedbackQuestions': 'feedbackQuestions',
       };
 
       const userData =
