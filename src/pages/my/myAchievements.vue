@@ -38,6 +38,82 @@
         的业绩
       </div>
     </div>
+
+    <div class="achievementsTable">
+      <van-grid :column-num="3"
+                class="columnItemType1">
+        <van-grid-item text="名称" />
+        <van-grid-item text="业绩(TD)" />
+        <van-grid-item text="业绩返点" />
+      </van-grid>
+      <van-grid :column-num="3"
+                class="columnItemType2">
+        <van-grid-item text="我的订购" />
+        <van-grid-item text="文字" />
+        <van-grid-item text="文字" />
+      </van-grid>
+      <van-grid :column-num="3"
+                class="columnItemType2">
+        <van-grid-item text="下级团队" />
+        <van-grid-item text="文字" />
+        <van-grid-item text="文字" />
+      </van-grid>
+      <van-grid :column-num="3"
+                class="columnItemType2">
+        <van-grid-item text="同级团队" />
+        <van-grid-item text="文字" />
+        <van-grid-item text="文字" />
+      </van-grid>
+      <van-grid :column-num="3"
+                class="columnItemType2">
+        <van-grid-item text="总业绩" />
+        <van-grid-item text="文字" />
+        <van-grid-item text="文字" />
+      </van-grid>
+    </div>
+
+    <div class="achievementsTabs">
+      <van-tabs>
+        <van-tab title="我的订购">
+          <div class="item">
+            <ul>
+              <li v-for="(item, index) in giftList"
+                  class="clearfix"
+                  :key="index">
+                <img v-if="item.headImgUrl"
+                    :src="item.headImgUrl"
+                    class="left" />
+                <img v-else
+                    src="../../assets/act/countyStore/people.png"
+                    class="left" />
+                <div class="center">
+                  <div class="name line-clamp-1">
+                    <!-- {{userId == item.fromUserId ? '' : item.nickname}} -->
+                    {{item.nickname}}
+                  </div>
+                  <div class="dec">{{item.content}}</div>
+                </div>
+                <div class="right">
+                  <span class="date">{{item.updateTime}}</span>
+                  <em v-if="item.operateType==1"
+                      class="plus">
+                    （赠送礼品）+{{item.operateGift}}
+                  </em>
+                  <em v-if="item.operateType==2">
+                    <span v-if="item.purchType!=4">
+                      （赠送礼品）-{{item.operateGift}}
+                    </span>
+                  </em>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </van-tab>
+        <van-tab title="下级团队">下级团队</van-tab>
+        <van-tab title="同级团队">同级团队</van-tab>
+      </van-tabs>
+    </div>
+
   </div>
 </template>
 <script >
@@ -51,7 +127,26 @@ export default {
   name: 'MyAchievements',
   data() {
     return {
-
+      giftList: [
+        {
+          userId: 1,
+          nickname: 'nickname',
+          content: 'content',
+          updateTime: 'updateTime',
+        },
+        {
+          userId: 2,
+          nickname: 'nickname2',
+          content: 'content2',
+          updateTime: 'updateTime2',
+        },
+        {
+          userId: 3,
+          nickname: 'nickname3',
+          content: 'content3',
+          updateTime: 'updateTime3',
+        },
+      ],
     }
   },
   mounted() {
@@ -66,7 +161,7 @@ export default {
   .bg {
     width: 100%;
     height: 100%;
-    background: #F6F8FA;
+    background: #f6f8fa;
     position: absolute;
     left: 0;
     top: 0;
@@ -177,10 +272,10 @@ export default {
         }
       }
     }
-    & .performanceAwardsLine{
-      width:375px;
-      height:1px;
-      background:rgba(245,245,245,1);
+    & .performanceAwardsLine {
+      width: 375px;
+      height: 1px;
+      background: rgba(245, 245, 245, 1);
     }
     & .footerbar {
       height: 47px;
@@ -197,6 +292,114 @@ export default {
         font-weight: 500;
         color: rgba(198, 28, 28, 1);
         line-height: 17px;
+      }
+    }
+  }
+  & .achievementsTable {
+    margin-top: 10px;
+  }
+  & .columnItemType1 {
+    /deep/ .van-grid-item__content {
+      background: rgba(216, 216, 216, 1);
+      padding: 0px;
+      /deep/ .van-grid-item__text {
+        font-size: 14px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(51, 51, 51, 1);
+        line-height: 40px;
+        height: 40px;
+      }
+    }
+  }
+  & .columnItemType2 {
+    /deep/ .van-grid-item__content {
+      // background:rgba(216,216,216,1);
+      padding: 0px;
+      /deep/ .van-grid-item__text {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(51, 51, 51, 1);
+        line-height: 40px;
+        height: 40px;
+      }
+    }
+  }
+  & .achievementsTabs {
+    margin-top: 10px;
+    /deep/ .van-tabs__line {
+      display: none;
+    }
+    /deep/ .van-tab {
+      background: #d8d8d8;
+    }
+    /deep/ .van-tab--active {
+      background: #fff;
+    }
+    & .item {
+      ul {
+        padding: 20px 15px;
+        padding-bottom: 0;
+        min-height: 100%;
+        li {
+          min-height: 42px;
+          padding: 18px 15px 18px 10px;
+          background:rgba(255,248,249,1);
+          border-radius:5px;
+          margin-bottom: 10px;
+          .left {
+            width: 30px;
+            height: 30px;
+            float: left;
+            border-radius: 50%;
+            margin-top: 6px;
+            margin-right: 10px;
+            object-fit: cover;
+          }
+          .center {
+            float: left;
+            .name {
+              max-width: 170px;
+              height: 18px;
+              font-size: 14px;
+              color: rgba(51, 51, 51, 1);
+              line-height: 18px;
+              margin-bottom: 6px;
+            }
+            .dec {
+              max-width: 170px;
+              // height:18px;
+              font-size: 14px;
+              font-weight: 400;
+              color: rgba(51, 51, 51, 1);
+              line-height: 18px;
+            }
+          }
+          .right {
+            float: right;
+            .date {
+              height: 14px;
+              font-size: 10px;
+              font-weight: 400;
+              color: rgba(102, 102, 102, 1);
+              line-height: 14px;
+              margin-bottom: 8px;
+              display: block;
+            }
+            em {
+              height: 18px;
+              font-size: 14px;
+              font-weight: 400;
+              color: rgba(51, 51, 51, 1);
+              line-height: 18px;
+              display: block;
+              &.plus {
+                color: rgba(214, 45, 45, 1);
+              }
+            }
+          }
+        }
       }
     }
   }
