@@ -85,8 +85,8 @@ export default {
       font-size:16px;
       color:rgba(255,255,255,1);
       text-align: center;
-      background:linear-gradient(225deg,rgba(182,0,0,1) 0%,rgba(149,0,0,1) 100%);
-      border-radius:2px;
+      background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
+      border-radius:22px;
       display: block;
       margin: 0 auto;
       margin-top:66px;
