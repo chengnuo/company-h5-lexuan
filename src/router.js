@@ -59,14 +59,14 @@ const routerData = {
       name: 'QuickLogin',
       path: '/quickLogin',
       meta: {
-        title: '幸福引力'
+        title: '乐选'
       },
       component: () => import('@/pages/login/quickLogin')
     }, {
       name: 'QuickLoginBind',
       path: '/quickLoginBind',
       meta: {
-        title: '幸福引力'
+        title: '乐选'
       },
       component: () => import('@/pages/login/quickLoginBind')
     },
@@ -754,6 +754,67 @@ const routerData = {
       },
       component: () => import('@/pages/integral/index')
     },
+
+    // ===充值 start ===
+    {
+      path: '/reflect',
+      name: 'Reflect',
+      meta: {
+        title: '申请提现' // 提现
+      },
+      component: () => import('@/pages/reflect/index')
+    }, {
+      path: '/reflect/index',
+      name: 'Reflect',
+      meta: {
+        title: '申请提现' // 提现
+      },
+      component: () => import('@/pages/reflect/index')
+    }, {
+      path: '/reflect/login',
+      name: 'ReflectLogin',
+      meta: {
+        title: '乐选' // 登录
+      },
+      component: () => import('@/pages/reflect/login')
+    }, {
+      path: '/reflect/getReflectCode',
+      name: 'ReflectGetReflectCode',
+      meta: {
+        title: '乐选' // 获取提现code
+      },
+      component: () => import('@/pages/reflect/getReflectCode')
+    }, {
+      path: '/reflect/getQuickLoginCode',
+      name: 'ReflectGetQuickLoginCode',
+      meta: {
+        title: '乐选' // 快捷登录code
+      },
+      component: () => import('@/pages/reflect/getQuickLoginCode')
+    }, {
+      path: '/reflect/quickLogin',
+      name: 'ReflectQuickLogin',
+      meta: {
+        title: '乐选' // 快捷登录
+      },
+      component: () => import('@/pages/reflect/quickLogin')
+    }, {
+      path: '/reflect/quickLoginBind',
+      name: 'ReflectQuickLoginBind',
+      meta: {
+        title: '乐选' // 快捷登录绑定
+      },
+      component: () => import('@/pages/reflect/quickLoginBind')
+    }, 
+    // {
+    //   path: '/myStock',
+    //   name: 'myStock',
+    //   meta: {
+    //     title: '我的库存' // 快捷登录绑定
+    //   },
+    //   component: () => import('@/pages/stock/index')
+    // },
+    // ===充值 end ===
     
   ]
 }
