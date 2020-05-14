@@ -413,7 +413,7 @@ const routerData = {
     },
     {
       path: '/my/feedbackQuestions',
-      name: 'feedbackQuestions',
+      name: 'FeedbackQuestions',
       meta: {
         title: '反馈问题' // 乐选-反馈问题
       },
@@ -555,6 +555,14 @@ const routerData = {
         title: '授权书' // 乐选-授权书
       },
       component: () => import('@/pages/my/certificateAuthorizationBook')
+    },
+    {
+      path: '/my/mySuperior',
+      name: 'MySuperior',
+      meta: {
+        title: '我的上级' // 乐选-我的上级
+      },
+      component: () => import('@/pages/my/mySuperior')
     },
     {
       path: '/my/materialCircle',

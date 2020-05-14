@@ -136,7 +136,7 @@
     <div class="list">
       <div class="title">我的服务</div>
       <ul class="clearfix">
-        <li @click="jumpPage('feedbackQuestions')">
+        <li @click="jumpPage('FeedbackQuestions')">
           <img src="../../assets/img/my/42.png"
                alt="" />
           <span>意见反馈</span>
@@ -146,7 +146,7 @@
                alt="" />
           <span>防伪查询</span>
         </li>
-        <li @click="jumpPage(111)">
+        <li @click="jumpPage('MySuperior')">
           <img src="../../assets/img/my/42.png"
                alt="" />
           <span>我的上级</span>
@@ -167,11 +167,6 @@
           <img src="../../assets/img/my/42.png"
                alt="" />
           <span>进货</span>
-        </li>
-        <li @click="jumpPage(111)">
-          <img src="../../assets/img/my/42.png"
-               alt="" />
-          <span>会员升级</span>
         </li>
         <li @click="jumpPage(111)">
           <img src="../../assets/img/my/42.png"
@@ -436,7 +431,8 @@ export default {
         4: "",
         5: 'myStock',
         'sweepCode': 'sweepCode',
-        'feedbackQuestions': 'feedbackQuestions',
+        'FeedbackQuestions': 'FeedbackQuestions',
+        'MySuperior': 'MySuperior',
       };
 
       const userData =
