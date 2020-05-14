@@ -132,12 +132,13 @@ export default {
     }
     .inputBox{
       padding:0 20px;
+      position: relative;
       .left{
-        width:190px;
+        width:315px;
         height:22px;
-        padding:11px 10px;
+        padding:11px 10px 11px 23px;
         background:rgba(255,255,255,1);
-        border-radius:2px;
+        border-radius:22px;
         border:1px solid rgba(230,230,230,1);
         float: left;
         input{
@@ -152,22 +153,22 @@ export default {
         }
       }
       .btn{
-        width:110px;
-        height:44px;
-        line-height: 44px;
-        font-size:16px;
-        color:rgba(255,255,255,1);
-        text-align: center;
-        background:linear-gradient(225deg,rgba(255,161,0,1) 0%,rgba(255,127,0,1) 100%);
-        border-radius:2px;
-        float: right;
+        
+        font-size:14px;
+        font-family:PingFangSC-Regular,PingFang SC;
+        font-weight:400;
+        color:rgba(230,0,23,1);
+        line-height:20px;
+        position:absolute;
+        right: 40px;
+        top:15px;
       }
     }
     .sweepCode{
       width:335px;
       height:44px;
-      background:linear-gradient(225deg,rgba(182,0,0,1) 0%,rgba(149,0,0,1) 100%);
-      border-radius:2px;
+      background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
+      border-radius:22px;
       margin: 0 auto;
       margin-top:40px;
       margin-bottom: 72px;
