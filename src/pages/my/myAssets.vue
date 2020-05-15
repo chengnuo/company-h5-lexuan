@@ -72,7 +72,8 @@
         </div>
       </div>
       <!-- 弹出层2 -->
-      <div class="screenDialog2">
+      <div class="screenDialog2"
+           style="display:none">
         <div class="itemMask2"></div>
         <div class="itemMask22"></div>
         <div class="itemDialog2">
@@ -82,14 +83,28 @@
             <div class="rightbar fl">2019-06-19</div>
           </div>
           <div class="datetimePickerLayout">
-            <van-datetime-picker
-              v-model="currentDate"
-              type="date"
-              title="选择年月日"
-              :min-date="minDate"
-              :max-date="maxDate"
-            />
+            <van-datetime-picker v-model="currentDate"
+                                 type="date"
+                                 title="选择年月日"
+                                 :min-date="minDate"
+                                 :max-date="maxDate" />
           </div>
+          <div class="commitLayout clearfix">
+            <div class="leftbar fl">重 置</div>
+            <div class="rightbar fl">确 定</div>
+          </div>
+        </div>
+      </div>
+      <!-- 弹出层3 -->
+      <div class="screenDialog3">
+        <div class="itemMask3"></div>
+        <div class="itemMask33"></div>
+        <div class="itemDialog3">
+          <div class="name">请选择收益关联用户</div>
+          <div class="input">
+            <input type="text" placeholder="请输入手机号/会员码" />
+          </div>
+          
           <div class="commitLayout clearfix">
             <div class="leftbar fl">重 置</div>
             <div class="rightbar fl">确 定</div>
@@ -102,11 +117,11 @@
 
         </div>
         <div class="verticalLine1 fl"></div>
-        <div class="item fl active">
+        <div class="item fl ">
           时间
         </div>
         <div class="verticalLine2 fl"></div>
-        <div class="item fl">用户</div>
+        <div class="item fl active">用户</div>
       </div>
 
       <div class="list">
@@ -381,7 +396,7 @@ export default {
     width: 375px;
     background: rgba(255, 255, 255, 1);
     position: relative;
-
+    // 弹出层1
     & .screenDialog1 {
       & .itemMask1 {
         width: 375px;
@@ -486,6 +501,7 @@ export default {
         }
       }
     }
+    // 弹出层2
     & .screenDialog2 {
       & .itemMask2 {
         width: 375px;
@@ -537,12 +553,99 @@ export default {
             font-weight: 400;
             color: rgba(51, 51, 51, 1);
           }
-          & .active{
-            font-size:15px;
-            font-family:PingFangSC-Regular,PingFang SC;
-            font-weight:400;
-            color:rgba(255,103,0,1);
+          & .active {
+            font-size: 15px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(255, 103, 0, 1);
           }
+        }
+        & .commitLayout {
+          width: 375px;
+          height: 60px;
+          background: rgba(255, 255, 255, 1);
+          box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.05);
+          margin-top: 20px;
+          & .leftbar {
+            width: 168px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(51, 51, 51, 1);
+            margin-left: 15px;
+            margin-top: 10px;
+            font-size: 15px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: rgba(51, 51, 51, 1);
+            text-align: center;
+          }
+          & .rightbar {
+            width: 168px;
+            height: 40px;
+            line-height: 40px;
+            background: linear-gradient(
+              45deg,
+              rgba(230, 0, 23, 1) 0%,
+              rgba(204, 0, 20, 1) 100%
+            );
+            border-radius: 20px;
+            margin-left: 15px;
+            margin-top: 10px;
+            font-size: 15px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 1);
+            text-align: center;
+          }
+        }
+      }
+    }
+    // 弹出层3
+    & .screenDialog3 {
+      & .itemMask3 {
+        width: 375px;
+        height: 460px;
+        background: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        left: 0;
+        top: 40px;
+      }
+      & .itemMask33 {
+        width: 375px;
+        height: 164px;
+        background: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        left: 0;
+        top: -164px;
+      }
+      & .itemDialog3 {
+        width: 375px;
+        height: 196px;
+        background: #fff;
+        position: absolute;
+        left: 0;
+        top: 40px;
+        & > .name {
+          font-size: 12px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(153, 153, 153, 1);
+          line-height: 14px;
+          margin-top: 20px;
+          margin-left: 15px;
+        }
+        & > .input {
+          margin-left: 15px;
+          margin-top: 18px;
+          &>input{
+            width: 295px;
+            border-radius: 22px;
+            border: 1px solid rgba(204, 204, 204, 1);
+            height: 22px;
+            padding: 11px 20px;
+          }
+
         }
         & .commitLayout {
           width: 375px;
