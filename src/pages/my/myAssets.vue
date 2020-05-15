@@ -39,40 +39,72 @@
 
     <!-- 筛选 -->
     <div class="screen">
-      <div class="listTab clearfix">
-        <div class="item fl active">
-          筛选
-          <div class="itemMask1"></div>
-          <div class="itemMask11"></div>
-          <div class="itemDialog1">
-            <div class="layout1">
-              <div class="title">请选择收益类型</div>
-              <div class="list clearfix">
-                <div class="item active fl">全部收益</div>
-                <div class="item fl">在途收益</div>
-              </div>
-            </div>
-            <div class="layout11">
-              <div class="title">请选择收益类型</div>
-              <div class="list clearfix">
-                <div class="item active fl">商品销售奖励</div>
-                <div class="item fl">团队奖励</div>
-                <div class="item fl">培训奖励</div>
-                <div class="item fl">团队业绩奖励</div>
-                <div class="item fl">个人业绩奖励</div>
-                <div class="item fl">调账</div>
-                <div class="item fl">提现</div>
-                <div class="item fl">充值</div>
-              </div>
-            </div>
-            <div class="commitLayout clearfix">
-              <div class="leftbar fl">重  置</div>
-              <div class="rightbar fl">确  定</div>
+      <!-- 弹出层1 -->
+      <div class="screenDialog1"
+           style="display:none">
+        <div class="itemMask1"></div>
+        <div class="itemMask11"></div>
+        <div class="itemDialog1">
+          <div class="layout1">
+            <div class="title">请选择收益类型</div>
+            <div class="list clearfix">
+              <div class="item active fl">全部收益</div>
+              <div class="item fl">在途收益</div>
             </div>
           </div>
+          <div class="layout11">
+            <div class="title">请选择收益类型</div>
+            <div class="list clearfix">
+              <div class="item active fl">商品销售奖励</div>
+              <div class="item fl">团队奖励</div>
+              <div class="item fl">培训奖励</div>
+              <div class="item fl">团队业绩奖励</div>
+              <div class="item fl">个人业绩奖励</div>
+              <div class="item fl">调账</div>
+              <div class="item fl">提现</div>
+              <div class="item fl">充值</div>
+            </div>
+          </div>
+          <div class="commitLayout clearfix">
+            <div class="leftbar fl">重 置</div>
+            <div class="rightbar fl">确 定</div>
+          </div>
+        </div>
+      </div>
+      <!-- 弹出层2 -->
+      <div class="screenDialog2">
+        <div class="itemMask2"></div>
+        <div class="itemMask22"></div>
+        <div class="itemDialog2">
+          <div class="timeLayout clearfix">
+            <div class="leftbar fl active">2019-06-19</div>
+            <div class="centerbar fl">至</div>
+            <div class="rightbar fl">2019-06-19</div>
+          </div>
+          <div class="datetimePickerLayout">
+            <van-datetime-picker
+              v-model="currentDate"
+              type="date"
+              title="选择年月日"
+              :min-date="minDate"
+              :max-date="maxDate"
+            />
+          </div>
+          <div class="commitLayout clearfix">
+            <div class="leftbar fl">重 置</div>
+            <div class="rightbar fl">确 定</div>
+          </div>
+        </div>
+      </div>
+      <div class="listTab clearfix">
+        <div class="item fl ">
+          筛选
+
         </div>
         <div class="verticalLine1 fl"></div>
-        <div class="item fl">时间</div>
+        <div class="item fl active">
+          时间
+        </div>
         <div class="verticalLine2 fl"></div>
         <div class="item fl">用户</div>
       </div>
@@ -153,15 +185,9 @@ export default {
         },
       ],
 
-      switchTitle1: '包邮',
-      switchTitle2: '团购',
-      itemTitle: '筛选',
-      option1: [
-        { text: '全部商品', value: 0 },
-        { text: '新款商品', value: 1 },
-        { text: '活动商品', value: 2 },
-      ],
-      value1: 0,
+      minDate: new Date(2020, 0, 1),
+      maxDate: new Date(2025, 10, 1),
+      currentDate: new Date(),
     }
   },
   mounted() {
@@ -354,6 +380,211 @@ export default {
     margin-top: 10px;
     width: 375px;
     background: rgba(255, 255, 255, 1);
+    position: relative;
+
+    & .screenDialog1 {
+      & .itemMask1 {
+        width: 375px;
+        height: 460px;
+        background: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        left: 0;
+        top: 40px;
+      }
+      & .itemMask11 {
+        width: 375px;
+        height: 164px;
+        background: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        left: 0;
+        top: -164px;
+      }
+      & .itemDialog1 {
+        width: 375px;
+        height: 320px;
+        background: #fff;
+        position: absolute;
+        left: 0;
+        top: 40px;
+        & .title {
+          font-size: 12px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: rgba(153, 153, 153, 1);
+          line-height: 14px;
+          margin-left: 15px;
+          margin-top: 15px;
+        }
+        & .list {
+          margin-left: 5px;
+          margin-top: 5px;
+          & .item.active {
+            width: 108px;
+            height: 34px;
+            background: rgba(255, 238, 239, 1);
+            border-radius: 17px;
+            font-size: 12px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: rgba(230, 0, 23, 1);
+            line-height: 34px;
+          }
+          & .item {
+            width: 108px;
+            height: 34px;
+            background: rgba(245, 245, 245, 1);
+            border-radius: 17px;
+
+            font-size: 12px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: rgba(102, 102, 102, 1);
+            line-height: 34px;
+            text-align: center;
+            margin-left: 10px;
+            margin-top: 10px;
+          }
+        }
+        & .commitLayout {
+          width: 375px;
+          height: 60px;
+          background: rgba(255, 255, 255, 1);
+          box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.05);
+          margin-top: 20px;
+          & .leftbar {
+            width: 168px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(51, 51, 51, 1);
+            margin-left: 15px;
+            margin-top: 10px;
+            font-size: 15px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: rgba(51, 51, 51, 1);
+            text-align: center;
+          }
+          & .rightbar {
+            width: 168px;
+            height: 40px;
+            line-height: 40px;
+            background: linear-gradient(
+              45deg,
+              rgba(230, 0, 23, 1) 0%,
+              rgba(204, 0, 20, 1) 100%
+            );
+            border-radius: 20px;
+            margin-left: 15px;
+            margin-top: 10px;
+            font-size: 15px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 1);
+            text-align: center;
+          }
+        }
+      }
+    }
+    & .screenDialog2 {
+      & .itemMask2 {
+        width: 375px;
+        height: 460px;
+        background: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        left: 0;
+        top: 40px;
+      }
+      & .itemMask22 {
+        width: 375px;
+        height: 164px;
+        background: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        left: 0;
+        top: -164px;
+      }
+      & .itemDialog2 {
+        width: 375px;
+        height: 320px;
+        background: #fff;
+        position: absolute;
+        left: 0;
+        top: 40px;
+        & .timeLayout {
+          width: 375px;
+          height: 49px;
+          background: rgba(255, 255, 255, 1);
+          text-align: center;
+          line-height: 49px;
+          & .leftbar {
+            width: 181px;
+            font-size: 15px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(51, 51, 51, 1);
+          }
+          & .centerbar {
+            font-size: 15px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(51, 51, 51, 1);
+          }
+          & .rightbar {
+            width: 179px;
+
+            font-size: 15px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(51, 51, 51, 1);
+          }
+          & .active{
+            font-size:15px;
+            font-family:PingFangSC-Regular,PingFang SC;
+            font-weight:400;
+            color:rgba(255,103,0,1);
+          }
+        }
+        & .commitLayout {
+          width: 375px;
+          height: 60px;
+          background: rgba(255, 255, 255, 1);
+          box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.05);
+          margin-top: 20px;
+          & .leftbar {
+            width: 168px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(51, 51, 51, 1);
+            margin-left: 15px;
+            margin-top: 10px;
+            font-size: 15px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: rgba(51, 51, 51, 1);
+            text-align: center;
+          }
+          & .rightbar {
+            width: 168px;
+            height: 40px;
+            line-height: 40px;
+            background: linear-gradient(
+              45deg,
+              rgba(230, 0, 23, 1) 0%,
+              rgba(204, 0, 20, 1) 100%
+            );
+            border-radius: 20px;
+            margin-left: 15px;
+            margin-top: 10px;
+            font-size: 15px;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 1);
+            text-align: center;
+          }
+        }
+      }
+    }
     & .listTab {
       height: 40px;
       line-height: 40px;
@@ -367,108 +598,6 @@ export default {
       & > .item {
         padding: 0 15px 0 17px;
         position: relative;
-        & .itemMask1 {
-          width: 375px;
-          height: 460px;
-          background: rgba(0, 0, 0, 0.1);
-          position: absolute;
-          left: 0;
-          top: 40px;
-        }
-        & .itemMask11 {
-          width: 375px;
-          height: 164px;
-          background: rgba(0, 0, 0, 0.1);
-          position: absolute;
-          left: 0;
-          top: -164px;
-        }
-        & .itemDialog1 {
-          width: 375px;
-          height: 320px;
-          background: #fff;
-          position: absolute;
-          left: 0;
-          top: 40px;
-          & .title {
-            font-size: 12px;
-            font-family: PingFangSC-Regular, PingFang SC;
-            font-weight: 400;
-            color: rgba(153, 153, 153, 1);
-            line-height: 14px;
-            margin-left: 15px;
-            margin-top: 15px;
-          }
-          & .list {
-            margin-left: 5px;
-            margin-top: 5px;
-            & .item.active {
-              width: 108px;
-              height: 34px;
-              background: rgba(255, 238, 239, 1);
-              border-radius: 17px;
-              font-size: 12px;
-              font-family: PingFangSC-Medium, PingFang SC;
-              font-weight: 500;
-              color: rgba(230, 0, 23, 1);
-              line-height: 34px;
-            }
-            & .item {
-              width: 108px;
-              height: 34px;
-              background: rgba(245, 245, 245, 1);
-              border-radius: 17px;
-
-              font-size: 12px;
-              font-family: PingFangSC-Medium, PingFang SC;
-              font-weight: 500;
-              color: rgba(102, 102, 102, 1);
-              line-height: 34px;
-              text-align: center;
-              margin-left: 10px;
-              margin-top: 10px;
-            }
-          }
-          & .commitLayout {
-            width: 375px;
-            height: 60px;
-            background: rgba(255, 255, 255, 1);
-            box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.05);
-            margin-top: 20px;
-            & .leftbar {
-              width: 168px;
-              height: 40px;
-              line-height: 40px;
-              border-radius: 20px;
-              border: 1px solid rgba(51, 51, 51, 1);
-              margin-left: 15px;
-              margin-top: 10px;
-              font-size: 15px;
-              font-family: PingFangSC-Semibold, PingFang SC;
-              font-weight: 600;
-              color: rgba(51, 51, 51, 1);
-              text-align: center;
-            }
-            & .rightbar {
-              width: 168px;
-              height: 40px;
-              line-height: 40px;
-              background: linear-gradient(
-                45deg,
-                rgba(230, 0, 23, 1) 0%,
-                rgba(204, 0, 20, 1) 100%
-              );
-              border-radius: 20px;
-              margin-left: 15px;
-              margin-top: 10px;
-              font-size: 15px;
-              font-family: PingFangSC-Semibold, PingFang SC;
-              font-weight: 600;
-              color: rgba(255, 255, 255, 1);
-              text-align: center;
-            }
-          }
-        }
       }
       & .verticalLine1 {
         width: 1px;
