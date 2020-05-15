@@ -40,10 +40,18 @@
     <!-- 筛选 -->
     <div class="screen">
       <div class="listTab clearfix">
-        <div class="item fl">筛选</div>
+        <div class="item fl">
+          筛选
+          <!-- <div class="itemDialog1">
+            12123
+          </div> -->
+        </div>
+        <div class="verticalLine1 fl"></div>
         <div class="item fl">时间</div>
+        <div class="verticalLine2 fl"></div>
         <div class="item fl">用户</div>
       </div>
+      
       <div class="list">
         <div class="item">
           <ul>
@@ -120,6 +128,16 @@ export default {
           operateGift: 99,
         },
       ],
+
+      switchTitle1: '包邮',
+      switchTitle2: '团购',
+      itemTitle: '筛选',
+      option1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 },
+      ],
+      value1: 0,
     }
   },
   mounted() {
@@ -317,6 +335,27 @@ export default {
       line-height: 40px;
       & .item{
         padding: 0 15px 0 17px;
+        position: relative;
+        & .itemDialog1{
+          width: 375px;
+          height: 320px;
+          background: #fff;
+          position:absolute;
+          left: 0;
+          top: 40px;
+        }
+      }
+      & .verticalLine1{
+        width:1px;
+        height:18px;
+        background:rgba(245,245,245,1);
+        margin-top:11px;
+      }
+      & .verticalLine2{
+        width:1px;
+        height:18px;
+        background:rgba(245,245,245,1);
+        margin-top:11px;
       }
     }
     & .list {
