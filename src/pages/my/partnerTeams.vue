@@ -10,7 +10,11 @@
 
     <div class="partnerTeamsTabs">
       <van-tabs>
-        <van-tab title="我的订购">
+        <van-tab>
+          <div slot="title">
+            <div class="tabTitle">联创</div>
+            <div class="tabNumber">(1000)</div>
+          </div>
           <div class="item clearfix">
             <div class="leftbar fl clearfix">
               <img class="img fl" src="../../assets/act/countyStore/people.png" />
@@ -42,8 +46,34 @@
             </div>
           </div>
         </van-tab>
-        <van-tab title="下级团队">下级团队</van-tab>
-        <van-tab title="同级团队">同级团队</van-tab>
+        <van-tab >
+        
+          <div slot="title">
+            <div class="tabTitle">金牌</div>
+            <div class="tabNumber">(1000)</div>
+          </div>
+        </van-tab>
+        <van-tab >
+          
+          <div slot="title">
+            <div class="tabTitle">创客</div>
+            <div class="tabNumber">(1000)</div>
+          </div>
+        </van-tab>
+        <van-tab >
+          
+          <div slot="title">
+            <div class="tabTitle">会员</div>
+            <div class="tabNumber">(1000)</div>
+          </div>
+        </van-tab>
+        <van-tab >
+          
+          <div slot="title">
+            <div class="tabTitle">普通</div>
+            <div class="tabNumber">(1000)</div>
+          </div>
+        </van-tab>
       </van-tabs>
     </div>
 
@@ -125,7 +155,7 @@ export default {
   }
 
   & .partnerTeamsTabs {
-    margin-top: 10px;
+    // margin-top: 10px;
     /deep/ .van-tabs__line {
       display: none;
     }
@@ -134,6 +164,29 @@ export default {
     }
     /deep/ .van-tab--active {
       background: #fff;
+    }
+    // & .tabTitle{
+    //   position:absolute;
+    //   left: -14px;
+    //   top: -5px;
+    // }
+    // & .tabNumber{
+    //   position:absolute;
+    //   left: -14px;
+    //   top: 8px;
+    //   font-size: 12px;
+    //   color: #A9A9A9;
+    // }
+    /deep/ .van-tab__text{
+      width: 100%;
+      line-height: 18px;
+    }
+    & .tabTitle{
+      margin-top: 4px;
+    }
+    & .tabNumber{
+      font-size: 12px;
+      color: #A9A9A9;
     }
     & .item {
       padding: 20px 14px 10px 16px;
