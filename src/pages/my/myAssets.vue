@@ -96,7 +96,7 @@
         </div>
       </div>
       <!-- 弹出层3 -->
-      <div class="screenDialog3">
+      <div class="screenDialog3" style="display:none">
         <div class="itemMask3"></div>
         <div class="itemMask33"></div>
         <div class="itemDialog3">
@@ -162,6 +162,10 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    <div class="toWithdraw">
+      <div class="btn">去提现</div>
     </div>
   </div>
 </template>
@@ -791,6 +795,27 @@ export default {
           }
         }
       }
+    }
+  }
+  & .toWithdraw{
+    width:375px;
+height:60px;
+background:rgba(255,255,255,1);
+box-shadow:0px -1px 5px 0px rgba(0,0,0,0.05);
+position: fixed;
+bottom: 0;
+    & .btn{
+      width:335px;
+      margin: 8px auto;
+height:44px;
+background:linear-gradient(45deg,rgba(230,0,23,1) 0%,rgba(204,0,20,1) 100%);
+border-radius:22px;
+font-size:16px;
+font-family:PingFangSC-Semibold,PingFang SC;
+font-weight:600;
+color:rgba(255,255,255,1);
+line-height:44px;
+text-align: center;
     }
   }
 }
