@@ -2,26 +2,129 @@
 <template>
   <div class="myAssets">
     <div class="bg"></div>
-    我的资产
+    <!-- 明细 -->
+    <div class="incomeDetails clearfix">
+      <div class="leftbar fl">
+        <div class="name">账户余额</div>
+        <div class="number">2379.5</div>
+      </div>
+      <div class="verticalLine1 fl"></div>
+      <div class="centerbar fl">
+        <div class="name">收益账户</div>
+        <div class="number">599.5</div>
+      </div>
+      <div class="verticalLine2 fl"></div>
+      <div class="rightbar fl">
+        <div class="name">充值帐户</div>
+        <div class="number">780</div>
+      </div>
+    </div>
+    <!-- 收益 -->
+    <div class="profitDetails clearfix">
+      <div class="leftbar fl">
+        <div class="name">账户余额</div>
+        <div class="number">2379.5</div>
+      </div>
+      <div class="verticalLine1 fl"></div>
+      <div class="centerbar fl">
+        <div class="name">收益账户</div>
+        <div class="number">599.5</div>
+      </div>
+      <div class="verticalLine2 fl"></div>
+      <div class="rightbar fl">
+        <div class="name">充值帐户</div>
+        <div class="number">780</div>
+      </div>
+    </div>
+
+    <!-- 筛选 -->
+    <div class="screen">
+      <div class="listTab clearfix">
+        <div class="item fl">筛选</div>
+        <div class="item fl">时间</div>
+        <div class="item fl">用户</div>
+      </div>
+      <div class="list">
+        <div class="item">
+          <ul>
+            <li v-for="(item, index) in giftList"
+                class="clearfix"
+                :key="index">
+              <img v-if="item.headImgUrl"
+                   :src="item.headImgUrl"
+                   class="left" />
+              <img v-else
+                   src="../../assets/act/countyStore/people.png"
+                   class="left" />
+              <div class="center">
+                <div class="name line-clamp-1">
+                  <!-- {{userId == item.fromUserId ? '' : item.nickname}} -->
+                  {{item.nickname}}
+                </div>
+                <div class="dec">{{item.content}}</div>
+              </div>
+              <div class="right">
+                <span class="date">{{item.updateTime}}</span>
+                <em
+                    class="plus">
+                  （+{{item.operateGift}}
+                </em>
+                <!-- <em v-if="item.operateType==1"
+                    class="plus">
+                  （赠送礼品）+{{item.operateGift}}
+                </em>
+                <em v-if="item.operateType==2">
+                  <span v-if="item.purchType!=4">
+                    （赠送礼品）-{{item.operateGift}}
+                  </span>
+                </em> -->
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script >
 import { Toast } from 'vant';
 
 import commonJs from '@/util/common'
-import {  apiShopMobileMsgNotifyList } from '@/api/my'
+import { apiShopMobileMsgNotifyList } from '@/api/my'
 
 
 export default {
   name: 'MyAssets',
   data() {
     return {
-      
+      giftList: [
+        {
+          userId: 1,
+          nickname: 'nickname',
+          content: 'content',
+          updateTime: 'updateTime',
+          operateGift: 99,
+        },
+        {
+          userId: 2,
+          nickname: 'nickname2',
+          content: 'content2',
+          updateTime: 'updateTime2',
+          operateGift: 99,
+        },
+        {
+          userId: 3,
+          nickname: 'nickname3',
+          content: 'content3',
+          updateTime: 'updateTime3',
+          operateGift: 99,
+        },
+      ],
     }
   },
   mounted() {
-    
-    
+
+
   },
   methods: {
 
@@ -30,6 +133,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .myAssets {
+  background: #f6f8fa;
   .bg {
     width: 100%;
     height: 100%;
@@ -39,56 +143,274 @@ export default {
     top: 0;
     z-index: -1;
   }
-  .list {
-    background: #fff;
-    padding-left: 20px;
-    padding-top: 20px;
-
-    &>.leftbar {
-      float: left;
-      width: 40px;
-      .img {
-        width: 40px;
-        height: 40px;
-      }
-    }
-    &>.rightbar {
-      float: left;
-      margin-left: 10px;
-      width: 300px;
-      .headerbar {
-        .leftbar {
-          font-size: 16px;
-          font-family: PingFangSC-Medium, PingFang SC;
-          font-weight: 500;
-          color: rgba(51, 51, 51, 1);
-          line-height: 22px;
-          float: left;
-        }
-        .rightbar {
-          font-size: 12px;
-          font-family: PingFangSC-Regular, PingFang SC;
-          font-weight: 400;
-          color: rgba(153, 153, 153, 1);
-          line-height: 17px;
-          margin-left: 15px;
-          float: left;
-          margin-top: 3px;
-        }
-      }
-      .bodybar {
-        font-size: 14px;
+  & .incomeDetails {
+    width: 375px;
+    height: 100px;
+    background: linear-gradient(
+      225deg,
+      rgba(247, 222, 176, 1) 0%,
+      rgba(247, 195, 153, 1) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    & .leftbar {
+      width: 125px;
+      & .name {
+        font-size: 12px;
         font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;
-        color: rgba(102, 102, 102, 1);
-        line-height: 20px;
-        margin-top: 5px;
-        margin-right: 10px;
+        color: rgba(155, 93, 56, 1);
+        line-height: 17px;
+        text-align: center;
+        margin-top: 15px;
+      }
+      & .number {
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(155, 93, 56, 1);
+        line-height: 37px;
+        text-align: center;
+      }
+    }
+
+    & .verticalLine1 {
+      width: 1px;
+      height: 28px;
+      background: rgba(5, 5, 5, 0.1);
+      margin-top: 28px;
+    }
+    & .centerbar {
+      width: 125px;
+      & .name {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(155, 93, 56, 1);
+        line-height: 17px;
+        text-align: center;
+        margin-top: 15px;
+      }
+      & .number {
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(155, 93, 56, 1);
+        line-height: 37px;
+        text-align: center;
+      }
+    }
+
+    & .verticalLine2 {
+      width: 1px;
+      height: 28px;
+      background: rgba(5, 5, 5, 0.1);
+      margin-top: 28px;
+    }
+    & .rightbar {
+      width: 123px;
+      & .name {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(155, 93, 56, 1);
+        line-height: 17px;
+        text-align: center;
+        margin-top: 15px;
+      }
+      & .number {
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(155, 93, 56, 1);
+        line-height: 37px;
+        text-align: center;
       }
     }
   }
-  /deep/ .van-list__finished-text{
+
+  & .profitDetails {
+    width: 355px;
+    height: 75px;
     background: #fff;
+    margin: -21px auto 0;
+    & .leftbar {
+      width: 118px;
+      & .name {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(155, 93, 56, 1);
+        line-height: 17px;
+        text-align: center;
+        margin-top: 15px;
+      }
+      & .number {
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(155, 93, 56, 1);
+        line-height: 37px;
+        text-align: center;
+      }
+    }
+
+    & .verticalLine1 {
+      width: 1px;
+      height: 28px;
+      background: rgba(5, 5, 5, 0.1);
+      margin-top: 28px;
+    }
+    & .centerbar {
+      width: 118px;
+      & .name {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(155, 93, 56, 1);
+        line-height: 17px;
+        text-align: center;
+        margin-top: 15px;
+      }
+      & .number {
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(155, 93, 56, 1);
+        line-height: 37px;
+        text-align: center;
+      }
+    }
+
+    & .verticalLine2 {
+      width: 1px;
+      height: 28px;
+      background: rgba(5, 5, 5, 0.1);
+      margin-top: 28px;
+    }
+    & .rightbar {
+      width: 116px;
+      & .name {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(155, 93, 56, 1);
+        line-height: 17px;
+        text-align: center;
+        margin-top: 15px;
+      }
+      & .number {
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: rgba(155, 93, 56, 1);
+        line-height: 37px;
+        text-align: center;
+      }
+    }
   }
+  & .screen {
+    margin-top: 10px;
+    width: 375px;
+    background: rgba(255, 255, 255, 1);
+    & .listTab{
+      height: 40px;
+      line-height: 40px;
+      & .item{
+        padding: 0 15px 0 17px;
+      }
+    }
+    & .list {
+      margin-top: 10px;
+      /deep/ .van-tabs__line {
+        display: none;
+      }
+      /deep/ .van-tab {
+        background: #d8d8d8;
+      }
+      /deep/ .van-tab--active {
+        background: #fff;
+      }
+      & .item {
+        ul {
+          padding: 20px 15px;
+          padding-bottom: 0;
+          min-height: 100%;
+          li {
+            min-height: 42px;
+            padding: 18px 15px 18px 10px;
+            background:rgba(255,248,249,1);
+            border-radius:5px;
+            margin-bottom: 10px;
+            .left {
+              width: 30px;
+              height: 30px;
+              float: left;
+              border-radius: 50%;
+              margin-top: 6px;
+              margin-right: 10px;
+              object-fit: cover;
+            }
+            .center {
+              float: left;
+              .name {
+                max-width: 170px;
+                height: 18px;
+                font-size: 14px;
+                color: rgba(51, 51, 51, 1);
+                line-height: 18px;
+                margin-bottom: 6px;
+              }
+              .dec {
+                max-width: 170px;
+                // height:18px;
+                font-size: 14px;
+                font-weight: 400;
+                color: rgba(51, 51, 51, 1);
+                line-height: 18px;
+              }
+            }
+            .right {
+              float: right;
+              .date {
+                height: 14px;
+                font-size: 10px;
+                font-weight: 400;
+                color: rgba(102, 102, 102, 1);
+                line-height: 14px;
+                margin-bottom: 8px;
+                display: block;
+              }
+              em {
+                height: 18px;
+                font-size: 14px;
+                font-weight: 400;
+                color: rgba(51, 51, 51, 1);
+                line-height: 18px;
+                display: block;
+                &.plus {
+                  color: rgba(214, 45, 45, 1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix::after {
+  clear: both;
+  content: " ";
+  visibility: hidden;
+  height: 0;
 }
 </style>
