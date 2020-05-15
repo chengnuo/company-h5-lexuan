@@ -40,18 +40,39 @@
     <!-- 筛选 -->
     <div class="screen">
       <div class="listTab clearfix">
-        <div class="item fl">
+        <div class="item fl active">
           筛选
-          <!-- <div class="itemDialog1">
-            12123
-          </div> -->
+          <div class="itemMask1"></div>
+          <div class="itemMask11"></div>
+          <div class="itemDialog1">
+            <div class="layout1">
+              <div class="title">请选择收益类型</div>
+              <div class="list clearfix">
+                <div class="item active fl">全部收益</div>
+                <div class="item fl">在途收益</div>
+              </div>
+            </div>
+            <div class="layout2">
+              <div class="title">请选择收益类型</div>
+              <div class="list clearfix">
+                <div class="item active fl">商品销售奖励</div>
+                <div class="item fl">团队奖励</div>
+                <div class="item fl">培训奖励</div>
+                <div class="item fl">团队业绩奖励</div>
+                <div class="item fl">个人业绩奖励</div>
+                <div class="item fl">调账</div>
+                <div class="item fl">提现</div>
+                <div class="item fl">充值</div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="verticalLine1 fl"></div>
         <div class="item fl">时间</div>
         <div class="verticalLine2 fl"></div>
         <div class="item fl">用户</div>
       </div>
-      
+
       <div class="list">
         <div class="item">
           <ul>
@@ -73,8 +94,7 @@
               </div>
               <div class="right">
                 <span class="date">{{item.updateTime}}</span>
-                <em
-                    class="plus">
+                <em class="plus">
                   （+{{item.operateGift}}
                 </em>
                 <!-- <em v-if="item.operateType==1"
@@ -330,32 +350,94 @@ export default {
     margin-top: 10px;
     width: 375px;
     background: rgba(255, 255, 255, 1);
-    & .listTab{
+    & .listTab {
       height: 40px;
       line-height: 40px;
-      & .item{
+      &>.item.active{
+        font-size:14px;
+        font-family:PingFangSC-Regular,PingFang SC;
+        font-weight:400;
+        color:rgba(230,0,23,1);
+        // line-height:16px;
+      }
+      &>.item {
         padding: 0 15px 0 17px;
         position: relative;
-        & .itemDialog1{
+        & .itemMask1 {
           width: 375px;
-          height: 320px;
-          background: #fff;
-          position:absolute;
+          height: 460px;
+          background: rgba(0, 0, 0, 0.1);
+          position: absolute;
           left: 0;
           top: 40px;
         }
+        & .itemMask11 {
+          width: 375px;
+          height: 164px;
+          background: rgba(0, 0, 0, 0.1);
+          position: absolute;
+          left: 0;
+          top: -164px;
+        }
+        & .itemDialog1 {
+          width: 375px;
+          height: 320px;
+          background: #fff;
+          position: absolute;
+          left: 0;
+          top: 40px;
+          & .title {
+            font-size: 12px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(153, 153, 153, 1);
+            line-height: 14px;
+            margin-left: 15px;
+            margin-top: 15px;
+          }
+          & .list {
+            margin-left: 5px;
+            margin-top: 5px;
+            & .item.active {
+              width: 108px;
+              height: 34px;
+              background: rgba(255, 238, 239, 1);
+              border-radius: 17px;
+              font-size: 12px;
+              font-family: PingFangSC-Medium, PingFang SC;
+              font-weight: 500;
+              color: rgba(230, 0, 23, 1);
+              line-height: 34px;
+            }
+            & .item {
+              width: 108px;
+              height: 34px;
+              background: rgba(245, 245, 245, 1);
+              border-radius: 17px;
+
+              font-size: 12px;
+              font-family: PingFangSC-Medium, PingFang SC;
+              font-weight: 500;
+              color: rgba(102, 102, 102, 1);
+              line-height: 34px;
+              text-align: center;
+              margin-left: 10px;
+              margin-top: 10px;
+            }
+          }
+        }
       }
-      & .verticalLine1{
-        width:1px;
-        height:18px;
-        background:rgba(245,245,245,1);
-        margin-top:11px;
+      & .verticalLine1 {
+        width: 1px;
+        height: 18px;
+        background: rgba(245, 245, 245, 1);
+        margin-top: 11px;
       }
-      & .verticalLine2{
-        width:1px;
-        height:18px;
-        background:rgba(245,245,245,1);
-        margin-top:11px;
+      & .verticalLine2 {
+        width: 1px;
+        height: 18px;
+        background: rgba(245, 245, 245, 1);
+        margin-top: 11px;
       }
     }
     & .list {
@@ -377,8 +459,8 @@ export default {
           li {
             min-height: 42px;
             padding: 18px 15px 18px 10px;
-            background:rgba(255,248,249,1);
-            border-radius:5px;
+            background: rgba(255, 248, 249, 1);
+            border-radius: 5px;
             margin-bottom: 10px;
             .left {
               width: 30px;
@@ -436,8 +518,6 @@ export default {
       }
     }
   }
-
-
 }
 
 .fl {
