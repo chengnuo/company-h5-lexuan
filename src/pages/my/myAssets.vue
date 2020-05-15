@@ -52,7 +52,7 @@
                 <div class="item fl">在途收益</div>
               </div>
             </div>
-            <div class="layout2">
+            <div class="layout11">
               <div class="title">请选择收益类型</div>
               <div class="list clearfix">
                 <div class="item active fl">商品销售奖励</div>
@@ -64,6 +64,10 @@
                 <div class="item fl">提现</div>
                 <div class="item fl">充值</div>
               </div>
+            </div>
+            <div class="commitLayout clearfix">
+              <div class="leftbar fl">重  置</div>
+              <div class="rightbar fl">确  定</div>
             </div>
           </div>
         </div>
@@ -353,14 +357,14 @@ export default {
     & .listTab {
       height: 40px;
       line-height: 40px;
-      &>.item.active{
-        font-size:14px;
-        font-family:PingFangSC-Regular,PingFang SC;
-        font-weight:400;
-        color:rgba(230,0,23,1);
+      & > .item.active {
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(230, 0, 23, 1);
         // line-height:16px;
       }
-      &>.item {
+      & > .item {
         padding: 0 15px 0 17px;
         position: relative;
         & .itemMask1 {
@@ -423,6 +427,45 @@ export default {
               text-align: center;
               margin-left: 10px;
               margin-top: 10px;
+            }
+          }
+          & .commitLayout {
+            width: 375px;
+            height: 60px;
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+            & .leftbar {
+              width: 168px;
+              height: 40px;
+              line-height: 40px;
+              border-radius: 20px;
+              border: 1px solid rgba(51, 51, 51, 1);
+              margin-left: 15px;
+              margin-top: 10px;
+              font-size: 15px;
+              font-family: PingFangSC-Semibold, PingFang SC;
+              font-weight: 600;
+              color: rgba(51, 51, 51, 1);
+              text-align: center;
+            }
+            & .rightbar {
+              width: 168px;
+              height: 40px;
+              line-height: 40px;
+              background: linear-gradient(
+                45deg,
+                rgba(230, 0, 23, 1) 0%,
+                rgba(204, 0, 20, 1) 100%
+              );
+              border-radius: 20px;
+              margin-left: 15px;
+              margin-top: 10px;
+              font-size: 15px;
+              font-family: PingFangSC-Semibold, PingFang SC;
+              font-weight: 600;
+              color: rgba(255, 255, 255, 1);
+              text-align: center;
             }
           }
         }
