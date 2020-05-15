@@ -403,7 +403,7 @@ export default {
         height: 460px;
         background: rgba(0, 0, 0, 0.1);
         position: absolute;
-        left: 0;
+        left: 2px;
         top: 40px;
       }
       & .itemMask11 {
@@ -411,7 +411,7 @@ export default {
         height: 164px;
         background: rgba(0, 0, 0, 0.1);
         position: absolute;
-        left: 0;
+        left: 2px;
         top: -164px;
       }
       & .itemDialog1 {
@@ -419,7 +419,7 @@ export default {
         height: 320px;
         background: #fff;
         position: absolute;
-        left: 0;
+        left: 2px;
         top: 40px;
         & .title {
           font-size: 12px;
@@ -508,7 +508,7 @@ export default {
         height: 460px;
         background: rgba(0, 0, 0, 0.1);
         position: absolute;
-        left: 0;
+        left: 2px;
         top: 40px;
       }
       & .itemMask22 {
@@ -516,7 +516,7 @@ export default {
         height: 164px;
         background: rgba(0, 0, 0, 0.1);
         position: absolute;
-        left: 0;
+        left: 2px;
         top: -164px;
       }
       & .itemDialog2 {
@@ -524,7 +524,7 @@ export default {
         height: 320px;
         background: #fff;
         position: absolute;
-        left: 0;
+        left: 2px;
         top: 40px;
         & .timeLayout {
           width: 375px;
@@ -608,7 +608,7 @@ export default {
         height: 460px;
         background: rgba(0, 0, 0, 0.1);
         position: absolute;
-        left: 0;
+        left: 2px;
         top: 40px;
       }
       & .itemMask33 {
@@ -616,7 +616,7 @@ export default {
         height: 164px;
         background: rgba(0, 0, 0, 0.1);
         position: absolute;
-        left: 0;
+        left: 2px;
         top: -164px;
       }
       & .itemDialog3 {
@@ -624,7 +624,7 @@ export default {
         height: 196px;
         background: #fff;
         position: absolute;
-        left: 0;
+        left: 2px;
         top: 40px;
         & > .name {
           font-size: 12px;
